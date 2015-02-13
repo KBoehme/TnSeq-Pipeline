@@ -575,8 +575,8 @@ class hops_pipeline(object):
 				gene_header.extend(self.int_prefix)
 
 			hops_header.extend(self.int_prefix)
-			gene_header.extend(["Start(Truncated)","Stop(Truncated)","Strand","Length","PID","Gene","Function"])
-			hops_header.extend(["Start(Truncated)","Stop(Truncated)","Strand","Length","PID","Gene","Function"])
+			gene_header.extend(["Start)","Stop","Strand","Length","PID","Gene","Function"])
+			hops_header.extend(["Start","Stop","Strand","Length","PID","Gene","Function"])
 
 			hf.write("\t".join(hops_header)+"\n")
 			gf.write("\t".join(gene_header)+"\n")
@@ -617,8 +617,8 @@ class hops_pipeline(object):
 						total_line.extend(self.gene_totals[sm_key])
 					copy_total_line.extend(self.gene_totals[sm_key])
 
-					total_line.append(str(loc[0])+" ("+str(gene_info[1])+")")
-					total_line.append(str(loc[1])+" ("+str(gene_info[2])+")")
+					total_line.append(str(loc[0]))
+					total_line.append(str(loc[1]))
 					total_line.append(ptt_entry[1])
 					total_line.append(gene_info[2] - gene_info[1])
 					total_line.append(ptt_entry[3])
