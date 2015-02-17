@@ -15,24 +15,24 @@ This script is designed to take Tn-Seq data and map (using Bowtie2) and tally ho
 
 1. Gene-by-gene (-GENE). Hop counts are tallied within genes.
 ```
-Num	GeneID	Condition1	Condition2	Condition3	Start (Truncated)	Stop (Truncated)	Strand	Length	PID	Gene	Function
+Num	GeneID	Condition1	Condition2	Condition3	Start	Stop	Strand	Length	PID	Gene	Function
 ...
-12	SM_b20013	2660	3455	317	19079 (19203)	20323 (20199)	-	996	16263764	-	hypothetical protein
-13	SM_b20014	1878	1770	303	20377 (20477)	21378 (21278)	-	801	16263765	-	transcriptional regulator
-14	SM_b20015	2768	2634	189	21392 (21487)	22348 (22253)	-	766	16263766	-	sugar ABC transporter permease
-15	SM_b20016	6227	7414	7098	22345 (22444)	23337 (23238)	-	794	16263767	-	sugar ABC transporter permease
-16	SM_b20017	6593	6016	5517	23337 (23487)	24842 (24692)	-	1205	16263768	-	sugar ABC transporter ATP-binding protein
-17	SM_b20018	2153	3188	1750	25092 (25194)	26114 (26012)	-	818	16263769	-	sugar ABC transporter substrate-binding protein
-18	SM_b20019	3637	6551	682	26206 (26319)	27342 (27229)	-	910	16263770	sucB	dihydrolipoamide succinyltransferase
-19	SM_b20020	5202	7623	1044	27345 (27552)	29423 (29216)	-	1664	16263771	pdh	pyruvate dehydrogenase E1 component, subunits alpha and beta
+12	SM_b20013	1843	282	2289	19079	20323	-	996	16263764	-	hypothetical protein
+13	SM_b20014	1316	258	1176	20377	21378	-	801	16263765	-	transcriptional regulator
+14	SM_b20015	1924	174	1770	21392	22348	-	766	16263766	-	sugar ABC transporter permease
+15	SM_b20016	4263	6649	4907	22345	23337	-	794	16263767	-	sugar ABC transporter permease
+16	SM_b20017	4580	5036	4044	23337	24842	-	1205	16263768	-	sugar ABC transporter ATP-binding protein
+17	SM_b20018	1485	1632	2146	25092	26114	-	818	16263769	-	sugar ABC transporter substrate-binding protein
+18	SM_b20019	2498	635	4363	26206	27342	-	910	16263770	sucB	dihydrolipoamide succinyltransferase
+19	SM_b20020	3636	976	5119	27345	29423	-	1664	16263771	pdh	pyruvate dehydrogenase E1 component, subunits alpha and beta
 ...
 ```
 
 2. Hop-by-hop (-HOPS). Breaks down gene-by-gene ouput, showing each individual hop site observed within that gene.
 ```
-Num	GeneID	Condition1	Condition2	Condition3	Start (Truncated)	Stop (Truncated)	Strand	Length	PID	Gene	Function
+Num	GeneID	Condition1	Condition2	Condition3	Start	Stop	Strand	Length	PID	Gene	Function
 ...
-12	SM_b20013	2660	3455	317	19079 (19203)	20323 (20199)	-	996	16263764	-	hypothetical protein
+12	SM_b20013	2660	3455	317	19079	20323	-	996	16263764	-	hypothetical protein
 	SM_b20013	39	5	0	19206		-
 	SM_b20013	94	249	0	19207		-
 	SM_b20013	110	141	0	19222		+
@@ -43,7 +43,7 @@ Num	GeneID	Condition1	Condition2	Condition3	Start (Truncated)	Stop (Truncated)	S
 	SM_b20013	0	0	16	20120		-
 	SM_b20013	193	84	8	20146		+
 	SM_b20013	135	52	0	20152		+
-13	SM_b20014	1878	1770	303	20377 (20477)	21378 (21278)	-	801	16263765	-	transcriptional regulator
+13	SM_b20014	1878	1770	303	20377	21378	-	801	16263765	-	transcriptional regulator
 	SM_b20014	61	0	0	20480		-
 	SM_b20014	51	5	6	20503		-
 	SM_b20014	0	143	0	20521		-
