@@ -374,11 +374,11 @@ class hops_pipeline(object):
 
 			logging.info("Writing output to = " + self.int_sam[out_file_num]+"\n")
 
-			try:
-				logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT))
-			except:
-				logging.error("Bowtie2 doesn't seem to be installed. Make sure it can be run with the command: bowtie2")
-				sys.exit('Exiting')
+		#	try:
+			logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT))
+	#		except:
+	#			logging.error("Bowtie2 doesn't seem to be installed. Make sure it can be run with the command: bowtie2")
+	#			sys.exit('Exiting')
 
 			self.print_time_output("Bowtie2",start_time)
 			logging.info("Zipping up trimmed file.\n")
@@ -567,7 +567,7 @@ class hops_pipeline(object):
 		
 		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf:
 			gene_header = ["Num","GeneID"]
-			hops_header = gene_header
+			hops_header = ["Num","GeneID"]
 			if self.normalize:
 				for i in self.int_prefix:
 					gene_header.append(i+"(NORMALIZED)")
@@ -575,7 +575,7 @@ class hops_pipeline(object):
 				gene_header.extend(self.int_prefix)
 
 			hops_header.extend(self.int_prefix)
-			gene_header.extend(["Start)","Stop","Strand","Length","PID","Gene","Function"])
+			gene_header.extend(["Start","Stop","Strand","Length","PID","Gene","Function"])
 			hops_header.extend(["Start","Stop","Strand","Length","PID","Gene","Function"])
 
 			hf.write("\t".join(hops_header)+"\n")
@@ -609,7 +609,9 @@ class hops_pipeline(object):
 					total_line.append(count)
 					total_line.append(sm_key)
 					total_line.extend(self.gene_totals[sm_key])
-					copy_total_line = total_line
+					copy_total_line = total_line[:]
+					print copy_total_line
+					raw_input('press enter')
 					if self.normalize:
 						for num, l in enumerate( self.gene_totals[sm_key] ):
 							total_line.append(l*self.normalization_coefficients[num])
