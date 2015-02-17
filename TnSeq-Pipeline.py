@@ -65,9 +65,10 @@ class hops_pipeline(object):
 ############ Read Config File and Run Pipeline ###############################
 	def read_config(self, config_path):
 		cp = ConfigParser.RawConfigParser()
-
-		cp.read(config_path)
-
+		try:
+			cp.read(config_path)
+		except:
+			sys.exit("Error reading config file.")
 		# input paths
 		self.input_files = glob.glob(cp.get('input', 'Reads'))
 		self.ref = cp.get('input', 'BowtieReference')
@@ -381,7 +382,7 @@ class hops_pipeline(object):
 			print ' '.join(bowtie_command)
 
 			try:
-			logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT))
+				logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT))
 			except:
 				logging.error("Bowtie2 doesn't seem to be installed. Make sure it can be run with the command: bowtie2")
 				sys.exit('Exiting')
@@ -561,10 +562,11 @@ class hops_pipeline(object):
 	
 	def get_normalized_coefficients(self):
 		minimum = min(self.total_counts)
-		print minimum
+
+		print "min = ",minimum
 		for i,totals in enumerate(self.total_counts):
 			self.normalization_coefficients.append(float(minimum)/float(totals))
-		print self.normalization_coefficients
+		print "normalization coef = ",self.normalization_coefficients
 
 	def post_process_gene_info(self):
 		
@@ -580,8 +582,6 @@ class hops_pipeline(object):
 			# Make normalized header
 			if self.normalize:
 				for num,item in enumerate(hops_header[2:2+self.num_conditions]):
-					print item
-					raw_input('press enter')
 					new = item + "(NORMALIZED)"
 					hops_header[num+2] = new
 
@@ -627,7 +627,7 @@ class hops_pipeline(object):
 
 					if self.normalize:
 						for num, l in enumerate(self.gene_totals[sm_key] ):
-							total_line[num+2] = l*self.normalization_coefficients[num]
+							total_line[num+2] = int( l*self.normalization_coefficients[num] )
 					gf.write('\t'.join(map(str,total_line))+"\n") #write gene only file
 
 					count += 1
