@@ -66,43 +66,43 @@ class hops_pipeline(object):
 	def read_config(self, config_path):
 		cp = ConfigParser.RawConfigParser()
 
- 		cp.read(config_path)
+		cp.read(config_path)
 
- 		# input paths
- 		self.input_files = glob.glob(cp.get('input', 'Reads'))
- 		self.ref = cp.get('input', 'BowtieReference')
- 		self.ptt = glob.glob(cp.get('input', 'Ptt'))
- 		self.out  = cp.get('input', 'Out')
+		# input paths
+		self.input_files = glob.glob(cp.get('input', 'Reads'))
+		self.ref = cp.get('input', 'BowtieReference')
+		self.ptt = glob.glob(cp.get('input', 'Ptt'))
+		self.out  = cp.get('input', 'Out')
 
- 		if len(self.input_files) == 0:
- 			sys.exit('Error with input Reads parameter.')
- 		elif self.ref == None:
- 			sys.exit('Error with BowtieReference parameter.')
- 		elif len(self.ptt) == 0:
- 			sys.exit('Error with Ptt parameter.')
- 		elif self.out == None:
- 			sys.exit("Error with Out parameter.")
+		if len(self.input_files) == 0:
+			sys.exit('Error with input Reads parameter.')
+		elif self.ref == None:
+			sys.exit('Error with BowtieReference parameter.')
+		elif len(self.ptt) == 0:
+			sys.exit('Error with Ptt parameter.')
+		elif self.out == None:
+			sys.exit("Error with Out parameter.")
 
 
- 		#Parameters
- 		self.transposon = cp.get('parameters', 'Transposon')
- 		if self.transposon == None:
- 			sys.exit('Error with Transposon parameter.')
+		#Parameters
+		self.transposon = cp.get('parameters', 'Transposon')
+		if self.transposon == None:
+			sys.exit('Error with Transposon parameter.')
 
- 		try:
-  			self.mismatches = int ( cp.get('parameters', 'Mismatches') )
-  		except:
-  			sys.exit('Error with Mismatches parameter (Not an integer).')
+		try:
+			self.mismatches = int ( cp.get('parameters', 'Mismatches') )
+		except:
+			sys.exit('Error with Mismatches parameter (Not an integer).')
 
-  		try:
- 			self.gene_trim = int ( cp.get('parameters', 'GeneTrim') )
- 		except:
-  			sys.exit('Error with GeneTrim parameter (Not an integer).')
+		try:
+			self.gene_trim = int ( cp.get('parameters', 'GeneTrim') )
+		except:
+			sys.exit('Error with GeneTrim parameter (Not an integer).')
 
-  		try:
- 			self.read_length = int ( cp.get('parameters', 'ReadLength') )
- 		except:
-  			sys.exit('Error with ReadLength parameter (Not an integer).')
+		try:
+			self.read_length = int ( cp.get('parameters', 'ReadLength') )
+		except:
+			sys.exit('Error with ReadLength parameter (Not an integer).')
 
 
 
@@ -364,25 +364,31 @@ class hops_pipeline(object):
 		for out_file_num in range(self.num_conditions):
 			start_time = time()
 			
-			bowtie_command = ["bowtie2", "-x", self.ref,"--phred33",
-                                "-f",self.int_trimmed[out_file_num].name, "-D" , "25" , "-R" ,"3", "-L" , "10" , "-i" , "S,1,0.50" ,
-                                "-S",self.int_sam[out_file_num], "--no-hd"]
+			#bowtie_command = ["bowtie2", "-x", self.ref,"--phred33",
+			#                    "-f",self.int_trimmed[out_file_num].name, "-D" , "25" , "-R" ,"3", "-L" , "10" , "-i" , "S,1,0.50" ,
+			#                    "-S",self.int_sam[out_file_num], "--no-hd"]
 
+			bowtie_command = ["bowtie2", "-x", self.ref,"--phred33",
+								"-f",self.int_trimmed[out_file_num].name,
+								"-S",self.int_sam[out_file_num],"--no-hd"]
+								
 
 			logging.info("Bowtie Command Used: " + ' '.join(bowtie_command)+"\n\n")
 
 
 			logging.info("Writing output to = " + self.int_sam[out_file_num]+"\n")
 
-		#	try:
+			print ' '.join(bowtie_command)
+
+			try:
 			logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT))
-	#		except:
-	#			logging.error("Bowtie2 doesn't seem to be installed. Make sure it can be run with the command: bowtie2")
-	#			sys.exit('Exiting')
+			except:
+				logging.error("Bowtie2 doesn't seem to be installed. Make sure it can be run with the command: bowtie2")
+				sys.exit('Exiting')
 
 			self.print_time_output("Bowtie2",start_time)
 			logging.info("Zipping up trimmed file.\n")
-                        subprocess.check_output(["gzip","-f", self.int_trimmed[out_file_num].name])
+			subprocess.check_output(["gzip","-f", self.int_trimmed[out_file_num].name])
 			logging.info("         ---------------\n")
 
 		logging.info("--------------------------------------\n\n")
@@ -566,20 +572,20 @@ class hops_pipeline(object):
 		start_time = time()
 		
 		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf:
-			gene_header = ["Num","GeneID"]
 			hops_header = ["Num","GeneID"]
-			if self.normalize:
-				for i in self.int_prefix:
-					gene_header.append(i+"(NORMALIZED)")
-			else:
-				gene_header.extend(self.int_prefix)
-
 			hops_header.extend(self.int_prefix)
-			gene_header.extend(["Start","Stop","Strand","Length","PID","Gene","Function"])
 			hops_header.extend(["Start","Stop","Strand","Length","PID","Gene","Function"])
-
 			hf.write("\t".join(hops_header)+"\n")
-			gf.write("\t".join(gene_header)+"\n")
+
+			# Make normalized header
+			if self.normalize:
+				for num,item in enumerate(hops_header[2:2+self.num_conditions]):
+					print item
+					raw_input('press enter')
+					new = item + "(NORMALIZED)"
+					hops_header[num+2] = new
+
+			gf.write("\t".join(hops_header)+"\n")
 			count = 1
 
 			for ref_name, gene in self.gene_info.iteritems():
@@ -591,17 +597,15 @@ class hops_pipeline(object):
 					for pos_neg, pos in strand.iteritems():
 						for position, hops in pos.iteritems():
 							hop_line = ["",sm_key]
-				#			print "position",position
-				#			print "hops",hops
 							for i,hop_count in enumerate(hops):
 								if hop_count == 1:
-									#hops[i] = 0
 									gene_count[i] += hops[i]
 								else:
 									gene_count[i] += hops[i]
 								hop_line.append(hops[i])
 							hop_line.extend([position,"",pos_neg])
 							collect_to_print.append(hop_line)
+
 					self.gene_totals[sm_key] = gene_count
 					total_line = []
 					ptt_entry = self.ptt_info[sm_key]
@@ -609,16 +613,6 @@ class hops_pipeline(object):
 					total_line.append(count)
 					total_line.append(sm_key)
 					total_line.extend(self.gene_totals[sm_key])
-					copy_total_line = total_line[:]
-					print copy_total_line
-					raw_input('press enter')
-					if self.normalize:
-						for num, l in enumerate( self.gene_totals[sm_key] ):
-							total_line.append(l*self.normalization_coefficients[num])
-					else:
-						total_line.extend(self.gene_totals[sm_key])
-					copy_total_line.extend(self.gene_totals[sm_key])
-
 					total_line.append(str(loc[0]))
 					total_line.append(str(loc[1]))
 					total_line.append(ptt_entry[1])
@@ -627,11 +621,15 @@ class hops_pipeline(object):
 					total_line.append(ptt_entry[4])
 					total_line.append(' '.join(ptt_entry[8:]))
 					collect_to_print = sorted(collect_to_print, key=lambda x: x[2+self.num_conditions])
-					copy_total_line.extend(total_line[2+self.num_conditions:])
-					collect_to_print.insert(0,copy_total_line)
-					gf.write('\t'.join(map(str,total_line))+"\n") #write gene only file
+					collect_to_print.insert(0,total_line)
 					for item in collect_to_print:
 						hf.write('\t'.join(map(str,item))+ "\n")
+
+					if self.normalize:
+						for num, l in enumerate(self.gene_totals[sm_key] ):
+							total_line[num+2] = l*self.normalization_coefficients[num]
+					gf.write('\t'.join(map(str,total_line))+"\n") #write gene only file
+
 					count += 1
 		self.print_time_output("Done calculating totals and writing to output,", start_time)
 
