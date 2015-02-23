@@ -461,6 +461,9 @@ class hops_pipeline(object):
 			self.gene_keys[name] = gene_tuple_list
 			self.gene_info[name] = collections.OrderedDict(sorted(gene_dict.items())) #key=lambda x: x[2]))
 
+	def update_progress(self,progress):
+			sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/10), progress))
+
 	def read_sam_file(self):
 		logging.info("Begin reading SAM files into memory...\n")
 		sam_file_contents = {}
@@ -472,17 +475,7 @@ class hops_pipeline(object):
 			treatment = self.int_prefix[i]
 			logging.info("Reading file = " + sam_file +".")
 			with open(sam_file) as f:
-				num_lines = sum(1 for line in f)
-				print num_lines,"lines."
-				f.seek(0)
-				ten_percent = num_lines/10
-				current_percent = 1
-				current_line = 0
 				for line in f:
-					current_line += 1
-					if current_line == ten_percent*current_percent:
-						print "Finished " + str(current_percent*10) +"%."
-						current_percent += 1
 					if line[0] == "@":
 						pass
 					else:
@@ -505,7 +498,7 @@ class hops_pipeline(object):
 								sam_file_contents[ref_name][(pos,strand)][i] += 1
 						else:
 							pass
-			self.print_time_output("Done reading SAM file into memory,",start_time)
+			self.print_time_output("\nDone reading SAM file into memory,",start_time)
 			logging.info("Zipping up SAM file.\n")
 			subprocess.check_output(["gzip", "-f", sam_file])
 		for ref, value in sam_file_contents.iteritems():
@@ -563,10 +556,10 @@ class hops_pipeline(object):
 	def get_normalized_coefficients(self):
 		minimum = min(self.total_counts)
 
-		print "min = ",minimum
+		self.debugger("min = ",minimum)
 		for i,totals in enumerate(self.total_counts):
 			self.normalization_coefficients.append(float(minimum)/float(totals))
-		print "normalization coef = ",self.normalization_coefficients
+		self.debugger("normalization coef = ",self.normalization_coefficients)
 
 	def post_process_gene_info(self):
 		
