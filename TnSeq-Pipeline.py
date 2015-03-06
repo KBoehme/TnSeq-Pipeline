@@ -11,6 +11,8 @@ import os
 import collections
 import glob
 import subprocess
+from pprint import pprint
+import re
 
 from time import time
 from datetime import datetime
@@ -56,11 +58,15 @@ class hops_pipeline(object):
 
 		self.reference_names = []
 		self.gene_keys = {}
+		self.gene_ordered_keys = {}
 		self.current_gene = {}
 		self.current_gene_tuple = None
 
 		self.total_counts = []
 		self.normalization_coefficients = []
+		
+
+		
 
 ############ Read Config File and Run Pipeline ###############################
 	def read_config(self, config_path):
@@ -141,7 +147,7 @@ class hops_pipeline(object):
 		self.set_up_logger(self.output_directory + "output_files/" + self.out + ".log")
 
 		with open(config_path,'r') as f:
-			logging.info("\n\n+============== Config File Settings ===============\n|\n|" + '| '.join(f.readlines()) + "|\n+-------------------------------------\n\n")
+			logging.info("\n\n=============== Config File Settings ===============\n\n" + ''.join(f.readlines()) + "\n--------------------------------------\n\n")
 
 		if not os.path.exists( self.output_directory + "intermediate_files"):
 			subprocess.check_output(["mkdir", self.output_directory + "intermediate_files"])
@@ -269,7 +275,8 @@ class hops_pipeline(object):
 
 			#except:
 			#	logging.error("Failed to process the reads.")
-	
+		for f in self.int_trimmed:
+			f.close()
 		logging.info("--------------------------------------\n\n")
 
 	def read_fastq(self, f, out_file_num):
@@ -379,10 +386,10 @@ class hops_pipeline(object):
 
 			logging.info("Writing output to = " + self.int_sam[out_file_num]+"\n")
 
-			print ' '.join(bowtie_command)
+
 
 			try:
-				logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT))
+				logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT,shell=True))
 			except:
 				logging.error("Bowtie2 doesn't seem to be installed. Make sure it can be run with the command: bowtie2")
 				sys.exit('Exiting')
@@ -423,7 +430,7 @@ class hops_pipeline(object):
 				
 
 				# Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
-				f.readline() # information title.
+				f.readline() # information/title.
 				f.readline() # number of proteins
 				f.readline() # header
 				for line in f:
@@ -460,6 +467,24 @@ class hops_pipeline(object):
 
 			self.gene_keys[name] = gene_tuple_list
 			self.gene_info[name] = collections.OrderedDict(sorted(gene_dict.items())) #key=lambda x: x[2]))
+		
+
+
+		print self.gene_keys.keys()
+		for k,v in self.gene_keys.iteritems():
+			self.debugger("On replicon = "+k)
+			self.debugger("Example gene from this replicon = " + str(v[0]))
+			gene_name = v[0][2]
+			prefix = "".join(re.findall("[a-zA-Z]+", gene_name))
+			self.debugger("Prefix = " + prefix)
+			num_genes = len(v)
+			self.debugger("Number of genes on replicon = " + str(num_genes))
+			zfill_digits = len(str(num_genes))
+			self.debugger("Digits to use in zfill = " + str(zfill_digits))
+
+			for i,gene in enumerate(sorted(v),start=1):
+				ordered_name = prefix + str(i).zfill(zfill_digits)
+				self.gene_ordered_keys[gene[2]] = ordered_name
 
 	def update_progress(self,progress):
 			sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/10), progress))
@@ -557,6 +582,9 @@ class hops_pipeline(object):
 		minimum = min(self.total_counts)
 
 		self.debugger("min = ",minimum)
+		if minimum <= 0:
+			logging.error("Normalization coudnt be completed. It appears a condition has no hop hits.")
+			sys.exit('Exiting')
 		for i,totals in enumerate(self.total_counts):
 			self.normalization_coefficients.append(float(minimum)/float(totals))
 		self.debugger("normalization coef = ",self.normalization_coefficients)
@@ -569,7 +597,7 @@ class hops_pipeline(object):
 		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf:
 			hops_header = ["Num","GeneID"]
 			hops_header.extend(self.int_prefix)
-			hops_header.extend(["Start","Stop","Strand","Length","PID","Gene","Function"])
+			hops_header.extend(["Start","Stop","Order","Strand","Length","PID","Gene","Function"])
 			hf.write("\t".join(hops_header)+"\n")
 
 			# Make normalized header
@@ -608,6 +636,7 @@ class hops_pipeline(object):
 					total_line.extend(self.gene_totals[sm_key])
 					total_line.append(str(loc[0]))
 					total_line.append(str(loc[1]))
+					total_line.append(self.gene_ordered_keys[sm_key])
 					total_line.append(ptt_entry[1])
 					total_line.append(gene_info[2] - gene_info[1])
 					total_line.append(ptt_entry[3])
@@ -626,6 +655,11 @@ class hops_pipeline(object):
 					count += 1
 		self.print_time_output("Done calculating totals and writing to output,", start_time)
 
+
+
+################################
+############# Main #############
+################################
 
 def main():
 
