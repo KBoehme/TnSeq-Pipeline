@@ -389,7 +389,7 @@ class hops_pipeline(object):
 
 
 			try:
-				logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT,shell=True))
+				logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT))#,shell=True))
 			except:
 				logging.error("Bowtie2 doesn't seem to be installed. Make sure it can be run with the command: bowtie2")
 				sys.exit('Exiting')
