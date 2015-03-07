@@ -81,6 +81,7 @@ class hops_pipeline(object):
 		self.ptt = glob.glob(cp.get('input', 'Ptt'))
 		self.out  = cp.get('input', 'Out')
 
+		re.match
 		if len(self.input_files) == 0:
 			sys.exit('Error with input Reads parameter.')
 		elif self.ref == None:
@@ -92,17 +93,30 @@ class hops_pipeline(object):
 
 
 		#Parameters
-		self.transposon = cp.get('parameters', 'Transposon')
-		if self.transposon == None:
-			sys.exit('Error with Transposon parameter.')
-
+		try:
+			self.transposon = cp.get('parameters', 'Transposon')
+			if self.transposon == None
+				sys.exit('Error with Transposon parameter.')
+			elif not (re.match('^[ACGTacgt]+$',self.transposon)):
+				sys.exit('Error with Transposon parameter.')
 		try:
 			self.mismatches = int ( cp.get('parameters', 'Mismatches') )
+			if self.mismatches < 0:
+				logging.info("Mismatches parameter is negative. Setting it to 0 and continuing.")
+				self.mismatches = 0
+			if self.mismatches >= len(self.transposon):
+				logging.info("Mismatches parameter is same length or greater than transposon sequence. Be aware that all reads will be mapped because of this.")
 		except:
 			sys.exit('Error with Mismatches parameter (Not an integer).')
 
 		try:
 			self.gene_trim = int ( cp.get('parameters', 'GeneTrim') )
+			if self.gene_trim < 0 :
+				logging.info("GeneTrim parameter is negative. Setting it to 0 and continuing.")
+				self.gene_trim = 0
+			elif self.gene_trim > 99
+				sys.exit('Error with GeneTrim parameter (Must be 99 or smaller).')
+
 		except:
 			sys.exit('Error with GeneTrim parameter (Not an integer).')
 
@@ -385,8 +399,6 @@ class hops_pipeline(object):
 
 
 			logging.info("Writing output to = " + self.int_sam[out_file_num]+"\n")
-
-
 
 			try:
 				logging.info(subprocess.check_output(bowtie_command,stderr=subprocess.STDOUT))#,shell=True))
