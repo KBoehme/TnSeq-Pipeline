@@ -91,37 +91,39 @@ class hops_pipeline(object):
 		elif self.out == None:
 			sys.exit("Error with Out parameter.")
 
-
 		#Parameters
 		try:
 			self.transposon = cp.get('parameters', 'Transposon')
-			if self.transposon == None:
-				sys.exit('Error with Transposon parameter.')
-			elif not (re.match('^[ACGTacgt]+$',self.transposon)):
-				sys.exit('Error with Transposon parameter.')
 		except:
 			sys.exit('Error with Transposon parameter.')
-		
+
+
+		if self.transposon == None:
+			sys.exit('Error with Transposon parameter.')
+		elif not (re.match('^[ACGTacgt]+$',self.transposon)):
+			sys.exit('Error with Transposon parameter (Make sure it only contains [ATCG]).')
+	
 		try:
 			self.mismatches = int ( cp.get('parameters', 'Mismatches') )
-			if self.mismatches < 0:
-				logging.info("Mismatches parameter is negative. Setting it to 0 and continuing.")
-				self.mismatches = 0
-			elif self.mismatches >= len(self.transposon):
-				logging.info("Mismatches parameter is same length or greater than transposon sequence. Be aware that all reads will be mapped because of this.")
 		except:
 			sys.exit('Error with Mismatches parameter (Not an integer).')
 
+		if self.mismatches < 0:
+			sys.exit('Mismatches parameter is negative.')
+		elif self.mismatches >= len(self.transposon):
+			logging.info("Mismatches parameter is same length or greater than transposon sequence. Be aware that all reads will be mapped because of this.")
+
 		try:
 			self.gene_trim = int ( cp.get('parameters', 'GeneTrim') )
-			if self.gene_trim < 0 :
-				logging.info("GeneTrim parameter is negative. Setting it to 0 and continuing.")
-				self.gene_trim = 0
-			elif self.gene_trim > 99:
-				sys.exit('Error with GeneTrim parameter (Must be 99 or smaller).')
-
 		except:
 			sys.exit('Error with GeneTrim parameter (Not an integer).')
+
+
+		if self.gene_trim < 0:
+			sys.exit('GeneTrim parameter is negative.')
+		elif self.gene_trim > 99:
+			sys.exit('Error with GeneTrim parameter (Must be 99 or smaller).')
+
 
 		try:
 			self.read_length = int ( cp.get('parameters', 'ReadLength') )
@@ -130,6 +132,8 @@ class hops_pipeline(object):
 
 
 
+		if self.read_length < 0:
+			sys.exit('ReadLength parameter is negative.')
 
 		#Options
 		try:
@@ -439,7 +443,6 @@ class hops_pipeline(object):
 			name = os.path.basename(file_name).split('.')[0]
 			self.reference_names.append(name)
 			with open(file_name, 'r') as f:
-				
 				gene_dict = {}
 				gene_tuple_list = []
 				
@@ -452,6 +455,7 @@ class hops_pipeline(object):
 
 					ptt_entry = line.split()
 					location = ptt_entry[0].split('..')
+
 
 					# Lets remove around the gene.
 					beg = int ( location[0])
@@ -484,8 +488,6 @@ class hops_pipeline(object):
 			self.gene_info[name] = collections.OrderedDict(sorted(gene_dict.items())) #key=lambda x: x[2]))
 		
 
-
-		print self.gene_keys.keys()
 		for k,v in self.gene_keys.iteritems():
 			self.debugger("On replicon = "+k)
 			self.debugger("Example gene from this replicon = " + str(v[0]))
@@ -505,7 +507,7 @@ class hops_pipeline(object):
 			sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/10), progress))
 
 	def read_sam_file(self):
-		logging.info("Begin reading SAM files into memory...\n")
+		#logging.info("Begin reading SAM files into memory...\n")
 		sam_file_contents = {}
 		for i in self.reference_names:
 			sam_file_contents[i] = {}
@@ -538,8 +540,8 @@ class hops_pipeline(object):
 								sam_file_contents[ref_name][(pos,strand)][i] += 1
 						else:
 							pass
-			self.print_time_output("\nDone reading SAM file into memory,",start_time)
-			logging.info("Zipping up SAM file.\n")
+			#self.print_time_output("\nDone reading SAM file into memory,",start_time)
+			#logging.info("Zipping up SAM file.\n")
 			subprocess.check_output(["gzip", "-f", sam_file])
 		for ref, value in sam_file_contents.iteritems():
 			temp_dict = {}
@@ -556,12 +558,12 @@ class hops_pipeline(object):
 		return pos_info,position
 
 	def tabulate_gene_hits(self, sam_file_contents):
-		logging.info("         ---------------\n")
-		logging.info("Begin tabulating gene hits...\n")
+		#logging.info("         ---------------\n")
+		#logging.info("Begin tabulating gene hits...\n")
 		start_time = time()
 		for ref, pos in sam_file_contents.iteritems():
 			it = 0
-			logging.info("Working on reference = " + ref)
+			#logging.info("Working on reference = " + ref)
 			for gene_tuple in self.gene_keys[ref]:
 				beg = gene_tuple[0]
 				end = gene_tuple[1]
@@ -591,14 +593,14 @@ class hops_pipeline(object):
 						it = 0
 
 		self.get_normalized_coefficients()
-		self.print_time_output("Done tabulating gene hits,",start_time)	
+		#self.print_time_output("Done tabulating gene hits,",start_time)	
 	
 	def get_normalized_coefficients(self):
 		minimum = min(self.total_counts)
 
 		self.debugger("min = ",minimum)
 		if minimum <= 0:
-			logging.error("Normalization coudnt be completed. It appears a condition has no hop hits.")
+			logging.error("Normalization couldn't be completed. It appears a condition has no hop hits.")
 			sys.exit('Exiting')
 		for i,totals in enumerate(self.total_counts):
 			self.normalization_coefficients.append(float(minimum)/float(totals))
@@ -606,7 +608,7 @@ class hops_pipeline(object):
 
 	def post_process_gene_info(self):
 		
-		logging.info("Begin calculating gene totals and writing to output...")
+		#logging.info("Begin calculating gene totals and writing to output...")
 		start_time = time()
 		
 		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf:
@@ -668,7 +670,7 @@ class hops_pipeline(object):
 					gf.write('\t'.join(map(str,total_line))+"\n") #write gene only file
 
 					count += 1
-		self.print_time_output("Done calculating totals and writing to output,", start_time)
+		#self.print_time_output("Done calculating totals and writing to output,", start_time)
 
 
 
