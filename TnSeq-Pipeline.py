@@ -3,6 +3,8 @@
 #This program is part of a TnSeq analysis pipeline, designed to take raw fastq reads, and produce tabulated data on hop count occurance.
 
 import sys
+sys.dont_write_bytecode = True
+
 import ConfigParser
 
 import logging
@@ -11,8 +13,9 @@ import os
 import collections
 import glob
 import subprocess
-from pprint import pprint
 import re
+from objects import *
+from pprint import pprint
 
 from time import time
 from datetime import datetime
@@ -52,17 +55,7 @@ class hops_pipeline(object):
 		self.starttime = time()
 
 		# Variables for tabulating hop hits.
-		self.ptt_info = {}
-		self.gene_info = {}
-		self.gene_totals = {}
-
-		self.reference_names = []
-		self.gene_keys = {}
-		self.gene_ordered_keys = {}
-		self.current_gene = {}
-		self.current_gene_tuple = None
-
-		self.total_counts = []
+		self.gene_info = []
 		self.normalization_coefficients = []
 		
 
@@ -149,7 +142,6 @@ class hops_pipeline(object):
 
 		# Generate other variables
 		self.num_conditions = len(self.input_files)
-		self.total_counts = [0] * self.num_conditions
 		self.output_directory = os.path.dirname(config_path)
 		if self.output_directory == "":
 			self.output_directory = "./"
@@ -431,7 +423,7 @@ class hops_pipeline(object):
 		logging.info("         ---------------\n")
 		self.read_sam_file()
 		logging.info("         ---------------\n")		
-		self.post_process_gene_info()
+		self.write_output()
 		logging.info("         ---------------\n")
 
 		self.print_time_output("Done processing SAM files,", start_time)
@@ -439,79 +431,83 @@ class hops_pipeline(object):
 
 	def prepare_gene_info(self):
 		start_time = time()
-		for file_name in self.ptt:
+		for i,file_name in enumerate(self.ptt):
 			name = os.path.basename(file_name).split('.')[0]
-			self.reference_names.append(name)
 			with open(file_name, 'r') as f:
-				gene_dict = {}
-				gene_tuple_list = []
-				
-
+				new_chrom = Chromsome(name)
 				# Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
-				f.readline() # information/title.
-				f.readline() # number of proteins
+				title = f.readline() # Title
+				num_prot = f.readline() # number of proteins
 				f.readline() # header
+
+
+				new_chrom.fill_info(title, num_prot)
+				self.gene_info.append(new_chrom)
+				our_genes = []
 				for line in f:
-
 					ptt_entry = line.split()
-					location = ptt_entry[0].split('..')
 
+					new_gene = Gene()
+					new_gene.create_from_ptt_entry(ptt_entry,self.gene_trim, self.num_conditions)
 
-					# Lets remove around the gene.
-					beg = int ( location[0])
-					end = int ( location[1])
-					length = end - beg
-					if self.gene_trim != 0:
-						user_percentage = int ( length/self.gene_trim )
-						if user_percentage > 0:
-							beg += user_percentage
-							end -= user_percentage
-					
-					sm = ptt_entry[5]
-					#ptt_entry[0] = str(location[0]) + "(" + str(beg) + ")" +".."+str(location[1])+"("+str(end)+")"
-					#ptt_entry[2] = str(ptt_entry[2]) + "(" + str(end-beg) + ")"
-					self.ptt_info[sm] = ptt_entry # get a dictionary relating pid of the gene to its info.
-					self.gene_totals[sm] = [0] * len(self.input_files)
+					our_genes.append(new_gene)
+				self.gene_info[i].set_gene_list(sorted(our_genes))
 
-					tup_key = (sm, beg , end )
-					gene_key_item = (beg, end , sm )
+		#This function finishes up the ptt info by adding another column "Order" as well as generating intergenic regions.
+		self.add_intergenic_regions_and_order_column()
 
-					gene_tuple_list.append(gene_key_item)
-
-					gene_dict[tup_key] = {}
-					gene_dict[tup_key]['+'] = {}
-					gene_dict[tup_key]['-'] = {}
-
-			gene_key_dict = {}
-
-			self.gene_keys[name] = gene_tuple_list
-			self.gene_info[name] = collections.OrderedDict(sorted(gene_dict.items())) #key=lambda x: x[2]))
-		
-
-		for k,v in self.gene_keys.iteritems():
-			self.debugger("On replicon = "+k)
-			self.debugger("Example gene from this replicon = " + str(v[0]))
-			gene_name = v[0][2]
+	def add_intergenic_regions_and_order_column(self):
+		#Lets add in the order column and intergenic regions.
+		for j,chrom in enumerate(self.gene_info):
+			self.debugger("On replicon = " + str(chrom))
+			example_gene = chrom.gene_list[0]
+			self.debugger("Example gene from this replicon = " + str(example_gene))
+			gene_name = example_gene.synonym
 			prefix = "".join(re.findall("[a-zA-Z]+", gene_name))
 			self.debugger("Prefix = " + prefix)
-			num_genes = len(v)
+			num_genes = len(chrom.gene_list)
 			self.debugger("Number of genes on replicon = " + str(num_genes))
 			zfill_digits = len(str(num_genes))
 			self.debugger("Digits to use in zfill = " + str(zfill_digits))
 
-			for i,gene in enumerate(sorted(v),start=1):
+
+			intergenic_genes = []
+			for i,cur_gene in enumerate(chrom.gene_list,start=1):
 				ordered_name = prefix + str(i).zfill(zfill_digits)
-				self.gene_ordered_keys[gene[2]] = ordered_name
+				cur_gene.order_code = ordered_name
+
+				# Now lets add intergenic regions.
+				new_gene = Gene()
+				if i == 1: # On the first gene.
+					if cur_gene.start > 1: # We have some room to capture.
+						new_gene.create_intergenic_region(1, cur_gene.start - 1, "int_BEG-"+cur_gene.synonym, self.num_conditions)
+						intergenic_genes.append(new_gene)
+					if cur_gene.end + 1 < chrom.gene_list[i].start: # We have some room to capture.
+						new_gene.create_intergenic_region(cur_gene.end + 1, 
+							chrom.gene_list[i].start - 1, 
+							"int_" + cur_gene.synonym + "-" + chrom.gene_list[i].synonym, self.num_conditions)
+						intergenic_genes.append(new_gene)
+				elif i == chrom.num_proteins: # On the last gene.
+					if cur_gene.end < chrom.end: # We have some room to capture.
+						new_gene.create_intergenic_region(cur_gene.end + 1, chrom.end, "int_"+cur_gene.synonym+"-END", self.num_conditions)
+						intergenic_genes.append(new_gene)
+				else: # Make sure the end of the current gene and the beginning of the next gene have a space.
+					if cur_gene.end + 1 < chrom.gene_list[i].start: # We have some room to capture.
+						new_gene.create_intergenic_region(cur_gene.end + 1, 
+							chrom.gene_list[i].start - 1, 
+							"int_" + cur_gene.synonym + "-" + chrom.gene_list[i].synonym, self.num_conditions )
+						intergenic_genes.append(new_gene)
+			#Now lets mash those intergenic regions with the current genes.
+			self.gene_info[j].gene_list = sorted(self.gene_info[j].gene_list + intergenic_genes)
 
 	def update_progress(self,progress):
 			sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/10), progress))
 
 	def read_sam_file(self):
-		#logging.info("Begin reading SAM files into memory...\n")
 		sam_file_contents = {}
-		for i in self.reference_names:
-			sam_file_contents[i] = {}
-			
+		for i in self.gene_info:
+			sam_file_contents[str(i)] = []
+
 		for i,sam_file in enumerate(self.int_sam):
 			start_time = time()
 			treatment = self.int_prefix[i]
@@ -532,145 +528,119 @@ class hops_pipeline(object):
 							strand = '+'
 							if code == "16":
 								strand = '-'
-							shortcut = sam_file_contents[ref_name]
-							if (pos,strand) in shortcut:
-								sam_file_contents[ref_name][(pos,strand)][i] += 1
-							else:
-								sam_file_contents[ref_name][(pos,strand)] = [0] * self.num_conditions
-								sam_file_contents[ref_name][(pos,strand)][i] += 1
-						else:
-							pass
-			#self.print_time_output("\nDone reading SAM file into memory,",start_time)
-			#logging.info("Zipping up SAM file.\n")
+
+							#Lets see if this position already exists.
+							try:
+								index = sam_file_contents[ref_name].index(pos)
+								sam_file_contents[ref_name][index].increment_hop_count(strand,i)
+								print "It already exists"
+							except:
+								new_hop = HopSite(pos, strand, self.num_conditions)
+								new_hop.increment_hop_count(i)
+								sam_file_contents[ref_name].append(new_hop)
+								#print "Creating new hop,",new_hop
 			subprocess.check_output(["gzip", "-f", sam_file])
-		for ref, value in sam_file_contents.iteritems():
-			temp_dict = {}
-			for i,item in enumerate(sorted(value.iteritems())):
-				temp_dict[i] = item
-			sam_file_contents[ref] = temp_dict	
+		for ref in sam_file_contents:
+			sam_file_contents[ref] = sorted(sam_file_contents[ref])
 		self.tabulate_gene_hits(sam_file_contents)
 
-	def update_pos_info(self, it, sam_file_contents):
-		if it > len(sam_file_contents)-1:
-			return None, None
-		pos_info = sam_file_contents[it]
-		position = pos_info[0][0]
-		return pos_info,position
+	def get_hops_in_gene(self, it, sam_contents_from_ref, gene):
+		#print gene
+		beg = gene.start_trunc
+		end = gene.end_trunc
+		gather_hops = []
+		while sam_contents_from_ref[it].position < beg:
+			it += 1
+			if it >= len(sam_contents_from_ref):
+				return -1
+		while beg <= sam_contents_from_ref[it].position <= end:
+			gather_hops.append(sam_contents_from_ref[it])
+			it += 1
+			if it >= len(sam_contents_from_ref):
+				return -1
+
+		#print "cur it = ",it
+		#if it != -1:
+		#	print "cur pos = ",sam_contents_from_ref[it].position
+		gene.hop_list = gather_hops
+		#if len(gene.hop_list) != 0:
+		#	print "Not empty:",gene.hop_list
+		#else:
+		#	print "No hops in this gene."
+
+		it = it - 50
+		if it < 0:
+			it = 0
+		return it
 
 	def tabulate_gene_hits(self, sam_file_contents):
-		#logging.info("         ---------------\n")
-		#logging.info("Begin tabulating gene hits...\n")
+		logging.info("         ---------------\n")
+		logging.info("Begin tabulating gene hits...\n")
 		start_time = time()
-		for ref, pos in sam_file_contents.iteritems():
+		for chrom in self.gene_info:
+			ref = str(chrom)
 			it = 0
-			#logging.info("Working on reference = " + ref)
-			for gene_tuple in self.gene_keys[ref]:
-				beg = gene_tuple[0]
-				end = gene_tuple[1]
-				sm = gene_tuple[2]
-				gene_tuple_key = (sm,beg,end)
-				pos_info, position = self.update_pos_info(it, sam_file_contents[ref])
-				while position < beg:
-					it += 1
-					pos_info , position = self.update_pos_info(it, sam_file_contents[ref])
-					if pos_info == None:
-						break
-				if pos_info == None:
+			logging.info("Working on reference = " + ref)
+			for gene in chrom.gene_list:
+				# We are on the first gene of the first reference.
+				# Lets get all the hops within the boundaries of this gene.
+				it = self.get_hops_in_gene(it, sam_file_contents[ref], gene)
+				if it == -1: # We are done with these hops.
 					break
-				while beg<=position<=end:
-					for i,item in enumerate(pos_info[1]):
-						self.total_counts[i] += item
-					it += 1
-					self.gene_info[ref][gene_tuple_key][pos_info[0][1]][position] = pos_info[1]
-					pos_info, position = self.update_pos_info(it,sam_file_contents[ref])
-					if pos_info == None: #We ran out of hop hits, so we are done.
-						break
-				if pos_info == None:
-					break
-				else:
-					it -= 50
-					if it < 0:
-						it = 0
 
 		self.get_normalized_coefficients()
-		#self.print_time_output("Done tabulating gene hits,",start_time)	
+		self.print_time_output("Done tabulating gene hits,",start_time)	
 	
 	def get_normalized_coefficients(self):
-		minimum = min(self.total_counts)
+		logging.info("\nBegin Normalization Steps.\n")
+		# Lets collect the total hits in intergenic regions to see what is going on.
+		intergenic_totals = [0] * self.num_conditions		
+		for chrom in self.gene_info:
+			for gene in chrom.gene_list:
+				if gene.is_intergenic:
+					intergenic_totals = [x + y for x, y in zip(intergenic_totals, gene.hop_totals())]
+
+
+		logging.info("Total intergenic hops observed is: " + str(sum(intergenic_totals)))
+		for i,total in enumerate(intergenic_totals):
+			logging.info(self.int_prefix[i] + " has " + str(total) + " intergenic hops observed.")
+
+		minimum = min(intergenic_totals)
 
 		self.debugger("min = ",minimum)
 		if minimum <= 0:
 			logging.error("Normalization couldn't be completed. It appears a condition has no hop hits.")
 			sys.exit('Exiting')
-		for i,totals in enumerate(self.total_counts):
+		for i,totals in enumerate(intergenic_totals):
 			self.normalization_coefficients.append(float(minimum)/float(totals))
-		self.debugger("normalization coef = ",self.normalization_coefficients)
+		logging.info('Normalization coefficients used:')
+		for i,condition in enumerate(self.int_prefix):
+			logging.info(condition + " multiplied by " + str(self.normalization_coefficients[i]))
 
-	def post_process_gene_info(self):
-		
-		#logging.info("Begin calculating gene totals and writing to output...")
+	def write_output(self):
+		logging.info("Begin calculating gene totals and writing to output...")
 		start_time = time()
 		
-		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf:
+		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf, open(os.path.splitext(self.tabulated_filename)[0]+"-intergenic.txt", 'w') as intf:
 			hops_header = ["Num","GeneID"]
 			hops_header.extend(self.int_prefix)
+			hops_header.extend([s + "(Normalized)" for s in self.int_prefix])
 			hops_header.extend(["Start","Stop","Order","Strand","Length","PID","Gene","Function"])
 			hf.write("\t".join(hops_header)+"\n")
-
-			# Make normalized header
-			if self.normalize:
-				for num,item in enumerate(hops_header[2:2+self.num_conditions]):
-					new = item + "(NORMALIZED)"
-					hops_header[num+2] = new
-
 			gf.write("\t".join(hops_header)+"\n")
+			intf.write("\t".join(hops_header)+"\n")
 			count = 1
 
-			for ref_name, gene in self.gene_info.iteritems():
-				for i, (gene_info, strand) in enumerate(gene.iteritems()):
-					collect_to_print = []
-					
-					sm_key = gene_info[0] #sm
-					gene_count = [0] * self.num_conditions
-					for pos_neg, pos in strand.iteritems():
-						for position, hops in pos.iteritems():
-							hop_line = ["",sm_key]
-							for i,hop_count in enumerate(hops):
-								if hop_count == 1:
-									gene_count[i] += hops[i]
-								else:
-									gene_count[i] += hops[i]
-								hop_line.append(hops[i])
-							hop_line.extend([position,"",pos_neg])
-							collect_to_print.append(hop_line)
+			for chrom in self.gene_info:
+				for gene in chrom.gene_list:
+					if not gene.is_intergenic:
+						hf.write(gene.write_hops(count,self.normalization_coefficients)+"\n")
+						gf.write(gene.write_gene()+"\n")
+						count += 1
+					else: # We can write the intergenic stuff to a file as well for fun.
+						intf.write(gene.write_hops(count,self.normalization_coefficients)+"\n")
 
-					self.gene_totals[sm_key] = gene_count
-					total_line = []
-					ptt_entry = self.ptt_info[sm_key]
-					loc = ptt_entry[0].split('..')
-					total_line.append(count)
-					total_line.append(sm_key)
-					total_line.extend(self.gene_totals[sm_key])
-					total_line.append(str(loc[0]))
-					total_line.append(str(loc[1]))
-					total_line.append(self.gene_ordered_keys[sm_key])
-					total_line.append(ptt_entry[1])
-					total_line.append(gene_info[2] - gene_info[1])
-					total_line.append(ptt_entry[3])
-					total_line.append(ptt_entry[4])
-					total_line.append(' '.join(ptt_entry[8:]))
-					collect_to_print = sorted(collect_to_print, key=lambda x: x[2+self.num_conditions])
-					collect_to_print.insert(0,total_line)
-					for item in collect_to_print:
-						hf.write('\t'.join(map(str,item))+ "\n")
-
-					if self.normalize:
-						for num, l in enumerate(self.gene_totals[sm_key] ):
-							total_line[num+2] = int( l*self.normalization_coefficients[num] )
-					gf.write('\t'.join(map(str,total_line))+"\n") #write gene only file
-
-					count += 1
-		#self.print_time_output("Done calculating totals and writing to output,", start_time)
+		self.print_time_output("Done calculating totals and writing to output,", start_time)
 
 
 
