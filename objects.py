@@ -140,20 +140,17 @@ class Gene(object):
 		normalized_gene_totals = [0] * self.num_conditions
 		for hop in self.hop_list:
 			new_line.append(self.synonym)
-			if hop.hops: 
-				new_line.extend(hop.hops) # raw hops
-				normalized_hops = [int(round(a*b)) for a,b in zip(hop.hops,norm_coef)]
-				new_line.extend(normalized_hops) #normalized hops
-				new_line.append(hop.position)
-				new_line.append("")
-				new_line.append("")
-				new_line.append(hop.strand)
-				raw_gene_totals = [x + y for x, y in zip(raw_gene_totals, hop.hops)]
-				normalized_gene_totals = [x + y for x, y in zip(normalized_gene_totals, normalized_hops)]
-			else:
-				logging.error("Seems a hop was created but has no hops inside it.")
-				pass
+			new_line.extend(hop.hops) # raw hops
+			normalized_hops = [int(round(a*b)) for a,b in zip(hop.hops,norm_coef)]
+			new_line.extend(normalized_hops) #normalized hops
+			new_line.append(hop.position)
+			new_line.append("")
+			new_line.append("")
+			new_line.append(hop.strand)
+			raw_gene_totals = [x + y for x, y in zip(raw_gene_totals, hop.hops)]
+			normalized_gene_totals = [x + y for x, y in zip(normalized_gene_totals, normalized_hops)]
 			hop_entry.append(new_line)
+
 		self.gene_total_line.append(i)
 		self.gene_total_line.append(self.synonym)
 		self.gene_total_line.extend(raw_gene_totals)
@@ -185,7 +182,7 @@ class HopSite(object):
 		self.hops = [0] * num_conditions
 
 	def __str__(self):
-		return '{}: {} {}\n'.format(
+		return '{}: {} {} {}\n'.format(
 			self.__class__.__name__,
 			self.position,
 			self.strand,
@@ -193,7 +190,7 @@ class HopSite(object):
 			)
 
 	def __repr__(self):
-		return '{}: {} {}\n'.format(
+		return '{}: {} {} {}\n'.format(
 			self.__class__.__name__,
 			self.position,
 			self.strand,
@@ -204,8 +201,24 @@ class HopSite(object):
 		if hasattr(other, 'position'):
 			return self.position.__cmp__(other.position)
 
+   # def __eq__(self, other):
+   #     return (isinstance(other, self.__class__)
+   #         and self.position == other.position)
+
 	def __eq__(self, other):
-		return self.position == position
+		return self.position == other
 
 	def increment_hop_count(self, condition):
 		self.hops[condition] += 1
+
+	def write_hop_line(self, sym, norm_coef):
+		hop_line = []
+		hop_line.append(sym)
+		hop_line.extend(hop.hops) # raw hops
+		normalized_hops = [int(round(a*b)) for a,b in zip(self.hops,norm_coef)]
+		hop_line.extend(normalized_hops) #normalized hops
+		hop_line.append(hop.position)
+		hop_line.append("")
+		hop_line.append("")
+		hop_line.append(hop.strand)
+		return '\t'.join(hop_line)

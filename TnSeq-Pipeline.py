@@ -528,13 +528,13 @@ class hops_pipeline(object):
 							strand = '+'
 							if code == "16":
 								strand = '-'
-
-							#Lets see if this position already exists.
-							try:
-								index = sam_file_contents[ref_name].index(pos)
-								sam_file_contents[ref_name][index].increment_hop_count(strand,i)
-								print "It already exists"
-							except:
+							hop_exists = False
+							for hop in sam_file_contents[ref_name]:
+								if hop.position == pos:
+									hop_exists = True
+									hop.increment_hop_count(i)
+									break
+							if not hop_exists:
 								new_hop = HopSite(pos, strand, self.num_conditions)
 								new_hop.increment_hop_count(i)
 								sam_file_contents[ref_name].append(new_hop)
@@ -559,9 +559,6 @@ class hops_pipeline(object):
 			if it >= len(sam_contents_from_ref):
 				return -1
 
-		#print "cur it = ",it
-		#if it != -1:
-		#	print "cur pos = ",sam_contents_from_ref[it].position
 		gene.hop_list = gather_hops
 		#if len(gene.hop_list) != 0:
 		#	print "Not empty:",gene.hop_list
@@ -584,10 +581,16 @@ class hops_pipeline(object):
 			for gene in chrom.gene_list:
 				# We are on the first gene of the first reference.
 				# Lets get all the hops within the boundaries of this gene.
-				it = self.get_hops_in_gene(it, sam_file_contents[ref], gene)
+
+				if sam_file_contents[ref]:
+					it = self.get_hops_in_gene(it, sam_file_contents[ref], gene)
+				else:
+					logging.info("It seems " + ref + " has no hops in it.")
+					break
 				if it == -1: # We are done with these hops.
 					break
 
+		#print self.gene_info
 		self.get_normalized_coefficients()
 		self.print_time_output("Done tabulating gene hits,",start_time)	
 	
@@ -610,7 +613,9 @@ class hops_pipeline(object):
 		self.debugger("min = ",minimum)
 		if minimum <= 0:
 			logging.error("Normalization couldn't be completed. It appears a condition has no hop hits.")
-			sys.exit('Exiting')
+			self.normalization_coefficients = [1] * self.num_conditions
+			return
+			#sys.exit('Exiting')
 		for i,totals in enumerate(intergenic_totals):
 			self.normalization_coefficients.append(float(minimum)/float(totals))
 		logging.info('Normalization coefficients used:')
