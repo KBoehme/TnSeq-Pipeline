@@ -10,12 +10,12 @@ import ConfigParser
 import logging
 import gzip
 import os
-import collections
 import glob
 import subprocess
 import re
 from objects import *
 from pprint import pprint
+from collections import OrderedDict
 
 from time import time
 from datetime import datetime
@@ -501,19 +501,24 @@ class hops_pipeline(object):
 			self.gene_info[j].gene_list = sorted(self.gene_info[j].gene_list + intergenic_genes)
 
 	def update_progress(self,progress):
-			sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/10), progress))
+		progress = int(round(progress * 100.0))
+		sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/5), progress))
+		sys.stdout.flush()
 
 	def read_sam_file(self):
 		sam_file_contents = {}
 		for i in self.gene_info:
-			sam_file_contents[str(i)] = []
+			sam_file_contents[str(i)] = {} # a dict of position keys to a single hop. This should speed us up considerable.
 
 		for i,sam_file in enumerate(self.int_sam):
 			start_time = time()
 			treatment = self.int_prefix[i]
 			logging.info("Reading file = " + sam_file +".")
 			with open(sam_file) as f:
-				for line in f:
+				num_lines = float(sum(1 for line in f))
+				f.seek(0)
+				for j,line in enumerate(f):
+					self.update_progress(float(j)/num_lines)
 					if line[0] == "@":
 						pass
 					else:
@@ -529,32 +534,33 @@ class hops_pipeline(object):
 							if code == "16":
 								strand = '-'
 							hop_exists = False
-							for hop in sam_file_contents[ref_name]:
-								if hop.position == pos:
-									hop_exists = True
-									hop.increment_hop_count(i)
-									break
-							if not hop_exists:
+							if pos in sam_file_contents[ref_name]:
+								sam_file_contents[ref_name][pos].increment_hop_count(i)
+							else:
 								new_hop = HopSite(pos, strand, self.num_conditions)
 								new_hop.increment_hop_count(i)
-								sam_file_contents[ref_name].append(new_hop)
-								#print "Creating new hop,",new_hop
+								sam_file_contents[ref_name][pos] = new_hop
+				logging.info("")
+				self.print_time_output("Reading file", start_time)
 			subprocess.check_output(["gzip", "-f", sam_file])
 		for ref in sam_file_contents:
-			sam_file_contents[ref] = sorted(sam_file_contents[ref])
+			sam_file_contents[ref] = OrderedDict(sorted(sam_file_contents[ref].items(), key=lambda t: t[0]))
+		#print sam_file_contents
+		#raw_input('press enter')
 		self.tabulate_gene_hits(sam_file_contents)
 
 	def get_hops_in_gene(self, it, sam_contents_from_ref, gene):
 		#print gene
+		# sam_contents_from_ref = Orderedict with key- position and value - HopSite
 		beg = gene.start_trunc
 		end = gene.end_trunc
 		gather_hops = []
-		while sam_contents_from_ref[it].position < beg:
+		while sam_contents_from_ref.values()[it].position < beg:
 			it += 1
 			if it >= len(sam_contents_from_ref):
 				return -1
-		while beg <= sam_contents_from_ref[it].position <= end:
-			gather_hops.append(sam_contents_from_ref[it])
+		while beg <= sam_contents_from_ref.values()[it].position <= end:
+			gather_hops.append(sam_contents_from_ref.values()[it])
 			it += 1
 			if it >= len(sam_contents_from_ref):
 				return -1
@@ -565,7 +571,7 @@ class hops_pipeline(object):
 		#else:
 		#	print "No hops in this gene."
 
-		it = it - 50
+		it = it - 2
 		if it < 0:
 			it = 0
 		return it
@@ -573,22 +579,26 @@ class hops_pipeline(object):
 	def tabulate_gene_hits(self, sam_file_contents):
 		logging.info("         ---------------\n")
 		logging.info("Begin tabulating gene hits...\n")
-		start_time = time()
 		for chrom in self.gene_info:
+			start_time = time()
 			ref = str(chrom)
 			it = 0
 			logging.info("Working on reference = " + ref)
-			for gene in chrom.gene_list:
+			num_genes = float(len(chrom.gene_list))
+			for i,gene in enumerate(chrom.gene_list):
+				self.update_progress(float(i)/num_genes)
 				# We are on the first gene of the first reference.
 				# Lets get all the hops within the boundaries of this gene.
-
-				if sam_file_contents[ref]:
+				#print ""
+				if sam_file_contents[ref]: #Actually has hops in it.
 					it = self.get_hops_in_gene(it, sam_file_contents[ref], gene)
 				else:
 					logging.info("It seems " + ref + " has no hops in it.")
 					break
 				if it == -1: # We are done with these hops.
 					break
+			logging.info("")
+			self.print_time_output("Tabulating hits", start_time)
 
 		#print self.gene_info
 		self.get_normalized_coefficients()

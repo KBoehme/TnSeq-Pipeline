@@ -201,11 +201,7 @@ class HopSite(object):
 		if hasattr(other, 'position'):
 			return self.position.__cmp__(other.position)
 
-   # def __eq__(self, other):
-   #     return (isinstance(other, self.__class__)
-   #         and self.position == other.position)
-
-	def __eq__(self, other):
+	def __eq__(self, other): #This is used to compare a given position from a sam file to existing hops in the sam_file_contents[ref] data structure.
 		return self.position == other
 
 	def increment_hop_count(self, condition):
