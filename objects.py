@@ -1,27 +1,47 @@
 
+'''
+class bcolors:
+	HEADER = '\033[95m'
+	OKBLUE = '\033[94m'
+	OKGREEN = '\033[92m'
+	WARNING = '\033[93m'
+	FAIL = '\033[91m'
+	ENDC = '\033[0m'
+	BOLD = '\033[1m'
+	UNDERLINE = '\033[4m'
+'''
+class bcolors:
+	HEADER = ''
+	OKBLUE = ''
+	OKGREEN = ''
+	WARNING = ''
+	FAIL = ''
+	ENDC = ''
+	BOLD = ''
+	UNDERLINE = ''
 
 # This chromosome object represents each ptt file read in.
 class Chromsome(object):
 	"""docstring for Chromsome"""
-	def __init__(self, file_name):
-		self.file_name = file_name
+	def __init__(self, name):
+		self.name = name
 		self.gene_list = []
 		self.start = 1
 		self.end = -1
 		self.num_proteins = -1
 
 	def __str__(self):
-		return self.file_name
+		return self.name
 
 	def __repr__(self):
-		return self.file_name
+		return self.name
 
 	def __cmp__(self, other):
 		if hasattr(other, 'file_name'):
-			return self.file_name.__cmp__(other.file_name)
+			return self.name.__cmp__(other.name)
 
 	def __eq__(self, other):
-		return self.file_name == other
+		return self.name == other
 
 	def set_gene_list(self, gene_list):
 		self.gene_list = gene_list
@@ -140,17 +160,20 @@ class Gene(object):
 		normalized_gene_totals = [0] * self.num_conditions
 		for hop in self.hop_list:
 			new_line.append(self.synonym)
-			new_line.extend(hop.hops) # raw hops
-			normalized_hops = [int(round(a*b)) for a,b in zip(hop.hops,norm_coef)]
-			new_line.extend(normalized_hops) #normalized hops
-			new_line.append(hop.position)
-			new_line.append("")
-			new_line.append("")
-			new_line.append(hop.strand)
-			raw_gene_totals = [x + y for x, y in zip(raw_gene_totals, hop.hops)]
-			normalized_gene_totals = [x + y for x, y in zip(normalized_gene_totals, normalized_hops)]
+			if hop.hops: 
+				new_line.extend(hop.hops) # raw hops
+				normalized_hops = [int(round(a*b)) for a,b in zip(hop.hops,norm_coef)]
+				new_line.extend(normalized_hops) #normalized hops
+				new_line.append(hop.position)
+				new_line.append("")
+				new_line.append("")
+				new_line.append(hop.strand)
+				raw_gene_totals = [x + y for x, y in zip(raw_gene_totals, hop.hops)]
+				normalized_gene_totals = [x + y for x, y in zip(normalized_gene_totals, normalized_hops)]
+			else:
+				logging.error("Seems a hop was created but has no hops inside it.")
+				pass
 			hop_entry.append(new_line)
-
 		self.gene_total_line.append(i)
 		self.gene_total_line.append(self.synonym)
 		self.gene_total_line.extend(raw_gene_totals)
@@ -182,7 +205,7 @@ class HopSite(object):
 		self.hops = [0] * num_conditions
 
 	def __str__(self):
-		return '{}: {} {} {}\n'.format(
+		return '{}: {} {}\n'.format(
 			self.__class__.__name__,
 			self.position,
 			self.strand,
@@ -190,7 +213,7 @@ class HopSite(object):
 			)
 
 	def __repr__(self):
-		return '{}: {} {} {}\n'.format(
+		return '{}: {} {}\n'.format(
 			self.__class__.__name__,
 			self.position,
 			self.strand,
@@ -201,20 +224,8 @@ class HopSite(object):
 		if hasattr(other, 'position'):
 			return self.position.__cmp__(other.position)
 
-	def __eq__(self, other): #This is used to compare a given position from a sam file to existing hops in the sam_file_contents[ref] data structure.
-		return self.position == other
+	def __eq__(self, other):
+		return self.position == position
 
 	def increment_hop_count(self, condition):
 		self.hops[condition] += 1
-
-	def write_hop_line(self, sym, norm_coef):
-		hop_line = []
-		hop_line.append(sym)
-		hop_line.extend(hop.hops) # raw hops
-		normalized_hops = [int(round(a*b)) for a,b in zip(self.hops,norm_coef)]
-		hop_line.extend(normalized_hops) #normalized hops
-		hop_line.append(hop.position)
-		hop_line.append("")
-		hop_line.append("")
-		hop_line.append(hop.strand)
-		return '\t'.join(hop_line)

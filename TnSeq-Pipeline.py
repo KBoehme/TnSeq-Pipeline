@@ -55,11 +55,12 @@ class hops_pipeline(object):
 		self.starttime = time()
 
 		# Variables for tabulating hop hits.
-		self.gene_info = []
-		self.normalization_coefficients = []
-		
+		self.chromosomes = {}
+		self.sam_file_contents = {}
+		self.normalization_coefficients = []	
 
-		
+	
+
 
 ############ Read Config File and Run Pipeline ###############################
 	def read_config(self, config_path):
@@ -160,7 +161,9 @@ class hops_pipeline(object):
 		self.set_up_logger(self.output_directory + "output_files/" + self.out + ".log")
 
 		with open(config_path,'r') as f:
-			logging.info("\n\n=============== Config File Settings ===============\n\n" + ''.join(f.readlines()) + "\n--------------------------------------\n\n")
+			logging.info( bcolors.HEADER + "\n\n=============== Config File Settings ===============\n\n"  
+				+ bcolors.ENDC + ''.join(f.readlines()) +  bcolors.HEADER 
+				+ "\n--------------------------------------\n\n" + bcolors.ENDC)
 
 		if not os.path.exists( self.output_directory + "intermediate_files"):
 			subprocess.check_output(["mkdir", self.output_directory + "intermediate_files"])
@@ -190,19 +193,19 @@ class hops_pipeline(object):
 		logging.basicConfig( filename=log_file_name , filemode='w', level=logging.INFO,format='%(message)s' )
 		logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 		
-		logging.info("=========================================")
+		logging.info(bcolors.OKGREEN + "=========================================")
 		logging.info("             Tn-Seq Pipeline")
 		logging.info("The MIT License (MIT) Copyright (c) 2014 Kevin")
 		logging.info("     Date: "+ str(datetime.now()))
 		logging.info("           Author: Kevin Boehme")
 		logging.info("      Email: kevinlboehme@gmail.com")
-		logging.info("=========================================")
+		logging.info("=========================================" + bcolors.ENDC)
 
 	def debugger(self, *text):
 		if self.debug:
 			sys.stdout.write("[DEBUG] ")
 			for i in text:
-				sys.stdout.write(str(i) + " ")
+				sys.stdout.write(bcolors.OKBLUE + str(i) + " " + bcolors.ENDC)
 			print
 
 	def print_time_output(self, command, start):
@@ -246,12 +249,11 @@ class hops_pipeline(object):
 			+ " reads that were too short (Less than " + str(self.read_length) + " bp after transposon trimming).")
 		logging.info("")
 		logging.info("Kept " + str(self.kept_reads) + " reads written to " + self.int_trimmed[out_file_num].name+"\n")
-		logging.info("         ---------------\n")
+		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
 	def process_reads(self):
 
-		logging.info("\n\n=============== Read pre-processing ===============\n")
-		logging.info("         ---------------\n")		
+		logging.info( bcolors.HEADER + "\n\n=============== Read pre-processing ===============\n" + bcolors.ENDC)
 		for out_file_num in range(self.num_conditions):
 			start_process_reads_time = time()
 			filepath = self.input_files[out_file_num]
@@ -290,7 +292,7 @@ class hops_pipeline(object):
 			#	logging.error("Failed to process the reads.")
 		for f in self.int_trimmed:
 			f.close()
-		logging.info("--------------------------------------\n\n")
+		logging.info( bcolors.HEADER + "--------------------------------------\n\n" + bcolors.ENDC)
 
 	def read_fastq(self, f, out_file_num):
 		t0 = time()
@@ -339,19 +341,19 @@ class hops_pipeline(object):
 			self.original_read_count += 1
 
 	def process_read(self, name, seq, out_file_num):
-			tn_trimmed_seq  = self.remove_transposon(name, seq)
-			if tn_trimmed_seq: # True if sequence had a transposon. False otherwise.
-				prepped_seq = self.qc_genomic_region(tn_trimmed_seq)
-				if prepped_seq:
-					#write to fasta file.
-					self.kept_reads += 1
-					self.write_to_output(name, prepped_seq, self.int_trimmed[out_file_num])
-				else:
-					self.removed_tooshort += 1
-					pass
-			else: #no match.
-				self.removed_notn += 1
+		tn_trimmed_seq  = self.remove_transposon(name, seq)
+		if tn_trimmed_seq: # True if sequence had a transposon. False otherwise.
+			prepped_seq = self.qc_genomic_region(tn_trimmed_seq)
+			if prepped_seq:
+				#write to fasta file.
+				self.kept_reads += 1
+				self.write_to_output(name, prepped_seq, self.int_trimmed[out_file_num])
+			else:
+				self.removed_tooshort += 1
 				pass
+		else: #no match.
+			self.removed_notn += 1
+			pass
 
 	def write_to_output(self, name, seq, f):
 		f.write(">"+name+"\n")
@@ -369,7 +371,6 @@ class hops_pipeline(object):
 			return None
 
 	def qc_genomic_region(self, seq):
-		#noNread = seq.replace("N","") #remove all N.
 		if len(seq) < self.read_length:
 			return None
 		else:
@@ -380,8 +381,7 @@ class hops_pipeline(object):
 ############ Bowtie2 ###############################
 	def call_bowtie2(self):
 
-		logging.info("\n\n=============== Bowtie2 Mapping ===============\n")
-		logging.info("         ---------------\n")		
+		logging.info( bcolors.HEADER + "\n\n=============== Bowtie2 Mapping ===============\n" + bcolors.ENDC)
 		for out_file_num in range(self.num_conditions):
 			start_time = time()
 			
@@ -408,9 +408,9 @@ class hops_pipeline(object):
 			self.print_time_output("Bowtie2",start_time)
 			logging.info("Zipping up trimmed file.\n")
 			subprocess.check_output(["gzip","-f", self.int_trimmed[out_file_num].name])
-			logging.info("         ---------------\n")
+			logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
-		logging.info("--------------------------------------\n\n")
+		logging.info( bcolors.HEADER + "--------------------------------------\n\n" + bcolors.ENDC)
 		return True
 
 
@@ -418,18 +418,19 @@ class hops_pipeline(object):
 ############ Tabulate Sams ###############################
 	def process_sam(self):
 		start_time = time()
+		logging.info( bcolors.HEADER + "\n\n=============== Process SAM File ===============\n" + bcolors.ENDC)
 		self.prepare_gene_info()
-		logging.info("\n\n=============== Process SAM File ===============\n")
-		logging.info("         ---------------\n")
+		self.add_intergenic_regions_and_order_column()
 		self.read_sam_file()
-		logging.info("         ---------------\n")		
+		self.tabulate_gene_hits()
+		self.get_normalized_coefficients()
 		self.write_output()
-		logging.info("         ---------------\n")
-
+		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 		self.print_time_output("Done processing SAM files,", start_time)
-		logging.info("--------------------------------------\n\n")
+		logging.info( bcolors.HEADER + "--------------------------------------\n\n" + bcolors.ENDC)
 
 	def prepare_gene_info(self):
+		self.debugger("On function: prepare_gene_info")
 		start_time = time()
 		for i,file_name in enumerate(self.ptt):
 			name = os.path.basename(file_name).split('.')[0]
@@ -442,7 +443,7 @@ class hops_pipeline(object):
 
 
 				new_chrom.fill_info(title, num_prot)
-				self.gene_info.append(new_chrom)
+				self.chromosomes[name] = new_chrom
 				our_genes = []
 				for line in f:
 					ptt_entry = line.split()
@@ -451,15 +452,12 @@ class hops_pipeline(object):
 					new_gene.create_from_ptt_entry(ptt_entry,self.gene_trim, self.num_conditions)
 
 					our_genes.append(new_gene)
-				self.gene_info[i].set_gene_list(sorted(our_genes))
-
-		#This function finishes up the ptt info by adding another column "Order" as well as generating intergenic regions.
-		self.add_intergenic_regions_and_order_column()
+				self.chromosomes[name].set_gene_list(sorted(our_genes))
 
 	def add_intergenic_regions_and_order_column(self):
-		#Lets add in the order column and intergenic regions.
-		for j,chrom in enumerate(self.gene_info):
-			self.debugger("On replicon = " + str(chrom))
+		self.debugger("On function: add_intergenic_regions_and_order_column")
+		for j, (ref_name, chrom) in enumerate(self.chromosomes.iteritems()):
+			self.debugger("On replicon = " + ref_name)
 			example_gene = chrom.gene_list[0]
 			self.debugger("Example gene from this replicon = " + str(example_gene))
 			gene_name = example_gene.synonym
@@ -498,27 +496,23 @@ class hops_pipeline(object):
 							"int_" + cur_gene.synonym + "-" + chrom.gene_list[i].synonym, self.num_conditions )
 						intergenic_genes.append(new_gene)
 			#Now lets mash those intergenic regions with the current genes.
-			self.gene_info[j].gene_list = sorted(self.gene_info[j].gene_list + intergenic_genes)
-
-	def update_progress(self,progress):
-		progress = int(round(progress * 100.0))
-		sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/5), progress))
-		sys.stdout.flush()
+			self.chromosomes[ref_name].gene_list = sorted(self.chromosomes[ref_name].gene_list + intergenic_genes)
+		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
 	def read_sam_file(self):
-		sam_file_contents = {}
-		for i in self.gene_info:
-			sam_file_contents[str(i)] = {} # a dict of position keys to a single hop. This should speed us up considerable.
+		self.debugger("On function: read_sam_file")
+		for i in self.chromosomes:
+			self.sam_file_contents[str(i)] = {}
 
 		for i,sam_file in enumerate(self.int_sam):
 			start_time = time()
 			treatment = self.int_prefix[i]
 			logging.info("Reading file = " + sam_file +".")
 			with open(sam_file) as f:
-				num_lines = float(sum(1 for line in f))
-				f.seek(0)
+				#num_lines = float(sum(1 for line in f))
+				#f.seek(0)
 				for j,line in enumerate(f):
-					self.update_progress(float(j)/num_lines)
+					#self.update_progress(float(j)/num_lines)
 					if line[0] == "@":
 						pass
 					else:
@@ -534,86 +528,70 @@ class hops_pipeline(object):
 							if code == "16":
 								strand = '-'
 							hop_exists = False
-							if pos in sam_file_contents[ref_name]:
-								sam_file_contents[ref_name][pos].increment_hop_count(i)
+							if pos in self.sam_file_contents[ref_name]:
+								self.sam_file_contents[ref_name][pos].increment_hop_count(i)
 							else:
 								new_hop = HopSite(pos, strand, self.num_conditions)
 								new_hop.increment_hop_count(i)
-								sam_file_contents[ref_name][pos] = new_hop
+								self.sam_file_contents[ref_name][pos] = new_hop
 				logging.info("")
 				self.print_time_output("Reading file", start_time)
 			subprocess.check_output(["gzip", "-f", sam_file])
-		for ref in sam_file_contents:
-			sam_file_contents[ref] = OrderedDict(sorted(sam_file_contents[ref].items(), key=lambda t: t[0]))
-		#print sam_file_contents
-		#raw_input('press enter')
-		self.tabulate_gene_hits(sam_file_contents)
 
-	def get_hops_in_gene(self, it, sam_contents_from_ref, gene):
-		#print gene
-		# sam_contents_from_ref = Orderedict with key- position and value - HopSite
-		beg = gene.start_trunc
-		end = gene.end_trunc
-		gather_hops = []
-		while sam_contents_from_ref.values()[it].position < beg:
-			it += 1
-			if it >= len(sam_contents_from_ref):
-				return -1
-		while beg <= sam_contents_from_ref.values()[it].position <= end:
-			gather_hops.append(sam_contents_from_ref.values()[it])
-			it += 1
-			if it >= len(sam_contents_from_ref):
-				return -1
+		for ref, value in self.sam_file_contents.iteritems():
+			temp_dict = {}
+			for i,item in enumerate(sorted(value.iteritems())):
+				temp_dict[i] = item[1]
+			self.sam_file_contents[ref] = temp_dict	
+		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
-		gene.hop_list = gather_hops
-		#if len(gene.hop_list) != 0:
-		#	print "Not empty:",gene.hop_list
-		#else:
-		#	print "No hops in this gene."
-
-		it = it - 2
-		if it < 0:
-			it = 0
-		return it
-
-	def tabulate_gene_hits(self, sam_file_contents):
-		logging.info("         ---------------\n")
+	def tabulate_gene_hits(self):
+		self.debugger("On function: tabulate_gene_hits")
 		logging.info("Begin tabulating gene hits...\n")
-		for chrom in self.gene_info:
+		for ref, pos in self.sam_file_contents.iteritems():
 			start_time = time()
-			ref = str(chrom)
 			it = 0
 			logging.info("Working on reference = " + ref)
+			chrom = self.chromosomes[ref]
 			num_genes = float(len(chrom.gene_list))
 			for i,gene in enumerate(chrom.gene_list):
 				self.update_progress(float(i)/num_genes)
-				# We are on the first gene of the first reference.
-				# Lets get all the hops within the boundaries of this gene.
-				#print ""
-				if sam_file_contents[ref]: #Actually has hops in it.
-					it = self.get_hops_in_gene(it, sam_file_contents[ref], gene)
-				else:
-					logging.info("It seems " + ref + " has no hops in it.")
-					break
-				if it == -1: # We are done with these hops.
-					break
-			logging.info("")
-			self.print_time_output("Tabulating hits", start_time)
+				beg = gene.start
+				end = gene.end
 
-		#print self.gene_info
-		self.get_normalized_coefficients()
-		self.print_time_output("Done tabulating gene hits,",start_time)	
-	
+				curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
+				while curr_hop.position < beg:
+					it += 1
+					curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
+					if not curr_hop:
+						break
+				if not curr_hop:
+					break
+				while beg <= curr_hop.position <= end:
+					gene.hop_list.append(curr_hop)
+					it += 1
+					curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
+					if not curr_hop: # We ran out of hop hits, so we are done.
+						break
+				#print gene
+				#raw_input('press')
+				if not curr_hop:
+					break
+				else:
+					it -= 50
+					if it < 0:
+						it = 0
+			self.print_time_output("Done tabulating gene hits,",start_time)	
+		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
+
 	def get_normalized_coefficients(self):
+		self.debugger("On function: get_normalized_coefficients")
 		logging.info("\nBegin Normalization Steps.\n")
-		# Lets collect the total hits in intergenic regions to see what is going on.
 		intergenic_totals = [0] * self.num_conditions		
-		for chrom in self.gene_info:
+		for ref_name,chrom in self.chromosomes.iteritems():
 			for gene in chrom.gene_list:
 				if gene.is_intergenic:
 					intergenic_totals = [x + y for x, y in zip(intergenic_totals, gene.hop_totals())]
-
-
 		logging.info("Total intergenic hops observed is: " + str(sum(intergenic_totals)))
 		for i,total in enumerate(intergenic_totals):
 			logging.info(self.int_prefix[i] + " has " + str(total) + " intergenic hops observed.")
@@ -633,6 +611,7 @@ class hops_pipeline(object):
 			logging.info(condition + " multiplied by " + str(self.normalization_coefficients[i]))
 
 	def write_output(self):
+		self.debugger("On function: write_output")
 		logging.info("Begin calculating gene totals and writing to output...")
 		start_time = time()
 		
@@ -646,7 +625,7 @@ class hops_pipeline(object):
 			intf.write("\t".join(hops_header)+"\n")
 			count = 1
 
-			for chrom in self.gene_info:
+			for ref_name, chrom in self.chromosomes.iteritems():
 				for gene in chrom.gene_list:
 					if not gene.is_intergenic:
 						hf.write(gene.write_hops(count,self.normalization_coefficients)+"\n")
@@ -657,7 +636,16 @@ class hops_pipeline(object):
 
 		self.print_time_output("Done calculating totals and writing to output,", start_time)
 
+	def update_progress(self,progress):
+		progress = int(round(progress * 100.0))
+		sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/5), progress))
+		sys.stdout.flush()
 
+	def update_current_hop(self, it, sam_file_contents):
+		if it > len(sam_file_contents)-1:
+			return None
+		hop = sam_file_contents[it]
+		return hop
 
 ################################
 ############# Main #############
