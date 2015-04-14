@@ -154,26 +154,24 @@ class Gene(object):
 
 	def write_hops(self, i, norm_coef):
 		hop_entry = []
-		#	SM_b20002	92	79	101	72	78	57	5585		-	
-		new_line = [""]
 		raw_gene_totals = [0] * self.num_conditions
 		normalized_gene_totals = [0] * self.num_conditions
 		for hop in self.hop_list:
-			new_line.append(self.synonym)
-			if hop.hops: 
-				new_line.extend(hop.hops) # raw hops
-				normalized_hops = [int(round(a*b)) for a,b in zip(hop.hops,norm_coef)]
-				new_line.extend(normalized_hops) #normalized hops
-				new_line.append(hop.position)
-				new_line.append("")
-				new_line.append("")
-				new_line.append(hop.strand)
-				raw_gene_totals = [x + y for x, y in zip(raw_gene_totals, hop.hops)]
-				normalized_gene_totals = [x + y for x, y in zip(normalized_gene_totals, normalized_hops)]
-			else:
-				logging.error("Seems a hop was created but has no hops inside it.")
-				pass
+			new_line, normalized_hops = hop.print_hop_line( self.synonym, norm_coef)
+
+			raw_gene_totals = [x + y for x, y in zip(raw_gene_totals, hop.hops)]
+			normalized_gene_totals = [x + y for x, y in zip(normalized_gene_totals, normalized_hops)]
 			hop_entry.append(new_line)
+
+		self.generate_gene_total_line(i, raw_gene_totals, normalized_gene_totals)
+
+		hop_entry.insert(0, self.gene_total_line)
+		for i,entry in enumerate(hop_entry):
+			hop_entry[i] = '\t'.join(map(str,entry))
+		#print "writing:",'\n'.join(hop_entry)
+		return '\n'.join(hop_entry)
+
+	def generate_gene_total_line(self, i, raw_gene_totals, normalized_gene_totals):
 		self.gene_total_line.append(i)
 		self.gene_total_line.append(self.synonym)
 		self.gene_total_line.extend(raw_gene_totals)
@@ -186,11 +184,6 @@ class Gene(object):
 		self.gene_total_line.append(self.pid)
 		self.gene_total_line.append(self.gene)
 		self.gene_total_line.append(self.function)
-		hop_entry.insert(0, self.gene_total_line)
-		for i,entry in enumerate(hop_entry):
-			hop_entry[i] = '\t'.join(map(str,entry))
-		#print "writing:",'\n'.join(hop_entry)
-		return '\n'.join(hop_entry)
 
 	def write_gene(self):
 		return '\t'.join(map(str,self.gene_total_line))
@@ -229,3 +222,15 @@ class HopSite(object):
 
 	def increment_hop_count(self, condition):
 		self.hops[condition] += 1
+
+	def print_hop_line(self, syn, norm_coef):
+		new_line = [""]
+		new_line.append(syn)
+		new_line.extend(self.hops) # raw hops
+		normalized_hops = [int(round(a*b)) for a,b in zip(self.hops,norm_coef)]
+		new_line.extend(normalized_hops) #normalized hops
+		new_line.append(self.position)
+		new_line.append("")
+		new_line.append("")
+		new_line.append(self.strand)
+		return new_line, normalized_hops
