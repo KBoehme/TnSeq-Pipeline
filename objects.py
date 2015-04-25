@@ -220,6 +220,9 @@ class HopSite(object):
 	def __eq__(self, other):
 		return self.position == position
 
+	def total_hops(self):
+		return sum(self.hops)
+
 	def increment_hop_count(self, condition):
 		self.hops[condition] += 1
 

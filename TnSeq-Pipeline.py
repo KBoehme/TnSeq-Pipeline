@@ -35,10 +35,12 @@ class hops_pipeline(object):
 		self.mismatches = 0
 		self.gene_trim = 0
 		self.read_length = 0
+		self.minimum_hop_count = 0
+
 		#bools
 		self.debug = False
 		self.normalize = True
-		self.delete_intermediate_files = False
+		self.delete_intermediate_files = True
 
 		#Intermediate files for output
 		self.int_prefix = []
@@ -92,7 +94,6 @@ class hops_pipeline(object):
 		except:
 			sys.exit('Error with Transposon parameter.')
 
-
 		if self.transposon == None:
 			sys.exit('Error with Transposon parameter.')
 		elif not (re.match('^[ACGTacgt]+$',self.transposon)):
@@ -125,10 +126,18 @@ class hops_pipeline(object):
 		except:
 			sys.exit('Error with ReadLength parameter (Not an integer).')
 
-
-
 		if self.read_length < 0:
 			sys.exit('ReadLength parameter is negative.')
+
+
+		try:
+			self.minimum_hop_count = int ( cp.get('parameters', 'MinimumHopCount'))
+		except:
+			sys.exit('Error with MinimumHopCount parameter (Not an integer).')
+
+		if self.minimum_hop_count < 0:
+			sys.exit('MinimumHopCount parameter is negative.')
+
 
 		#Options
 		try:
@@ -431,6 +440,7 @@ class hops_pipeline(object):
 		self.prepare_gene_info()
 		self.add_intergenic_regions_and_order_column()
 		self.read_sam_file()
+		self.check_min_hops()
 		self.tabulate_gene_hits()
 		self.get_normalized_coefficients()
 		self.write_output()
@@ -560,6 +570,15 @@ class hops_pipeline(object):
 			self.sam_file_contents[ref] = temp_dict	
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
+	def check_min_hops(self):
+		for ref, positions in self.sam_file_contents.iteritems():
+
+			for index,hop in positions.items():
+				if hop.total_hops() < self.minimum_hop_count:
+					# We want to remove this sucker.
+					del positions[index]
+		print self.sam_file_contents
+		
 	def tabulate_gene_hits(self):
 		self.debugger("On function: tabulate_gene_hits")
 		logging.info("Begin tabulating gene hits...\n")
