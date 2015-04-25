@@ -38,6 +38,7 @@ class hops_pipeline(object):
 		#bools
 		self.debug = False
 		self.normalize = True
+		self.delete_intermediate_files = False
 
 		#Intermediate files for output
 		self.int_prefix = []
@@ -140,7 +141,11 @@ class hops_pipeline(object):
 		except:
 			sys.exit('Error with Normalize parameter (Not True/False)')
 
-
+		try:
+			self.delete_intermediate_files = cp.getboolean('options','DeleteIntermediateFiles')
+		except:
+			sys.exit('Error with DeleteIntermediateFiles parameter (Not True/False)')
+		
 		# Generate other variables
 		self.num_conditions = len(self.input_files)
 		self.output_directory = os.path.dirname(config_path)
@@ -406,8 +411,12 @@ class hops_pipeline(object):
 				sys.exit('Exiting')
 
 			self.print_time_output("Bowtie2",start_time)
-			logging.info("Zipping up trimmed file.\n")
-			subprocess.check_output(["gzip","-f", self.int_trimmed[out_file_num].name])
+			if self.delete_intermediate_files:		
+				logging.info("Deleted trimmed Fasta file.")
+				subprocess.check_output(["rm",self.int_trimmed[out_file_num].name])
+			else:
+				logging.info("Zipping up trimmed file.\n")
+				subprocess.check_output(["gzip","-f", self.int_trimmed[out_file_num].name])
 			logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
 		logging.info( bcolors.HEADER + "--------------------------------------\n\n" + bcolors.ENDC)
@@ -536,7 +545,13 @@ class hops_pipeline(object):
 								self.sam_file_contents[ref_name][pos] = new_hop
 				logging.info("")
 				self.print_time_output("Reading file", start_time)
-			subprocess.check_output(["gzip", "-f", sam_file])
+			
+			if self.delete_intermediate_files:
+				logging.info("Deleting SAM file.")
+				subprocess.check_output(["rm",sam_file])
+			else:
+				logging.info("Zipping up SAM file.")
+				subprocess.check_output(["gzip", "-f", sam_file])
 
 		for ref, value in self.sam_file_contents.iteritems():
 			temp_dict = {}
@@ -554,7 +569,7 @@ class hops_pipeline(object):
 			logging.info("Working on reference = " + ref)
 			chrom = self.chromosomes[ref]
 			num_genes = float(len(chrom.gene_list))
-			for i,gene in enumerate(chrom.gene_list):
+			for i,gene in enumerate(chrom.gene_list,start=1):
 				self.update_progress(float(i)/num_genes)
 				beg = gene.start
 				end = gene.end
@@ -581,7 +596,8 @@ class hops_pipeline(object):
 					it -= 50
 					if it < 0:
 						it = 0
-			self.print_time_output("Done tabulating gene hits,",start_time)	
+			self.update_progress(1)
+			self.print_time_output(" Done tabulating gene hits,",start_time)	
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
 	def get_normalized_coefficients(self):
