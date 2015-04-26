@@ -1,0 +1,7 @@
+Sinorhizobium meliloti 1021 chromosome, complete genome - 1104600..1107670
+4 proteins
+Location        Strand  Length  PID     Gene    Synonym Code    COG     Product
+1104685..1104936	+	83	15964766	-	SMc00065	-	-	signal peptide protein
+1104977..1105648	+	223	15964767	feuP	SMc00458	-	COG0745TK	transcriptional regulator
+1105638..1107023	+	461	15964768	feuQ	SMc00129	-	COG0642T	sensor histidine kinase
+1107235..1107645	+	136	15964769	lppA	SMc00067	-	COG4520M	outer-membranne lipoprotein

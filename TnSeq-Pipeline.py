@@ -341,7 +341,6 @@ class hops_pipeline(object):
 	def read_fasta(self, f, out_file_num):
 		t0 = time()
 		while True:
-			print "looping through fasta."
 
 			if self.original_read_count != 0 and self.original_read_count % 1000000 == 0:
 				logging.info('Processed ' + str(self.original_read_count) + ' reads.')
@@ -349,8 +348,6 @@ class hops_pipeline(object):
 			seq = f.readline().strip().upper()
 			if not name or not seq: break #We are done, lets break out of the loop.
 
-			#we have all the contents of one read, now lets look for the transposon.
-			print "processing read",seq
 			self.process_read(name, seq, out_file_num)
 			self.original_read_count += 1
 
