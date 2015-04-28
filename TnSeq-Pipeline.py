@@ -41,6 +41,7 @@ class hops_pipeline(object):
 		self.debug = False
 		self.normalize = True
 		self.delete_intermediate_files = True
+		self.check_transposon = True
 
 		#Intermediate files for output
 		self.int_prefix = []
@@ -78,83 +79,86 @@ class hops_pipeline(object):
 		self.ptt = glob.glob(cp.get('input', 'Ptt'))
 		self.out  = cp.get('input', 'Out')
 
-		re.match
-		if len(self.input_files) == 0:
-			sys.exit('Error with input Reads parameter.')
-		elif self.ref == None:
-			sys.exit('Error with BowtieReference parameter.')
-		elif len(self.ptt) == 0:
-			sys.exit('Error with Ptt parameter.')
-		elif self.out == None:
-			sys.exit("Error with Out parameter.")
-
-		#Parameters
 		try:
-			self.transposon = cp.get('parameters', 'Transposon')
-		except:
-			sys.exit('Error with Transposon parameter.')
+			if len(self.input_files) == 0:
+				sys.exit('Error with input Reads parameter.')
+			elif self.ref == None:
+				sys.exit('Error with BowtieReference parameter.')
+			elif len(self.ptt) == 0:
+				sys.exit('Error with Ptt parameter.')
+			elif self.out == None:
+				sys.exit("Error with Out parameter.")
 
-		if self.transposon == None:
-			sys.exit('Error with Transposon parameter.')
-		elif not (re.match('^[ACGTacgt]+$',self.transposon)):
-			sys.exit('Error with Transposon parameter (Make sure it only contains [ATCG]).')
-	
-		try:
-			self.mismatches = int ( cp.get('parameters', 'Mismatches') )
-		except:
-			sys.exit('Error with Mismatches parameter (Not an integer).')
+			#Parameters
+			try:
+				self.transposon = cp.get('parameters', 'Transposon')
+			except:
+				sys.exit('Error with Transposon parameter.')
 
-		if self.mismatches < 0:
-			sys.exit('Mismatches parameter is negative.')
-		elif self.mismatches >= len(self.transposon):
-			logging.info("Mismatches parameter is same length or greater than transposon sequence. Be aware that all reads will be mapped because of this.")
-
-		try:
-			self.gene_trim = int ( cp.get('parameters', 'GeneTrim') )
-		except:
-			sys.exit('Error with GeneTrim parameter (Not an integer).')
-
-
-		if self.gene_trim < 0:
-			sys.exit('GeneTrim parameter is negative.')
-		elif self.gene_trim > 99:
-			sys.exit('Error with GeneTrim parameter (Must be 99 or smaller).')
-
-
-		try:
-			self.read_length = int ( cp.get('parameters', 'ReadLength') )
-		except:
-			sys.exit('Error with ReadLength parameter (Not an integer).')
-
-		if self.read_length < 0:
-			sys.exit('ReadLength parameter is negative.')
-
-
-		try:
-			self.minimum_hop_count = int ( cp.get('parameters', 'MinimumHopCount'))
-		except:
-			sys.exit('Error with MinimumHopCount parameter (Not an integer).')
-
-		if self.minimum_hop_count < 0:
-			sys.exit('MinimumHopCount parameter is negative.')
-
-
-		#Options
-		try:
-			self.debug = cp.getboolean('options', 'Debug')
-		except:
-			sys.exit('Error with Debug parameter (Not True/False).')
-
-		try:
-			self.normalize = cp.getboolean('options','Normalize')
-		except:
-			sys.exit('Error with Normalize parameter (Not True/False)')
-
-		try:
-			self.delete_intermediate_files = cp.getboolean('options','DeleteIntermediateFiles')
-		except:
-			sys.exit('Error with DeleteIntermediateFiles parameter (Not True/False)')
+			if self.transposon == "":
+				print "Transposon parameter was empty. This means no check will be made for a transposon sequence and all reads will move to the mapping stage."
+				self.check_transposon = False
+			elif not (re.match('^[ACGTacgt]+$',self.transposon)):
+				sys.exit('Error with Transposon parameter (Make sure it only contains [ATCG]).')
 		
+			try:
+				self.mismatches = int ( cp.get('parameters', 'Mismatches') )
+			except:
+				sys.exit('Error with Mismatches parameter (Not an integer).')
+
+			if self.mismatches < 0:
+				sys.exit('Mismatches parameter is negative.')
+			elif self.check_transposon and self.mismatches >= len(self.transposon):
+				sys.exit("Mismatches parameter is same length or greater than transposon sequence (Note if you dont want to check for a transposon sequence, leave it blank in the config file.")
+
+			try:
+				self.gene_trim = int ( cp.get('parameters', 'GeneTrim') )
+			except:
+				sys.exit('Error with GeneTrim parameter (Not an integer).')
+
+
+			if self.gene_trim < 0:
+				sys.exit('GeneTrim parameter is negative.')
+			elif self.gene_trim > 99:
+				sys.exit('Error with GeneTrim parameter (Must be 99 or smaller).')
+
+
+			try:
+				self.read_length = int ( cp.get('parameters', 'ReadLength') )
+			except:
+				sys.exit('Error with ReadLength parameter (Not an integer).')
+
+			if self.read_length < 0:
+				sys.exit('ReadLength parameter is negative.')
+
+
+			try:
+				self.minimum_hop_count = int ( cp.get('parameters', 'MinimumHopCount'))
+			except:
+				sys.exit('Error with MinimumHopCount parameter (Not an integer).')
+
+			if self.minimum_hop_count < 0:
+				sys.exit('MinimumHopCount parameter is negative.')
+
+
+			#Options
+			try:
+				self.debug = cp.getboolean('options', 'Debug')
+			except:
+				sys.exit('Error with Debug parameter (Not True/False).')
+
+			try:
+				self.normalize = cp.getboolean('options','Normalize')
+			except:
+				sys.exit('Error with Normalize parameter (Not True/False)')
+
+			try:
+				self.delete_intermediate_files = cp.getboolean('options','DeleteIntermediateFiles')
+			except:
+				sys.exit('Error with DeleteIntermediateFiles parameter (Not True/False)')
+		except:
+			print "something is wrong"
+			raw_input('press enter')
 		# Generate other variables
 		self.num_conditions = len(self.input_files)
 		self.output_directory = os.path.dirname(config_path)
@@ -172,6 +176,7 @@ class hops_pipeline(object):
 		if not os.path.exists( self.output_directory + "output_files/"):
 			subprocess.check_output(["mkdir", self.output_directory + "output_files"])
 		
+		print self.output_directory + "output_files/" + self.out + ".log"
 		self.set_up_logger(self.output_directory + "output_files/" + self.out + ".log")
 
 		with open(config_path,'r') as f:
@@ -196,7 +201,7 @@ class hops_pipeline(object):
 			self.int_sam.append(self.output_directory + "intermediate_files/" + file_prefix + ".sam")
 
 	def run_pipeline(self):
-		self.process_reads() #pass in number corresponding to location of input file in list.
+		self.process_reads()
 		self.call_bowtie2()
 		self.process_sam()
 		self.print_time_output("Total run time,", self.starttime)
@@ -206,7 +211,7 @@ class hops_pipeline(object):
 	def set_up_logger(self, log_file_name):
 		logging.basicConfig( filename=log_file_name , filemode='w', level=logging.INFO,format='%(message)s' )
 		logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
-		
+
 		logging.info(bcolors.OKGREEN + "=========================================")
 		logging.info("             Tn-Seq Pipeline")
 		logging.info("The MIT License (MIT) Copyright (c) 2014 Kevin")
@@ -266,7 +271,6 @@ class hops_pipeline(object):
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
 	def process_reads(self):
-
 		logging.info( bcolors.HEADER + "\n\n=============== Read pre-processing ===============\n" + bcolors.ENDC)
 		for out_file_num in range(self.num_conditions):
 			start_process_reads_time = time()
@@ -287,7 +291,6 @@ class hops_pipeline(object):
 				logging.error("Didn't find the string fasta or fastq in input files. Please make sure your data has a fasta or fastq file extension (Could also be gzipped).")
 				sys.exit('')
 
-			#try:
 			logging.info( "Input fastq = " + filepath + "." )
 			f = None
 			if (filepath[-3:] == ".gz"):
@@ -302,8 +305,6 @@ class hops_pipeline(object):
 
 			self.print_summary_stats(start_process_reads_time, out_file_num)
 
-			#except:
-			#	logging.error("Failed to process the reads.")
 		for f in self.int_trimmed:
 			f.close()
 		logging.info( bcolors.HEADER + "--------------------------------------\n\n" + bcolors.ENDC)
@@ -334,7 +335,6 @@ class hops_pipeline(object):
 				if not name or not seq: break #We are done, lets break out of the loop.
 
 				#we have all the contents of one read, now lets look for the transposon.
-				print "processing read",seq
 				self.process_read(name, seq, out_file_num)
 				self.original_read_count += 1
 
@@ -352,7 +352,12 @@ class hops_pipeline(object):
 			self.original_read_count += 1
 
 	def process_read(self, name, seq, out_file_num):
-		tn_trimmed_seq  = self.remove_transposon(name, seq)
+		tn_trimmed_seq = ""
+		if self.check_transposon:
+			tn_trimmed_seq  = self.remove_transposon(name, seq)
+		else:
+			tn_trimmed_seq = seq
+
 		if tn_trimmed_seq: # True if sequence had a transposon. False otherwise.
 			prepped_seq = self.qc_genomic_region(tn_trimmed_seq)
 			if prepped_seq:
@@ -439,7 +444,7 @@ class hops_pipeline(object):
 		self.read_sam_file()
 		self.check_min_hops()
 		self.tabulate_gene_hits()
-		self.get_normalized_coefficients()
+		self.get_normalized_coefficients(self.normalize)
 		self.write_output()
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 		self.print_time_output("Done processing SAM files,", start_time)
@@ -511,7 +516,7 @@ class hops_pipeline(object):
 							chrom.gene_list[i].start - 1, 
 							"int_" + cur_gene.synonym + "-" + chrom.gene_list[i].synonym, self.num_conditions )
 						intergenic_genes.append(new_gene)
-			#Now lets mash those intergenic regions with the current genes.
+			#Now lets smash those intergenic regions with the current genes.
 			self.chromosomes[ref_name].gene_list = sorted(self.chromosomes[ref_name].gene_list + intergenic_genes)
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
@@ -569,54 +574,56 @@ class hops_pipeline(object):
 
 	def check_min_hops(self):
 		for ref, positions in self.sam_file_contents.iteritems():
-
 			for index,hop in positions.items():
 				if hop.total_hops() < self.minimum_hop_count:
-					# We want to remove this sucker.
 					del positions[index]
-		print self.sam_file_contents
 		
 	def tabulate_gene_hits(self):
 		self.debugger("On function: tabulate_gene_hits")
 		logging.info("Begin tabulating gene hits...\n")
 		for ref, pos in self.sam_file_contents.iteritems():
-			start_time = time()
-			it = 0
-			logging.info("Working on reference = " + ref)
-			chrom = self.chromosomes[ref]
-			num_genes = float(len(chrom.gene_list))
-			for i,gene in enumerate(chrom.gene_list,start=1):
-				self.update_progress(float(i)/num_genes)
-				beg = gene.start
-				end = gene.end
+			if len(pos) == 0:
+				logging.info("Reference " + ref + " has no reads which mapped to it.")
+			else:
+				start_time = time()
+				it = 0
+				logging.info("Working on reference = " + ref)
+				chrom = self.chromosomes[ref]
+				num_genes = float(len(chrom.gene_list))
+				for i,gene in enumerate(chrom.gene_list,start=1):
+					self.update_progress(float(i)/num_genes)
+					beg = gene.start
+					end = gene.end
 
-				curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
-				while curr_hop.position < beg:
-					it += 1
 					curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
+					while curr_hop.position < beg:
+						it += 1
+						curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
+						if not curr_hop:
+							break
 					if not curr_hop:
 						break
-				if not curr_hop:
-					break
-				while beg <= curr_hop.position <= end:
-					gene.hop_list.append(curr_hop)
-					it += 1
-					curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
-					if not curr_hop: # We ran out of hop hits, so we are done.
+					while beg <= curr_hop.position <= end:
+						gene.hop_list.append(curr_hop)
+						it += 1
+						curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
+						if not curr_hop: # We ran out of hop hits, so we are done.
+							break
+
+					if not curr_hop:
 						break
-				#print gene
-				#raw_input('press')
-				if not curr_hop:
-					break
-				else:
-					it -= 50
-					if it < 0:
-						it = 0
-			self.update_progress(1)
-			self.print_time_output(" Done tabulating gene hits,",start_time)	
+					else:
+						it -= 50
+						if it < 0:
+							it = 0
+				self.update_progress(1)
+				self.print_time_output(" Done tabulating gene hits,",start_time)
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
-	def get_normalized_coefficients(self):
+	def get_normalized_coefficients(self, normalize):
+		if not normalize:
+			self.normalization_coefficients = [1.0] * self.num_conditions
+			return
 		self.debugger("On function: get_normalized_coefficients")
 		logging.info("\nBegin Normalization Steps.\n")
 		intergenic_totals = [0] * self.num_conditions		
@@ -672,6 +679,8 @@ class hops_pipeline(object):
 		progress = int(round(progress * 100.0))
 		sys.stdout.write('\r[{0}] {1}%'.format('#'*(progress/5), progress))
 		sys.stdout.flush()
+		if progress == 100:
+			sys.stdout.write(' ')
 
 	def update_current_hop(self, it, sam_file_contents):
 		if it > len(sam_file_contents)-1:
