@@ -313,7 +313,9 @@ class hops_pipeline(object):
 		t0 = time()
 		while True:
 			if self.original_read_count != 0 and self.original_read_count % 1000000 == 0:
-				logging.info('Processed ' + str(self.original_read_count) + ' reads.')
+				sys.stdout.write('\rProcessed ' + str(self.original_read_count) + ' reads.')
+				sys.stdout.flush()
+			#	logging.info('Processed ' + str(self.original_read_count) + ' reads.')
 			name = f.readline().strip()[1:] #Strip the @ sign infront of fastq names.
 			seq = f.readline().strip().upper()
 			plus = f.readline().strip()
@@ -329,7 +331,8 @@ class hops_pipeline(object):
 			while True:
 
 				if self.original_read_count != 0 and self.original_read_count % 1000000 == 0:
-					logging.info('Processed ' + str(self.original_read_count) + ' reads.')
+					sys.stdout.write('\rProcessed ' + str(self.original_read_count) + ' reads.')
+				#	logging.info('Processed ' + str(self.original_read_count) + ' reads.')
 				name = f.readline().strip()[1:] #Strip the @ sign infront of fastq names.
 				seq = f.readline().strip().upper()
 				if not name or not seq: break #We are done, lets break out of the loop.
@@ -343,7 +346,8 @@ class hops_pipeline(object):
 		while True:
 
 			if self.original_read_count != 0 and self.original_read_count % 1000000 == 0:
-				logging.info('Processed ' + str(self.original_read_count) + ' reads.')
+				sys.stdout.write('\rProcessed ' + str(self.original_read_count) + ' reads.')
+			#	logging.info('Processed ' + str(self.original_read_count) + ' reads.')
 			name = f.readline().strip()[1:] #Strip the @ sign infront of fastq names.
 			seq = f.readline().strip().upper()
 			if not name or not seq: break #We are done, lets break out of the loop.
@@ -442,7 +446,6 @@ class hops_pipeline(object):
 		self.prepare_gene_info()
 		self.add_intergenic_regions_and_order_column()
 		self.read_sam_file()
-		self.check_min_hops()
 		self.tabulate_gene_hits()
 		self.get_normalized_coefficients(self.normalize)
 		self.write_output()
@@ -564,6 +567,8 @@ class hops_pipeline(object):
 			else:
 				logging.info("Zipping up SAM file.")
 				subprocess.check_output(["gzip", "-f", sam_file])
+
+		self.check_min_hops()
 
 		for ref, value in self.sam_file_contents.iteritems():
 			temp_dict = {}

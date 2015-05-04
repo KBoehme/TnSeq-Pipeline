@@ -1,0 +1,1293 @@
+Sinorhizobium meliloti 1021 plasmid pSymA, complete sequence - 1..1354226
+1290 proteins
+Location	Strand	Length	PID	Gene	Synonym	Code	COG	Product
+1353..4457	+	1034	16262454	fdoG	SMa0002	-	COG0243C	formate dehydrogenase subunit alpha
+4454..5446	+	330	16262455	fdoH	SMa0005	-	COG0437C	formate dehydrogenase susbunit beta
+5424..6110	+	228	16262456	fdoI	SMa0007	-	COG2864C	formate dehydrogenase subunit gamma
+6149..7069	+	306	16262457	fdhE	SMa0009	-	COG3058O	formate dehydrogenase subunit epsilon
+7074..8474	+	466	16262458	selA	SMa0011	-	COG1921E	selenocysteine synthase
+8383..9255	+	290	193782525	-	SMa0013	-	COG0790R	hypothetical protein
+9252..11252	+	666	16262460	selB	SMa0015	-	COG3276J	selenocysteine-specific elongation factor
+11506..12063	+	185	16262461	-	SMa0017	-	-	hypothetical protein
+12259..12546	-	95	193782526	-	SMa5000	-	-	hypothetical protein
+12754..13161	+	135	16262462	-	SMa0018	-	COG3415L	transposase TRm2011-2a
+13227..13700	+	157	16262463	-	SMa0020	-	COG3335L	transposase TRm2011-2b
+14450..15094	-	214	16262464	-	SMa0021	-	COG0784T	hypothetical protein
+15826..16209	+	127	193782527	-	SMa5014	-	-	hypothetical protein
+16251..17318	-	355	193782528	-	SMa0025	-	COG1305E	hypothetical protein
+17424..17852	-	142	16262466	-	SMa0026	-	-	hypothetical protein
+17865..18914	-	349	16262467	selD	SMa0028	-	COG0709E	selenophosphate synthetase
+19209..19436	-	75	16262468	-	SMa0031	-	-	hypothetical protein
+19453..21108	-	551	16262469	-	SMa0034	-	COG2931Q	protease
+21429..23051	+	540	16262470	-	SMa0036	-	COG0488R	ABC transporter ATP-binding protein
+23398..24297	-	299	193782529	-	SMa0039	-	COG0583K	LysR family transcriptional regulator
+24399..25388	+	329	193782530	-	SMa0041	-	COG0604CR	quinone oxidoreductase
+25417..25683	-	88	16262473	-	SMa0044	-	COG5552S	hypothetical protein
+25848..26597	-	249	16262474	cah	SMa0045	-	COG3338P	carbonic anhydrase
+26906..27154	+	82	193782531	-	SMa5015	-	COG1802K	hypothetical protein
+27295..27516	+	73	16262476	-	SMa0050	-	COG1012C	hypothetical protein
+27507..27713	+	68	16262477	-	SMa0052	-	COG1012C	hypothetical protein
+28295..29428	-	377	16262478	-	SMa0056	-	COG4948MR	dehydratase/enolase
+29492..30688	-	398	16262479	-	SMa0058	-	COG2942G	N-acylglucosamine 2-epimerase
+30703..31488	-	261	16262480	-	SMa0059	-	COG1028IQR	short-chain alcohol dehydrogenase
+31488..32423	-	311	16262481	-	SMa0060	-	COG3386G	gluconolactonase
+32634..33323	+	229	16262482	-	SMa0062	-	COG1802K	GntR family transcriptional regulator
+33453..34187	+	244	193782532	-	SMa0063	-	COG2186K	GntR family transcriptional regulator
+34190..35392	+	400	193782533	-	SMa0064	-	COG4948MR	dehydratase/enolase
+35455..36147	+	230	16262485	-	SMa0065	-	COG1802K	GntR family transcriptional regulator
+36205..37167	+	320	16262486	-	SMa0067	-	COG1879G	ABC transporter substrate-binding protein
+37353..38336	+	327	16262487	-	SMa0070	-	COG1172G	ABC transporter permease
+38333..39064	+	243	16262488	-	SMa0072	-	COG1129G	ABC transporter ATP-binding protein
+39072..39830	+	252	16262489	fabG	SMa0074	-	COG1028IQR	3-ketoacyl-ACP reductase
+39830..40717	+	295	16262490	-	SMa0077	-	COG2017G	hypothetical protein
+40959..41981	+	340	16262491	-	SMa0078	-	COG1609K	LacI family transcriptional regulator
+42106..42774	+	222	16262492	-	SMa0079	-	COG0765E	ABC transporter permease
+42785..43441	+	218	16262493	-	SMa0081	-	COG0765E	ABC transporter permease
+43471..44286	+	271	16262494	-	SMa0082	-	COG0834ET	ABC transporter substrate-binding protein
+44302..45081	+	259	16262495	-	SMa0083	-	COG1126E	ABC transporter ATP-binding protein
+45099..46052	+	317	16262496	-	SMa0085	-	COG1052CHR	dehydrogenase
+46069..46401	+	110	16262497	-	SMa0087	-	-	hypothetical protein
+46684..47100	+	138	16262498	-	SMa0089	-	COG0251J	hypothetical protein
+47225..47920	+	231	16262499	-	SMa0091	-	COG5373S	hypothetical protein
+48182..49033	+	283	16262500	-	SMa0093	-	COG0115EH	Branched-chain amino acid aminotransferase
+49084..50121	+	345	16262501	-	SMa0095	-	COG3191EQ	D-aminopeptidase
+50138..51079	-	313	16262502	-	SMa0097	-	COG0583K	LysR family transcriptional regulator
+51262..52887	+	541	16262503	-	SMa0101	-	COG1574R	amidohydrolase
+52944..54536	+	530	16262504	-	SMa0104	-	COG0747E	ABC transporter substrate-binding protein
+54624..55559	+	311	16262505	-	SMa0105	-	COG0601EP	ABC transporter permease
+55565..56386	+	273	16262506	-	SMa0106	-	COG1173EP	ABC transporter permease
+56383..57297	+	304	16262507	-	SMa0108	-	COG0444EP	ABC transporter ATP-binding protein
+57294..58256	+	320	16262508	-	SMa0110	-	COG1123R	ABC transporter ATP-binding protein
+58298..58612	+	104	193782534	-	SMa5001	-	-	hypothetical protein
+58803..59234	-	143	16262509	-	SMa0112	-	COG3791S	hypothetical protein
+59703..62264	+	853	16262510	-	SMa0113	-	COG3920T	Sensor histidine kinase
+62292..62654	+	120	16262511	-	SMa0114	-	COG0784T	two-component response regulator
+63200..64117	+	305	193782535	-	SMa0116	-	COG0484O	DnaJ/CbpA-type protein
+64114..64452	+	112	16262513	-	SMa0117	-	-	hypothetical protein
+64679..65206	+	175	16262514	-	SMa0118	-	COG2010C	hypothetical protein
+65491..65658	-	55	16262515	-	SMa0121	-	-	hypothetical protein
+65729..66112	-	127	16262516	-	SMa0123	-	-	hypothetical protein
+66192..67826	-	544	16262517	groEL	SMa0124	-	COG0459O	molecular chaperone GroEL
+67874..68191	-	105	16262518	groES	SMa0125	-	COG0234O	co-chaperonin GroES
+68805..69014	+	69	16262519	cspA8	SMa0126	-	COG1278K	CspA8 Cold shock family protein
+69135..69515	+	126	16262520	-	SMa0128	-	-	hypothetical protein
+69601..70668	+	355	16262521	-	SMa0130	-	COG3239I	fatty acid desaturase
+70668..70955	+	95	16262522	-	SMa0132	-	-	hypothetical protein
+71066..71671	-	201	16262523	-	SMa0134	-	COG3941R	hypothetical protein
+71712..72026	-	104	193782536	-	SMa5002	-	-	hypothetical protein
+72274..74286	+	670	193782537	-	SMa0136	-	COG0628R	hypothetical protein
+74378..76579	+	733	193782538	-	SMa0137	-	COG5001T	Diguanylate cyclase/phosphodiesterase
+76655..76975	-	106	16262526	-	SMa0139	-	COG3865S	hypothetical protein
+77422..78822	-	466	16262527	-	SMa0142	-	COG1404O	protease
+78965..79507	+	180	193782539	rpoE6	SMa0143	-	COG1595K	RNA polymerase ECF sigma factor
+79504..80289	+	261	16262529	-	SMa0144	-	COG5662K	hypothetical protein
+80295..80819	-	174	16262530	-	SMa0146	-	COG1399R	hypothetical protein
+80960..81673	-	237	16262531	-	SMa0148	-	-	hypothetical protein
+81858..82340	+	160	16262532	-	SMa0149	-	COG0782K	transcription elongation factor regulatory protein
+82374..83900	-	508	16262533	-	SMa0150	-	COG0318IQ	malonyl-CoA synthase
+83897..86626	-	909	193782540	-	SMa0151	-	COG1593G	hypothetical protein
+86647..87216	-	189	16262535	-	SMa0155	-	COG3090G	hypothetical protein
+87283..88287	-	334	16262536	-	SMa0157	-	COG1638G	ABC transporter substrate-binding protein
+88416..89090	+	224	16262537	-	SMa0160	-	COG1802K	GntR family transcriptional regulator
+89275..89520	-	81	193782541	-	SMa0162	-	-	hypothetical protein
+89324..90724	+	466	193782542	pilQ2	SMa0163	-	COG4964U	PilQ2 pilus assembly protein
+90721..91017	+	98	16262540	-	SMa0164	-	-	hypothetical protein
+91039..91569	+	176	16262541	-	SMa0166	-	COG5010U	hypothetical protein
+91653..92465	+	270	16262542	-	SMa0168	-	COG2226H	hypothetical protein
+92526..93311	+	261	16262543	-	SMa0169	-	COG2226H	methyltransferase
+93492..94256	-	254	16262544	-	SMa0171	-	COG1073R	hypothetical protein
+94473..95393	+	306	16262545	-	SMa0172	-	COG2326S	hypothetical protein
+95789..96871	-	360	16262546	-	SMa0175	-	COG0668M	hypothetical protein
+98400..99317	-	305	16262547	-	SMa0179	-	COG0583K	LysR family transcriptional regulator
+99435..100307	+	290	16262548	-	SMa0180	-	COG0384R	epimerase
+100505..100708	-	67	16262549	cspA7	SMa0181	-	COG1278K	CspA5 cold shock protein transcriptional regulator
+100964..102508	+	514	16262550	-	SMa0185	-	COG2814G	transmembrane-transport protein
+102649..103602	+	317	193782543	-	SMa0187	-	COG1028IQR	short chain dehydrogenase
+104028..104471	+	147	16262552	-	SMa0189	-	-	hypothetical protein
+104560..105189	+	209	16262553	-	SMa0190	-	COG1309K	transcriptional regulator
+105799..106329	-	176	16262554	-	SMa0191	-	COG3832S	hypothetical protein
+106326..106652	-	108	193782544	-	SMa0193	-	COG0640K	hypothetical protein
+106949..107863	-	304	16262556	-	SMa0196	-	COG3386G	gluconolactonase
+107878..108825	-	315	193782545	-	SMa0197	-	COG1172G	ABC transporter permease
+108822..109769	-	315	16262558	-	SMa0198	-	COG1172G	ABC transporter permease
+109766..111229	-	487	16262559	-	SMa0199	-	COG1129G	ABC transporter ATP-binding protein
+111288..112304	-	338	193782546	-	SMa0203	-	COG1879G	ABC transporter substrate-binding protein
+112578..113825	+	415	16262561	-	SMa0204	-	COG4585T	sensor histidine kinase
+113822..114544	+	240	16262562	-	SMa0206	-	COG2197TK	Response regulator
+114669..115757	+	362	16262563	-	SMa0209	-	COG5397	hypothetical protein
+115852..116118	-	88	193782547	-	SMa0210	-	-	hypothetical protein
+116261..116455	-	64	16262565	-	SMa0211	-	-	hypothetical protein
+116673..117515	-	280	193782548	kduI	SMa0214	-	COG3717G	5-keto-4-deoxyuronate isomerase
+117547..118287	-	246	16262567	-	SMa0216	-	COG1129G	ABC transporter ATP-binding protein
+118284..119363	-	359	193782549	-	SMa0217	-	COG1172G	ABC transporter permease
+119373..120323	-	316	193782550	-	SMa0218	-	COG1879G	ABC transporter substrate-binding protein
+120444..121958	-	504	16262570	-	SMa0220	-	COG1012C	NAD-dependent aldehyde dehydrogenase
+122050..122778	+	242	16262571	-	SMa0222	-	COG1802K	GntR family transcriptional regulator
+122852..123637	-	261	193782551	-	SMa0223	-	COG1309K	TetR family transcriptional regulator
+123589..125061	+	490	193782552	-	SMa0224	-	COG2211G	Permease, MFS
+125261..126253	+	330	193782553	-	SMa0226	-	COG2133G	dehydrogenase
+126420..127766	+	448	16262575	gdhA	SMa0228	-	COG0334E	glutamate dehydrogenase
+128085..128507	+	140	16262576	-	SMa0229	-	COG0782K	hypothetical protein
+128727..129278	+	183	193782554	-	SMa0232	-	COG0782K	hypothetical protein
+129300..130691	-	463	16262578	otsA	SMa0233	-	COG0380G	OtsA trehalose-6-phosphate synthase
+131106..132884	-	592	16262579	-	SMa0235	-	COG0129EG	dihydroxy-acid dehydratase
+132893..133774	-	293	16262580	-	SMa0237	-	COG2084I	dehydrogenase
+133771..134754	-	327	16262581	-	SMa0241	-	COG0451MG	epimerase
+134949..136394	+	481	16262582	-	SMa0244	-	COG0277C	Dehydrogenase, FAD-dependent
+136409..137119	+	236	193782555	-	SMa0246	-	COG2186K	GntR family transcriptional regulator
+137290..138486	+	398	16262584	-	SMa0247	-	COG3970R	hypothetical protein
+138487..139020	+	177	16262585	-	SMa0249	-	COG3090G	TRAP-type small permease component
+139020..140297	+	425	16262586	-	SMa0250	-	COG1593G	dedA-like protein
+140349..141353	+	334	16262587	-	SMa0252	-	COG1638G	TRAP-type periplasmic solute-binding protein
+141517..142197	+	226	16262588	-	SMa0254	-	COG5482S	hypothetical protein
+142327..143304	+	325	16262589	-	SMa0255	-	COG0847L	DNA polymerase III subunit epsilon
+143473..145566	-	697	16262590	-	SMa0257	-	COG1902C	methylamine
+145822..146667	-	281	16262591	-	SMa0259	-	COG0657I	hypothetical protein
+146683..148146	-	487	16262592	gabD3	SMa0260	-	COG1012C	GabD3 succinate-semialdehyde dehdyrogenase
+148163..149362	-	399	16262593	-	SMa0263	-	COG1454C	alcohol dehydrogenase
+149384..150388	-	334	16262594	-	SMa0265	-	COG2055C	dehydrogenase
+150483..151175	+	230	16262595	-	SMa0267	-	COG1802K	GntR family transcriptional regulator
+151172..152764	+	530	16262596	-	SMa0270	-	COG1129G	ABC transporter ATP-binding protein
+152730..153725	+	331	16262597	-	SMa0271	-	COG1172G	ABC transporter permease
+153755..154720	+	321	16262598	-	SMa0273	-	COG1879G	ABC transporter substrate-binding protein
+154841..155428	+	195	16262599	-	SMa0275	-	COG0693R	hypothetical protein
+155598..155948	-	116	16262600	-	SMa0277	-	COG4898S	hypothetical protein
+156190..156489	-	99	193782556	-	SMa5016	-	-	hypothetical protein
+156800..157411	-	203	16262602	-	SMa0279	-	COG2226H	hypothetical protein
+157557..158345	-	262	16262603	-	SMa0280	-	COG0695O	hypothetical protein
+158400..158804	+	134	16262604	-	SMa0281	-	COG0789K	MerR family transcriptional regulator
+159165..159389	-	74	193782557	-	SMa0285	-	-	hypothetical protein
+159590..160051	-	153	16262606	-	SMa0286	-	COG2442S	hypothetical protein
+160062..160508	-	148	16262607	-	SMa0287	-	-	hypothetical protein
+160505..161341	-	278	16262608	-	SMa0288	-	COG4711S	hypothetical protein
+161616..161984	+	122	16262609	-	SMa0291	-	-	hypothetical protein
+162273..162668	-	131	193782558	-	SMa0293	-	COG2204T	hypothetical protein
+163041..164855	-	604	16262612	-	SMa0298	-	COG0444EP	ABC transporter ATP-binding protein
+164858..165745	-	295	16262613	-	SMa0299	-	COG1173EP	ABC transporter permease
+165742..166695	-	317	16262614	-	SMa0300	-	COG0601EP	ABC transporter permease
+166692..167360	-	222	16262615	-	SMa0301	-	-	hypothetical protein
+167430..168956	-	508	16262616	-	SMa0302	-	COG0747E	ABC transporter substrate-binding protein
+169064..169942	+	292	16262617	-	SMa0303	-	COG0583K	LysR family transcriptional regulator
+170035..171675	-	546	16262618	-	SMa0306	-	COG2986E	histidine ammonia-lyase
+172016..173002	-	328	16262619	-	SMa0307	-	COG0583K	LysR family transcriptional regulator
+173063..174022	+	319	16262620	-	SMa0308	-	COG0491R	hypothetical protein
+174273..175004	-	243	16262621	-	SMa0310	-	COG0583K	hypothetical protein
+175343..175876	+	177	16262622	-	SMa0312	-	-	hypothetical protein
+175873..176124	+	83	16262623	-	SMa0314	-	-	hypothetical protein
+176207..177469	+	420	16262624	-	SMa0316	-	COG0599S	hypothetical protein
+177973..178974	+	333	16262625	-	SMa0319	-	COG4977K	AraC family transcriptional regulator
+179119..179868	+	249	16262626	-	SMa0320	-	COG4221R	short chain alcohol dehydrogenase-related dehydrogenase
+179926..180474	+	182	16262627	-	SMa0322	-	COG1853R	hypothetical protein
+180525..180809	+	94	16262628	-	SMa0323	-	COG5470S	hypothetical protein
+180910..181212	+	100	16262629	-	SMa0325	-	COG1359S	hypothetical protein
+181233..182072	+	279	16262630	-	SMa0326	-	COG4221R	short chain alcohol dehydrogenase-related dehydrogenase
+182145..182906	+	253	16262631	-	SMa0329	-	COG1028IQR	short chain alcohol dehydrogenase-related dehydrogenase
+182962..183186	-	74	193782559	-	SMa5017	-	COG2259S	hypothetical protein
+183183..183395	-	70	16262632	-	SMa0333	-	-	hypothetical protein
+183576..184352	-	258	16262633	fabG	SMa0335	-	COG1028IQR	3-ketoacyl-ACP reductase
+184339..184821	-	160	16262634	-	SMa0337	-	COG5485R	hypothetical protein
+184847..185620	-	257	16262635	-	SMa0339	-	COG1028IQR	short chain alcohol dehydrogenase-related dehydrogenase
+185692..186300	-	202	16262636	wrbA2	SMa0340	-	COG0655R	TrpR binding protein WrbA
+186524..186718	+	64	16262637	-	SMa0341	-	COG0693R	hypothetical protein
+186903..187337	-	144	16262638	-	SMa0343	-	-	hypothetical protein
+187341..187958	-	205	16262639	-	SMa0346	-	COG2249R	NAD(P)H dehydrogenase
+188006..188893	+	295	16262640	-	SMa0347	-	COG0583K	LysR family transcriptional regulator
+189202..189798	-	198	16262641	-	SMa0349	-	COG2085R	hypothetical protein
+189834..190730	-	298	16262642	-	SMa0352	-	COG1741R	hypothetical protein
+190833..191747	+	304	16262643	-	SMa0353	-	COG0583K	LysR family transcriptional regulator
+191922..192416	+	164	193782560	-	SMa0355	-	COG0583K	LysR family transcriptional regulator
+193272..193553	-	93	16262646	-	SMa0357	-	COG3153R	hypothetical protein
+193562..193807	-	81	16262647	-	SMa0359	-	COG3153R	hypothetical protein
+193804..194493	-	229	193782561	-	SMa0360	-	-	transposase
+195082..196866	+	594	16262649	-	SMa0364	-	COG1596M	hypothetical protein
+196912..197808	+	298	16262650	-	SMa0367	-	COG3637M	hypothetical protein
+197906..198172	+	88	16262651	-	SMa0369	-	COG2200T	hypothetical protein
+199105..200004	-	299	16262653	-	SMa0372	-	COG0583K	LysR family transcriptional regulator
+200116..201048	+	310	16262654	-	SMa0374	-	COG0346E	dioxygenase/lyase
+201366..202055	+	229	16262655	-	SMa0376	-	COG1335Q	hydrolase
+202120..202407	+	95	193782562	-	SMa5018	-	COG4317S	hypothetical protein
+202407..204389	+	660	16262656	-	SMa0380	-	COG1574R	hydrolase
+204550..204993	+	147	193782563	-	SMa5019	-	COG2259S	hypothetical protein
+204990..206588	+	532	16262657	-	SMa0383	-	COG2814G	hypothetical protein
+207586..208788	-	400	16262658	-	SMa0384	-	COG3328L	TRm3 transposase
+209020..210132	-	370	16262659	hisC3	SMa0387	-	COG0079E	histidinol-phosphate aminotransferase
+210263..211030	+	255	193782564	-	SMa0389	-	COG1028IQR	short chain alcohol dehydrogenase-related dehydrogenase
+211336..212469	+	377	16262661	-	SMa0391	-	COG3842E	ABC transporter ATP-binding protein
+212503..213618	+	371	16262662	-	SMa0392	-	COG0687E	ABC transporter substrate-binding protein
+213683..214627	+	314	16262663	-	SMa0394	-	COG1176E	ABC transporter permease
+214624..215424	+	266	16262664	-	SMa0396	-	COG1177E	ABC transporter permease
+215421..216791	+	456	187729962	hisD2	SMa0398	-	COG0141E	histidinol dehydrogenase
+216795..217808	+	337	16262666	-	SMa0400	-	COG1063ER	Dehydrogenase, Zn-dependent
+217871..218602	+	243	16262667	-	SMa0402	-	COG2188K	GntR family transcriptional regulator
+218550..219938	+	462	16262668	-	SMa0403	-	COG2334R	hypothetical protein
+219940..221085	+	381	16262669	-	SMa0404	-	COG1304C	FMN-dependent dehydrogenase
+221438..221725	+	95	193782565	-	SMa0405	-	COG3547L	transposase, fragment
+222078..222866	+	262	16262671	-	SMa0407	-	COG5588S	hypothetical protein
+223861..224175	-	104	193782566	-	SMa0412	-	-	hypothetical protein
+224805..226475	+	556	16262674	-	SMa0414	-	COG1793L	hypothetical protein
+226536..227393	+	285	16262675	-	SMa0417	-	COG3285L	hypothetical protein
+227425..228318	+	297	193782567	-	SMa5020	-	-	hypothetical protein
+228306..228824	+	172	16262676	-	SMa0421	-	-	hypothetical protein
+228821..229255	+	144	193782568	-	SMa5021	-	-	hypothetical protein
+229290..230330	-	346	16262677	-	SMa0424	-	COG1793L	ATP-dependent DNA ligase
+230327..231133	-	268	16262678	-	SMa0426	-	COG1273S	hypothetical protein
+231427..232443	-	338	16262679	-	SMa0429	-	COG2253S	hypothetical protein
+232436..233029	-	197	16262680	-	SMa0431	-	COG5340K	hypothetical protein
+233560..234030	+	156	16262681	-	SMa0433	-	-	hypothetical protein
+234248..234631	-	127	16262682	-	SMa0436	-	-	hypothetical protein
+236016..236381	+	121	193782569	-	SMa5022	-	COG5579S	hypothetical protein
+236378..236794	+	138	193782570	-	SMa5023	-	-	hypothetical protein
+236878..237708	-	276	193782571	-	SMa0444	-	COG2801L	TRm1b transposase
+237705..238097	-	130	16262686	-	SMa0445	-	COG2963L	TRm1a transposase
+238528..239649	+	373	16262687	-	SMa0447	-	COG0628R	hypothetical protein
+240025..240435	-	136	16262688	-	SMa0448	-	-	hypothetical protein
+240985..241272	+	95	16262689	-	SMa0450	-	-	hypothetical protein
+243155..243562	+	135	16262691	-	SMa0453	-	COG1487R	hypothetical protein
+245116..246318	+	400	16262693	-	SMa0461	-	COG3328L	TRm3 transposase
+246386..248227	-	613	16262694	-	SMa0462	-	-	hypothetical protein
+248442..251618	-	1058	16262695	cyaI2	SMa0464	-	COG3899R	guanylate cyclase
+252021..253625	+	534	16262696	-	SMa0466	-	COG0747E	ABC transporter substrate-binding protein
+253863..254879	+	338	16262697	-	SMa0467	-	COG0601EP	ABC transporter permease
+254921..255718	+	265	193782572	-	SMa0469	-	COG1173EP	ABC transporter permease
+255727..257562	+	611	193782573	-	SMa0470	-	COG4172R	ABC transporter ATP-binding protein
+258225..258533	+	102	16262700	-	SMa0471	-	COG3077L	hypothetical protein
+258530..258823	+	97	16262701	-	SMa0473	-	COG3668R	hypothetical protein
+259012..259911	+	299	16262702	-	SMa0475	-	COG3039L	TRm17a transposase
+259996..260349	+	117	16262703	-	SMa0476	-	COG3039L	TRm17b transposase
+260764..261969	-	401	16262704	-	SMa0478	-	COG1052CHR	formate dehydrogenase
+262378..262674	+	98	193782574	-	SMa5024	-	COG1475K	hypothetical protein
+263506..264432	-	308	16262707	-	SMa0483	-	COG0483G	Phosphatase
+264485..265939	-	484	16262708	thrC2	SMa0485	-	COG0498E	threonine synthase
+266004..266954	-	316	16262709	-	SMa0486	-	COG2423E	ornithine cyclodeaminase
+267102..267869	-	255	16262710	-	SMa0489	-	COG1126E	ABC transporter ATP-binding protein
+267881..268564	-	227	16262711	-	SMa0492	-	COG4160E	ABC transporter permease
+268561..269259	-	232	16262712	-	SMa0493	-	COG4215E	ABC transporter permease
+269299..270117	-	272	16262713	-	SMa0495	-	COG0834ET	ABC transporter substrate-binding protein
+270311..270979	+	222	16262714	-	SMa0496	-	COG2964S	hypothetical protein
+271057..271956	-	299	16262715	-	SMa0498	-	COG0583K	LysR family transcriptional regulator
+272059..272691	+	210	16262716	-	SMa0499	-	COG3481R	hypothetical protein
+272734..273420	+	228	16262717	-	SMa0501	-	COG0765E	ABC transporter permease
+273422..274078	+	218	16262718	-	SMa0503	-	COG0765E	ABC transporter permease
+274136..274933	+	265	16262719	-	SMa0506	-	COG0834ET	ABC transporter periplasmic substrate-binding protein
+274983..275714	+	243	16262720	-	SMa0508	-	COG1126E	ABC transporter ATP-binding protein
+275787..276734	+	315	16262721	-	SMa0510	-	COG1052CHR	D-isomer specific 2-hydroxyacid dehydrogenase
+276745..277776	+	343	16262722	idnD	SMa0512	-	COG1063ER	IdnD L-idonate 5-dehydrogenase
+277846..278601	+	251	16262723	idnO1	SMa0513	-	COG1028IQR	gluconate 5-dehydrogenase
+278603..279121	+	172	16262724	idnK	SMa0514	-	COG3265G	gluconate kinase
+279118..280005	+	295	16262725	-	SMa0516	-	COG2084I	hypothetical protein
+280002..280334	+	110	16262726	-	SMa0518	-	-	hypothetical protein
+280693..281535	+	280	16262727	-	SMa0520	-	COG1737K	RpiR family transcriptional regulator
+281664..282392	+	242	16262728	-	SMa0522	-	COG1840P	ABC transporter substrate-binding protein
+282373..282777	+	134	16262729	-	SMa0523	-	COG1840P	ABC transporter substrate-binding protein
+282774..284579	+	601	16262730	-	SMa0525	-	COG1178P	ABC transporter permease
+284576..285622	+	348	16262731	-	SMa0526	-	COG3839G	maltose/trehalose ABC transporter
+285619..286218	+	199	16262732	-	SMa0527	-	COG0406G	phosphatase
+286919..287350	-	143	193782575	-	SMa5025	-	COG2226H	hypothetical protein
+287402..287641	-	79	193782576	-	SMa0535	-	COG1522K	hypothetical protein
+287923..288336	+	137	16262734	-	SMa0537	-	COG4319S	hypothetical protein
+288341..288703	+	120	16262735	-	SMa0538	-	-	hypothetical protein
+289833..290228	+	131	193782577	-	SMa0541	-	-	hypothetical protein
+290367..290957	+	196	16262737	-	SMa0543	-	-	hypothetical protein
+291198..291638	-	146	16262738	-	SMa0545	-	COG4113R	hypothetical protein
+291638..291877	-	79	16262739	-	SMa0548	-	COG4691R	hypothetical protein
+292217..293509	+	430	193782578	-	SMa0551	-	COG0402FR	N-ethylammeline chlorohydrolase
+293602..294093	+	163	193782579	-	SMa0552	-	COG0044F	cyclic amidohydrolase
+294071..294868	+	265	16262742	-	SMa0554	-	-	hypothetical protein
+295587..296474	-	295	16262743	-	SMa0557	-	COG0583K	LysR family transcriptional regulator
+296598..296990	+	130	193782580	-	SMa0558	-	COG1359S	hypothetical protein
+297048..297791	+	247	193782581	-	SMa0559	-	COG0599S	4-carboxymuconolactone decarboxylase
+297935..298318	+	127	16262746	-	SMa0561	-	COG4334S	hypothetical protein
+298329..299318	+	329	16262747	-	SMa0563	-	COG0667C	aldehyde or keto oxidase
+299384..300487	+	367	193782582	-	SMa0564	-	COG2133G	dehydrogenase
+300571..301050	+	159	193782583	-	SMa5026	-	COG1917S	hypothetical protein
+301204..301761	+	185	16262750	-	SMa0567	-	COG0365I	hypothetical protein
+301877..303766	-	629	16262751	cyaF4	SMa0570	-	COG5616S	CyaF4 adenylate cyclase
+304557..304880	+	107	16262752	-	SMa0572	-	COG3668R	hypothetical protein
+305128..305841	-	237	193782584	-	SMa0574	-	COG3246S	hypothetical protein
+305892..306179	+	95	193782585	-	SMa0575	-	-	hypothetical protein
+306248..307339	+	363	16262755	-	SMa0576	-	COG0683E	Leu or Leu/Val/Ile transport binding protein
+307530..309989	+	819	193782586	cyaN	SMa0579	-	COG2114T	guanylate cyclase
+310425..311225	-	266	16262758	nrtC	SMa0581	-	COG1116P	nitrate ABC transporter ATP-binding protein
+311239..312132	-	297	16262759	nrtB	SMa0583	-	COG0600P	nitrate ABC transporter permease
+312195..313487	-	430	16262760	nrtA	SMa0585	-	COG0715P	nitrate ABC transporter substrate-binding protein
+314305..314763	+	152	16262761	-	SMa0590	-	-	hypothetical protein
+314792..314986	+	64	16262762	-	SMa0591	-	-	transposase, fragment
+315280..316452	+	390	16262763	-	SMa0592	-	COG3550R	hypothetical protein
+316428..317459	+	343	16262764	-	SMa0594	-	COG3620K	hypothetical protein
+318078..319409	-	443	193782587	-	SMa0599	-	COG4782S	hypothetical protein
+319553..321799	-	748	193782588	-	SMa0601	-	COG5616S	hypothetical protein
+322421..323233	+	270	193782589	-	SMa0604	-	COG3900S	hypothetical protein
+323230..323565	+	111	16262769	-	SMa0606	-	-	hypothetical protein
+323618..325168	+	516	16262770	-	SMa0607	-	COG5361S	hypothetical protein
+325226..325801	+	191	16262771	-	SMa0609	-	COG5361S	hypothetical protein
+325807..326667	+	286	16262772	-	SMa0610	-	COG5361S	hypothetical protein
+326972..328627	+	551	16262773	fixN3	SMa0612	-	COG3278O	cbb3-type cytochrome c oxidase subunit I
+328632..329384	+	250	16262774	fixO3	SMa0615	-	COG2993C	cbb3-type cytochrome c oxidase subunit II
+329407..329577	+	56	16262775	fixQ3	SMa0616	-	COG4736O	FixQ3 nitrogen fixation protein
+329568..330449	+	293	16262776	fixP3	SMa0617	-	COG2010C	FixP3 Diheme c-type cytochrome
+330668..331474	+	268	16262777	-	SMa0620	-	COG5473S	hypothetical protein
+331477..333744	+	755	16262778	fixI2	SMa0621	-	COG2217P	FixI2 E1-E2 type cation ATPase
+333741..334001	+	86	16262779	fixS2	SMa0622	-	COG3197P	FixS2 nitrogen fixation protein
+334433..334594	+	53	16262780	-	SMa0625	-	-	hypothetical protein
+335117..336379	+	420	16262781	-	SMa0626	-	COG3900S	hypothetical protein
+336766..337464	+	232	16262782	aqpZ2	SMa0627	-	COG0580G	aquaporin Z
+337732..338109	-	125	16262783	-	SMa0629	-	-	hypothetical protein
+338133..339704	-	523	16262784	-	SMa0630	-	COG0668M	hypothetical protein
+339652..340218	-	188	16262785	-	SMa0631	-	-	hypothetical protein
+340397..340783	-	128	16262786	-	SMa0633	-	-	hypothetical protein
+341499..342152	+	217	16262787	-	SMa0636	-	COG2905T	hypothetical protein
+342592..342981	+	129	16262788	-	SMa0637	-	COG3336S	hypothetical protein
+342978..343235	+	85	16262789	-	SMa0638	-	-	hypothetical protein
+343640..344044	+	134	16262790	-	SMa0639	-	-	hypothetical protein
+344135..344554	+	139	16262791	-	SMa0640	-	-	hypothetical protein
+345407..345667	+	86	16262792	-	SMa0643	-	COG3464L	transposase
+345684..345992	+	102	16262793	-	SMa0645	-	-	hypothetical protein
+346110..346361	+	83	16262794	-	SMa0647	-	-	hypothetical protein
+346342..346659	+	105	193782590	-	SMa0649	-	-	hypothetical protein
+347249..347851	-	200	193782591	-	SMa5027	-	-	hypothetical protein
+348248..349249	-	333	16262797	-	SMa0656	-	COG2826L	TRm24 transposase
+349400..349597	+	65	16262798	-	SMa0657	-	COG3005C	cytochrome c binding protein, amino terminus
+349623..350021	+	132	16262799	-	SMa0659	-	COG3005C	cytochrome c binding protein, carboxyl terminus
+350388..350867	+	159	16262800	-	SMa0661	-	-	hypothetical protein
+350925..351560	-	211	16262801	fixK	SMa0662	-	COG0664T	transcriptional regulator FixK
+351675..351944	-	89	16262802	-	SMa0663	-	-	hypothetical protein
+352085..353842	+	585	16262803	-	SMa0664	-	COG5616S	hypothetical protein
+353876..355030	-	384	193782592	-	SMa0665	-	COG0628R	hypothetical protein
+355528..356016	+	162	16262805	-	SMa0667	-	-	hypothetical protein
+356020..357249	+	409	16262806	-	SMa0669	-	COG1566V	hemolysin D
+357359..358213	+	284	16262807	-	SMa0670	-	COG2326S	regulatory protein
+358810..360012	+	400	16262808	-	SMa0673	-	COG3328L	TRm3 transposase
+360005..360349	-	114	16262809	-	SMa0674	-	-	hypothetical protein
+360346..361491	-	381	193782593	-	SMa0675	-	COG0387P	Ca2+/H+ antiporter
+361696..362637	-	313	193782594	-	SMa0677	-	COG0834ET	ABC transporter substrate-binding protein
+362667..364025	-	452	16262812	potE	SMa0678	-	COG0531E	putrescine transporter
+364053..366401	-	782	16262813	-	SMa0680	-	COG1982E	amino acid (ornithine, lysine, arginine) decarboxylase
+366403..368673	-	756	193782595	-	SMa0682	-	COG1982E	decarboxylase (lysine, ornithine, arginine)
+368879..369805	-	308	193782596	-	SMa0683	-	COG3965P	Cation efflux protein
+369951..371276	-	441	16262816	-	SMa0684	-	COG0531E	transport protein
+371790..372296	-	168	193782597	-	SMa0687	-	-	hypothetical protein
+372485..373435	-	316	16262818	-	SMa0689	-	-	hypothetical protein
+373456..374856	-	466	16262819	-	SMa0690	-	COG4371S	hypothetical protein
+375708..376937	+	409	16262820	arcA1	SMa0693	-	COG2235E	arginine deiminase
+376973..377977	+	334	16262821	arcB	SMa0695	-	COG0078E	ornithine carbamoyltransferase
+377980..378954	+	324	16262822	arcC	SMa0697	-	COG0549E	carbamate kinase
+379173..379643	+	156	16262823	-	SMa0699	-	-	hypothetical protein
+380049..380483	+	144	16262824	-	SMa0702	-	-	hypothetical protein
+380966..381907	-	313	193782598	dgoK2	SMa0705	-	COG3734G	DgoK2 2-dehydro-3-deoxygalactonokinase
+381959..382921	+	320	16262826	-	SMa0707	-	COG0329EM	dihydrodipicolinate synthase
+382918..384087	+	389	16262827	-	SMa0708	-	COG4948MR	enolase
+384120..385385	+	421	16262828	-	SMa0709	-	COG1653G	ABC transporter substrate-binding protein
+385360..386373	+	337	193782599	-	SMa0710	-	COG1175G	ABC transporter permease
+386385..387215	+	276	16262830	-	SMa0711	-	COG0395G	ABC transporter permease
+387217..387810	+	197	16262831	-	SMa0713	-	COG3839G	ABC transporter ATP-binding protein
+387807..388304	+	165	16262832	-	SMa0714	-	COG3839G	ABC transporter ATP-binding protein
+388306..389286	+	326	16262833	-	SMa0715	-	COG0451MG	Nucleoside-diphosphate-sugar epimerase
+389265..390974	+	569	16262834	-	SMa0717	-	COG3386G	hypothetical protein
+391032..391751	+	239	16262835	-	SMa0719	-	COG1028IQR	short-chain alcohol dehydrogenase
+391850..392461	+	203	16262836	-	SMa0722	-	COG2963L	transposase
+392499..393287	+	262	16262837	-	SMa0723	-	COG0346E	hypothetical protein
+393877..394269	+	130	193782600	-	SMa0726	-	COG2388R	hypothetical protein
+394691..394891	+	66	16262840	-	SMa0728	-	-	hypothetical protein
+395232..395579	+	115	16262841	-	SMa0731	-	COG5556S	hypothetical protein
+395775..396098	+	107	16262842	-	SMa0734	-	-	hypothetical protein
+396113..396385	+	90	16262843	-	SMa0736	-	-	hypothetical protein
+396650..396853	-	67	16262844	cspA6	SMa0738	-	COG1278K	CspA6 cold shock protein transcriptional regulator
+396954..397382	-	142	16262845	-	SMa0739	-	-	hypothetical protein
+397665..398045	+	126	16262846	-	SMa0740	-	-	hypothetical protein
+398183..398623	-	146	16262847	-	SMa0742	-	-	hypothetical protein
+399043..400680	-	545	16262848	groEL	SMa0744	-	COG0459O	molecular chaperone GroEL
+400756..401052	-	98	16262849	groES	SMa0745	-	COG0234O	co-chaperonin GroES
+401607..401768	+	53	16262850	-	SMa0747	-	-	hypothetical protein
+402138..402587	+	149	193782601	-	SMa0748	-	COG4957	MucR family transcriptional regulator
+402820..403107	-	95	193782602	-	SMa5003	-	-	hypothetical protein
+403178..404056	-	292	16262852	-	SMa0750	-	COG0583K	LysR family transcriptional regulator
+404204..405442	+	412	16262853	-	SMa0751	-	COG4638PR	Ring-hydroxylating dioxygenase
+405447..406508	+	353	16262854	-	SMa0752	-	COG1018C	dioxygenase reductase subunit
+406804..407496	+	230	16262855	-	SMa0753	-	COG1853R	hypothetical protein
+407780..408106	+	108	16262856	-	SMa0754	-	-	hypothetical protein
+409254..410186	+	310	16262857	nodD2	SMa0757	-	COG0583K	NodD2 nod box-dependent transcription activator
+411107..411682	+	191	193782603	-	SMa0758	-	COG1853R	hypothetical protein
+411913..412314	+	133	16262859	-	SMa0759	-	COG4566T	hypothetical protein
+412363..412710	+	115	16262860	fixT2	SMa0760	-	COG2204T	FixT2 anti-kinase
+412790..413425	+	211	16262861	fixK	SMa0762	-	COG0664T	transcriptional regulator FixK
+413437..414084	+	215	16262862	-	SMa0763	-	COG3467R	hypothetical protein
+414187..415806	+	539	16262863	fixN2	SMa0765	-	COG3278O	cbb3-type cytochrome c oxidase subunit I
+415818..416549	+	243	16262864	fixO2	SMa0766	-	COG2993C	cbb3-type cytochrome c oxidase subunit II
+416561..416713	+	50	16262865	fixQ2	SMa0767	-	COG4736O	FixQ2 nitrogen fixation protein
+416717..417580	+	287	16262866	fixP2	SMa0769	-	COG2010C	FixP2 Diheme c-type cytochrome
+417769..418242	+	157	16262867	-	SMa0771	-	-	hypothetical protein
+418345..418896	+	183	16262868	nodL	SMa0772	-	COG0110R	NodL Nod factor acetyltransferase
+419284..420714	+	476	16262869	noeA	SMa0773	-	COG2264J	NoeA host specific nodulation protein
+420721..422382	+	553	16262870	noeB	SMa0774	-	-	NoeB host specific nodulation protein
+422708..423034	-	108	16262871	-	SMa0775	-	-	hypothetical protein
+423440..424177	-	245	16262872	-	SMa0776	-	COG1484L	TRm23b IS ATP-binding protein
+424190..425086	-	298	16262873	-	SMa0779	-	COG4584L	hypothetical protein
+424904..425281	+	125	193782604	-	SMa5028	-	-	hypothetical protein
+425462..425911	+	149	16262874	-	SMa0781	-	-	hypothetical protein
+425934..426203	+	89	16262875	-	SMa0783	-	-	hypothetical protein
+426193..428277	+	694	16262876	-	SMa0785	-	COG1961L	Recombinase
+428239..429057	-	272	16262877	-	SMa0787	-	COG4584L	transposase, fragment
+429441..430136	+	231	193782605	-	SMa0789	-	COG1802K	GntR family transcriptional regulator
+430599..431201	+	200	16262880	-	SMa0791	-	-	hypothetical protein
+431220..432053	+	277	16262881	-	SMa0792	-	COG0596R	hypothetical protein
+432050..432985	+	311	193782606	-	SMa0793	-	COG1853R	hypothetical protein
+432982..434022	+	346	16262883	-	SMa0794	-	COG2141C	Monoxygenase
+434028..435491	+	487	16262884	-	SMa0796	-	COG1012C	hypothetical protein
+435497..435823	+	108	16262885	-	SMa0797	-	-	hypothetical protein
+435861..436871	+	336	193782607	-	SMa0799	-	COG0687E	ABC transporter substrate-binding protein
+436964..437839	+	291	16262887	-	SMa0800	-	COG1176E	ABC transporter permease
+437841..438641	+	266	16262888	-	SMa0802	-	COG1177E	ABC transporter permease
+438638..439717	+	359	16262889	-	SMa0803	-	COG3842E	ABC transporter ATP-binding protein
+439799..441271	+	490	16262890	gabD4	SMa0805	-	COG1012C	GabD4 succinate-semialdehyde dehdyrogenase
+441631..442086	+	151	16262891	syrB3	SMa0806	-	COG1792M	SyrB-like regulator
+442329..442967	+	212	193782608	-	SMa0809	-	-	hypothetical protein
+443587..443793	-	68	16262893	fixU	SMa0810	-	COG5554Q	nitrogen fixation protein FixU
+443981..444175	-	64	16262894	fdxN	SMa0811	-	COG4231C	FdxN ferredoxin
+444206..445678	-	490	16262895	nifB	SMa0814	-	COG0535R	NifB FeMo cofactor biosynthesis protein
+445895..447520	-	541	193782609	nifA	SMa0815	-	COG3604KT	Fis family transcriptional regulator
+447740..448036	-	98	16262897	fixX	SMa0816	-	COG2440C	FixX ferredoxin-like protein
+448049..449356	-	435	16262898	fixC	SMa0817	-	COG0644C	oxidoreductase FixC
+449368..450429	-	353	16262899	fixB	SMa0819	-	COG2025C	FixB electron transfer flavoprotein alpha chain
+450461..451339	-	292	16262900	fixA	SMa0822	-	COG2086C	FixA electron transfer flavoprotein beta chain
+452858..453325	+	155	16262901	-	SMa0824	-	COG1508K	hypothetical protein
+453556..454449	+	297	16262902	nifH	SMa0825	-	COG1348P	nitrogenase reductase
+454549..456051	+	500	16262903	nifD	SMa0827	-	COG2710C	NifD nitrogenase molybdenum-iron protein alpha chain
+456142..457683	+	513	16262904	nifK	SMa0829	-	COG2710C	NifK nitrogenase molybdenum-iron protein beta chain
+457737..459167	+	476	16262905	nifE	SMa0830	-	COG2710C	nitrogenase molybdenum-cofactor biosynthesis protein NifE
+459663..460163	+	166	16262906	nifX	SMa0831	-	COG1433S	NifX iron-molybdenum cluster-binding protein
+460706..460846	+	46	16262907	-	SMa0833	-	COG5420S	hypothetical protein
+460843..461160	+	105	16262908	fdxB	SMa0834	-	COG4656C	FdxB ferredoxin III
+461132..461632	+	166	193782610	-	SMa5036	-	-	hypothetical protein
+461770..462060	+	96	16262909	orf10.5	SMa0835	-	-	hypothetical protein
+462211..462456	+	81	16262910	syrA	SMa0838	-	-	SyrA protein involved in EPS production
+462751..463692	-	313	16262911	nodD3	SMa0840	-	COG0583K	NodD3 nod box-dependent transcriptional activator
+464353..464802	+	149	16262912	-	SMa0841	-	-	transposase, fragment
+464811..465101	+	96	193782611	-	SMa5004	-	-	transposase, fragment
+465166..465342	+	58	193782612	-	SMa5029	-	-	transposase, fragment
+465363..465620	+	85	16262913	-	SMa0846	-	-	transposase, fragment
+465944..466360	+	138	16262914	-	SMa0848	-	-	hypothetical protein
+466418..467398	+	326	16262915	syrM	SMa0849	-	COG0583K	SyrM transcriptional regulator
+467700..468065	-	121	16262916	-	SMa0850	-	-	hypothetical protein
+468199..468942	-	247	16262917	nodH	SMa0851	-	COG4424S	NodH sulfotransferase
+469631..469912	+	93	16262918	nodF	SMa0852	-	COG0236IQ	acyl carrier protein
+469913..471121	+	402	16262919	nodE	SMa0853	-	COG0304IQ	3-ketoacyl-ACP synthase
+471615..472352	+	245	16262920	nodG	SMa0854	-	COG1028IQR	3-ketoacyl-ACP reductase
+472764..473663	+	299	16262921	nodP1	SMa0855	-	COG0175EH	sulfate adenylyltransferase subunit 2
+473663..475588	+	641	16262922	nodQ1	SMa0857	-	COG2895P	bifunctional sulfate adenylyltransferase subunit 1/adenylylsulfate kinase
+475959..476840	+	293	193782613	-	SMa0861	-	COG3436L	transposase, fragment
+477142..477930	-	262	16262924	nodJ	SMa0863	-	COG0842V	NodJ ABC transporter permease
+477934..479001	-	355	16262925	nodI	SMa0864	-	COG1131V	nodulation factor exporter subunit NodI
+479009..480289	-	426	16262926	nodC	SMa0866	-	COG1215M	NodC N-acetylglucosaminyltransferase
+480304..480957	-	217	16262927	nodB	SMa0868	-	COG0726G	NodB chitooligosaccharide deacetylase
+480954..481544	-	196	16262928	nodA	SMa0869	-	-	acyltransferase
+481810..482736	+	308	16262929	nodD1	SMa0870	-	COG0583K	NodD1 nod-box dependent transcriptional activator
+483424..483756	+	110	16262930	orf110	SMa0872	-	-	hypothetical protein
+483756..485081	+	441	16262931	nifN	SMa0873	-	COG2710C	nitrogenase molybdenum-cofactor biosynthesis protein NifN
+485169..485654	-	161	16262932	nodN	SMa0874	-	COG2030I	NodN dehydratase
+485661..488858	-	1065	16262933	nolG	SMa0875	-	COG0841V	NolG efflux transporter
+488862..489965	-	367	16262934	nolF	SMa0876	-	COG0845M	NolF secretion protein
+490023..491849	-	608	16262935	nodM	SMa0878	-	COG0449M	glucosamine--fructose-6-phosphate aminotransferase
+492523..493113	-	196	16262936	-	SMa0882	-	COG2135S	hypothetical protein
+493138..493668	+	176	16262937	-	SMa0883	-	COG2135S	hypothetical protein
+493801..494535	-	244	16262938	-	SMa0886	-	COG0389L	hypothetical protein
+494139..494702	-	187	193782614	-	SMa5005	-	COG0389L	hypothetical protein
+494568..495134	+	188	16262939	-	SMa0887	-	-	hypothetical protein
+495196..496014	+	272	193782615	-	SMa0888	-	COG4544	hypothetical protein
+495968..497392	+	474	16262941	-	SMa0890	-	COG0389L	hypothetical protein
+497392..500655	+	1087	16262942	dnaE3	SMa0892	-	COG0587L	DnaE3 DNA polymerase III alpha chain
+500772..501068	+	98	16262943	-	SMa0894	-	-	hypothetical protein
+501235..501954	+	239	16262944	-	SMa0896	-	-	hypothetical protein
+502545..503021	+	158	16262945	-	SMa0900	-	-	anti-restriction protein
+503167..504357	+	396	193782616	-	SMa0903	-	-	hypothetical protein
+504447..504848	+	133	16262947	-	SMa0905	-	-	hypothetical protein
+504976..506214	-	412	16262948	-	SMa0907	-	-	hypothetical protein
+506549..507442	+	297	16262949	-	SMa0909	-	-	hypothetical protein
+507448..508479	+	343	193782617	-	SMa0911	-	-	hypothetical protein
+508807..509748	+	313	16262951	-	SMa0914	-	-	hypothetical protein
+509885..510211	+	108	16262952	-	SMa0917	-	-	hypothetical protein
+510778..511137	+	119	193782618	-	SMa5006	-	COG3744S	hypothetical protein
+511757..512080	+	107	193782619	-	SMa0922	-	COG5489S	hypothetical protein
+513088..515007	-	639	16262955	traG	SMa0929	-	COG3505U	conjugal transfer protein TraG
+514998..515237	-	79	16262956	traD	SMa0930	-	-	TraD conjugal transfer protein
+515227..515514	-	95	16262957	traC	SMa0933	-	-	TraC conjugal transfer protein
+515693..520312	+	1539	16262958	traA1	SMa0934	-	COG0507L	TraA1 conjugal transfer protein
+520761..522920	-	719	16262959	-	SMa0937	-	COG0668M	hypothetical protein
+523213..525114	+	633	16262960	-	SMa0939	-	COG4191T	sensor histidine kinase of two-component system
+525119..525733	+	204	193782620	-	SMa0940	-	COG4566T	Response regulator
+525854..526237	+	127	193782621	-	SMa0941	-	COG4566T	hypothetical protein
+526469..528106	+	545	16262963	-	SMa0943	-	COG3119P	arylsulfatase
+528169..528744	+	191	16262964	-	SMa0945	-	-	hypothetical protein
+529150..529464	+	104	16262965	-	SMa0947	-	-	hypothetical protein
+529782..530855	-	357	16262966	-	SMa0950	-	COG0687E	ABC transporter substrate-binding protein
+530886..531749	-	287	16262967	-	SMa0951	-	COG1177E	ABC transporter permease
+531739..532629	-	296	16262968	-	SMa0952	-	COG1176E	ABC transporter permease
+532626..533744	-	372	16262969	-	SMa0953	-	COG3842E	ABC transporter ATP-binding protein
+534018..534710	+	230	16262970	atrA	SMa0955	-	COG1802K	GntR family transcriptional regulator
+534818..536179	+	453	16262971	atrB	SMa0956	-	COG0001H	AtrB glutamate-1-semialdehyde 2,1-aminomutase
+536176..537888	+	570	16262972	atrC	SMa0958	-	COG0028EH	acetolactate synthase catalytic subunit
+537885..538661	+	258	16262973	fabG	SMa0959	-	COG1028IQR	3-ketoacyl-ACP reductase
+538682..539404	+	240	16262974	-	SMa0961	-	COG0745TK	Response regulator
+539452..539682	-	76	16262975	-	SMa0964	-	-	hypothetical protein
+539831..540751	-	306	193782622	-	SMa0967	-	COG1708R	hypothetical protein
+540997..541746	+	249	16262977	-	SMa0969	-	COG0745TK	Response regulator
+541929..543182	+	417	16262978	-	SMa0972	-	COG0156H	hypothetical protein
+543237..543596	+	119	16262979	-	SMa0974	-	-	hypothetical protein
+543828..544616	-	262	16262980	-	SMa0976	-	COG3328L	TRm3 transposase
+544943..545944	-	333	16262981	-	SMa0977	-	COG2826L	TRm24 transposase
+546465..546884	-	139	16262982	ntrR2	SMa0981	-	COG1487R	NtrR2 transcription regulator
+547033..547404	-	123	16262983	-	SMa0983	-	-	hypothetical protein
+547525..548370	-	281	193782623	-	SMa0985	-	COG0583K	LysR family transcriptional regulator
+548397..548690	-	97	16262985	-	SMa0988	-	-	hypothetical protein
+549348..549827	+	159	16262986	-	SMa0990	-	-	hypothetical protein
+549895..550287	+	130	16262987	-	SMa0992	-	-	hypothetical protein
+550344..550724	-	126	193782624	-	SMa5007	-	COG5499K	transcriptional regulator
+551249..552481	-	410	16262989	-	SMa0995	-	COG3328L	TRm5 transposase
+553196..553492	+	98	16262990	-	SMa0997	-	COG3328L	transposase, fragment
+553516..554085	+	189	16262991	-	SMa0998	-	COG3328L	ISRm25b transposase
+554434..555633	+	399	193782625	-	SMa1001	-	COG3920T	hypothetical protein
+555788..556162	+	124	16262993	-	SMa1002	-	-	hypothetical protein
+556399..556761	-	120	16262994	-	SMa1004	-	-	hypothetical protein
+556840..557640	+	266	16262995	-	SMa1005	-	-	hypothetical protein
+557826..558254	+	142	16262996	-	SMa1007	-	COG2132Q	copper protein
+558537..558992	-	151	193782626	-	SMa1008	-	COG3019R	hypothetical protein
+559107..559328	+	73	193782627	-	SMa1009	-	COG2608P	Heavy metal binding protein
+559459..559965	-	168	16262999	-	SMa1010	-	-	hypothetical protein
+560008..560433	+	141	16263000	-	SMa1011	-	COG0664T	hypothetical protein
+560686..563166	+	826	16263001	actP	SMa1013	-	COG2217P	ATPase P
+563252..563668	+	138	16263002	hmrR	SMa1014	-	COG0789K	HmrR
+563673..564947	-	424	16263003	-	SMa1016	-	COG1835I	acyltransferase
+565090..565296	+	68	16263004	-	SMa1017	-	-	hypothetical protein
+565293..565655	+	120	16263005	-	SMa1018	-	-	hypothetical protein
+565836..566402	-	188	193782628	-	SMa1021	-	COG3909C	hypothetical protein
+566897..567319	-	140	193782629	-	SMa1024	-	COG3544S	hypothetical protein
+567768..567962	-	64	16263009	-	SMa1028	-	COG1238S	hypothetical protein
+568081..568911	-	276	16263010	-	SMa1029	-	COG2801L	TRm1b transposase
+568908..569279	-	123	16263011	-	SMa1030	-	COG2963L	TRm1a transposase
+569367..569612	-	81	16263012	-	SMa1032	-	COG1238S	hypothetical protein
+569810..570190	+	126	16263013	-	SMa1033	-	-	hypothetical protein
+570243..570512	+	89	16263014	-	SMa1036	-	-	hypothetical protein
+570509..571975	+	488	16263015	-	SMa1037	-	COG1538MU	hypothetical protein
+571990..573339	+	449	16263016	-	SMa1038	-	COG2132Q	copper-containing oxidase
+573346..573858	+	170	16263017	-	SMa1041	-	COG4454P	copper oxidase
+573878..574162	+	94	16263018	-	SMa1043	-	COG5569S	hypothetical protein
+574255..574542	+	95	16263019	-	SMa1045	-	-	hypothetical protein
+574539..575606	+	355	16263020	cyaE2	SMa1046	-	COG2114T	adenylate cyclase
+576097..576642	-	181	16263021	-	SMa1050	-	COG0730R	hypothetical protein
+576639..577070	-	143	16263022	-	SMa1052	-	COG2391R	hypothetical protein
+577067..577477	-	136	16263023	-	SMa1053	-	COG2391R	hypothetical protein
+577474..577821	-	115	16263024	-	SMa1056	-	COG0640K	transcriptional regulator
+577812..579110	-	432	16263025	-	SMa1057	-	COG3453S	hypothetical protein
+579232..579684	+	150	193782630	-	SMa1058	-	-	hypothetical protein
+579986..581353	-	455	193782631	-	SMa1060	-	COG5361S	hypothetical protein
+581350..582180	-	276	193782632	-	SMa1062	-	COG5361S	hypothetical protein
+582116..582367	-	83	193782633	-	SMa1063	-	-	hypothetical protein
+582419..583207	-	262	16263030	-	SMa1065	-	-	hypothetical protein
+583446..584192	+	248	16263031	-	SMa1067	-	COG0664T	transcriptional regulator
+584979..586571	+	530	16263032	-	SMa1070	-	COG4584L	TRm23a transposase
+586541..587278	+	245	16263033	-	SMa1073	-	COG1484L	TRm23b IS ATP-binding protein
+587855..588439	-	194	193782634	-	SMa1076	-	COG1396K	hypothetical protein
+588601..589083	+	160	16263035	nex18	SMa1077	-	COG2335M	Nex18 symbiotically induced protein
+589113..589337	+	74	16263036	-	SMa1078	-	COG2155S	hypothetical protein
+589343..589885	+	180	16263037	tspO	SMa1079	-	COG3476T	TspO/MBR family protein
+589907..590068	+	53	16263038	-	SMa1081	-	-	hypothetical protein
+590350..590970	-	206	193782635	-	SMa1082	-	-	hypothetical protein
+591065..593440	-	791	16263040	-	SMa1084	-	COG3957G	phosphoketolase
+593620..594294	-	224	16263041	-	SMa1086	-	COG3448T	hypothetical protein
+594396..596597	+	733	16263042	-	SMa1087	-	COG2217P	cation transport P-type ATPase
+596594..596797	+	67	16263043	-	SMa1089	-	-	hypothetical protein
+596794..597297	+	167	16263044	-	SMa1091	-	-	hypothetical protein
+597521..598030	-	169	16263045	-	SMa1092	-	-	hypothetical protein
+598284..598616	+	110	193782636	-	SMa1093	-	-	hypothetical protein
+598804..599112	+	102	16263047	-	SMa1095	-	COG0589T	hypothetical protein
+599155..599616	+	153	16263048	-	SMa1096	-	COG2095U	hypothetical protein
+599529..600044	-	171	16263049	-	SMa1097	-	COG1914P	hypothetical protein
+600212..600526	+	104	16263050	cycB1	SMa1099	-	-	CycB1 cytochrome c-552 precursor
+600897..601418	+	173	193782637	-	SMa1100	-	COG0589T	hypothetical protein
+601408..601827	+	139	16263052	-	SMa1101	-	-	hypothetical protein
+601805..603559	+	584	16263053	cyaP	SMa1103	-	COG2114T	adenylate cyclase
+604238..604468	-	76	16263054	-	SMa1104	-	COG2010C	hypothetical protein
+604938..605630	+	230	16263055	-	SMa1111	-	-	hypothetical protein
+606021..606329	-	102	16263056	-	SMa1113	-	-	hypothetical protein
+606562..607890	+	442	193782638	-	SMa1115	-	COG1914P	Mn2+/Fe2+ transporter NRAMP family
+608683..609210	+	175	16263058	hspC2	SMa1118	-	COG0071O	HspC2 heat shock protein
+609267..610181	+	304	16263059	-	SMa1120	-	COG1136V	ABC transporter ATP-binding protein
+610188..612551	+	787	16263060	-	SMa1122	-	COG4591M	permease
+612555..613754	+	399	16263061	-	SMa1124	-	COG1566V	hypothetical protein
+613774..614892	-	372	16263062	-	SMa1126	-	COG1994R	Protease
+614946..616274	-	442	193782639	degP4	SMa1128	-	COG0265O	DegP4 protease like protein
+616469..618064	-	531	16263064	-	SMa1131	-	COG1236J	Metallo-beta-lactamase superfamily protein
+618493..618882	+	129	16263065	-	SMa1132	-	-	hypothetical protein
+618930..619556	+	208	16263066	-	SMa1134	-	-	hypothetical protein
+619852..620313	+	153	16263067	-	SMa1136	-	-	hypothetical protein
+620365..620856	-	163	16263068	-	SMa1138	-	COG0745TK	hypothetical protein
+620850..621116	-	88	16263069	-	SMa1139	-	COG0745TK	hypothetical protein
+621245..622009	+	254	16263070	-	SMa1141	-	COG0664T	FNR/CRP family transcriptional regulator
+622009..623595	+	528	16263071	-	SMa1142	-	COG0642T	FixL-related histidine kinase
+623735..626434	+	899	16263072	-	SMa1146	-	COG1042C	hypothetical protein
+626512..627336	+	274	16263073	-	SMa1147	-	COG0589T	hypothetical protein
+627474..628307	+	277	16263074	-	SMa1149	-	COG0589T	hypothetical protein
+628366..628821	-	151	16263075	-	SMa1151	-	COG3467R	hypothetical protein
+628967..629641	+	224	16263076	-	SMa1153	-	COG2823R	hypothetical protein
+629734..630129	+	131	16263077	-	SMa1154	-	-	hypothetical protein
+630205..632907	+	900	16263078	-	SMa1155	-	COG0474P	cation transport P-type ATPase
+632973..634046	-	357	16263079	-	SMa1156	-	COG1063ER	alcohol dehydrogenase
+634156..634998	-	280	193782640	-	SMa1158	-	COG0589T	hypothetical protein
+635179..635622	-	147	16263081	-	SMa1159	-	COG3174S	hypothetical protein
+635570..636151	-	193	16263082	-	SMa1160	-	COG3174S	hypothetical protein
+636148..636429	-	93	16263083	-	SMa1161	-	COG3174S	hypothetical protein
+636581..637258	-	225	193782641	-	SMa1162	-	COG3619S	hypothetical protein
+637388..639787	+	799	193782642	-	SMa1163	-	COG2217P	Cation transport P-type ATPase
+639902..640945	+	347	16263086	-	SMa1166	-	COG0596R	hydrolase
+640997..641578	+	193	16263087	-	SMa1168	-	COG2249R	Dehydrogenase, FAD-dependent
+641662..642003	+	113	16263088	-	SMa1169	-	-	hypothetical protein
+642065..642382	+	105	16263089	cycB2	SMa1170	-	COG2010C	hypothetical protein
+642385..642645	-	86	16263090	-	SMa1171	-	-	hypothetical protein
+642642..642890	-	82	16263091	-	SMa1172	-	-	hypothetical protein
+642811..643314	-	167	16263092	-	SMa1174	-	-	hypothetical protein
+643876..644394	-	172	193782643	-	SMa1176	-	COG0456R	hypothetical protein
+644674..645504	-	276	193782644	-	SMa1178	-	COG1633S	hypothetical protein
+645676..647943	+	755	16263095	nosR	SMa1179	-	COG3901K	NosR regulatory protein for N2O reductase
+647969..649888	+	639	16263096	nosZ	SMa1182	-	COG4263C	nitrous-oxide reductase
+649888..651249	+	453	16263097	nosD	SMa1183	-	COG3420P	NosD nitrous oxidase accessory protein
+651246..652160	+	304	16263098	nosF	SMa1184	-	COG1131V	NosF ATPase
+652157..652984	+	275	16263099	nosY	SMa1185	-	COG1277R	NosY permease
+652981..653538	+	185	16263100	nosL	SMa1186	-	COG4314C	NosL copper chaperone
+653531..654535	+	334	16263101	nosX	SMa1188	-	COG1477H	NosX accesory protein
+654733..655944	+	403	16263102	fhp	SMa1191	-	COG1017C	nitric oxide dioxygenase
+656023..656316	-	97	193782645	-	SMa1192	-	-	hypothetical protein
+656365..657546	-	393	16263104	nnrS	SMa1194	-	COG3213P	NnrS dehydrogenase
+657562..658236	-	224	193782646	-	SMa1195	-	COG2846D	hypothetical protein
+658412..658774	-	120	16263106	-	SMa1197	-	-	hypothetical protein
+658828..660453	-	541	16263107	-	SMa1198	-	COG1276P	copper export protein
+660518..661033	-	171	193782647	-	SMa1200	-	COG4549S	hypothetical protein
+661252..661632	-	126	16263109	-	SMa1201	-	-	hypothetical protein
+661869..662549	-	226	193782648	-	SMa1207	-	COG0664T	Crp family transcriptional regulator
+662623..662790	-	55	16263111	fixS1	SMa1208	-	COG3197P	FixS1 nitrogen fixation protein
+662787..665060	-	757	16263112	fixI1	SMa1209	-	COG2217P	FixI1 ATPase
+665057..665560	-	167	16263113	fixH	SMa1210	-	COG5456	nitrogen fixation protein FixH
+665557..667131	-	524	16263114	fixG	SMa1211	-	COG0348C	FixG iron sulfur membrane protein
+667360..668229	-	289	16263115	fixP1	SMa1213	-	COG2010C	FixP1 di-heme cytochrome c
+668233..668385	-	50	16263116	fixQ1	SMa1214	-	COG4736O	FixQ1 nitrogen fixation protein
+668398..669129	-	243	16263117	fixO1	SMa1216	-	COG2993C	cbb3-type cytochrome c oxidase subunit II
+669143..670762	-	539	16263118	fixN1	SMa1220	-	COG3278O	cbb3-type cytochrome c oxidase subunit I
+671077..671532	-	151	16263119	fixM	SMa1223	-	COG3467R	hypothetical protein
+671613..672248	-	211	16263120	fixK	SMa1225	-	COG0664T	transcriptional regulator FixK
+672328..672675	-	115	16263121	fixT1	SMa1226	-	COG2204T	FixT1 inhibitor of FixL autophosphorylation
+672774..673388	-	204	16263122	fixJ	SMa1227	-	COG4566T	response regulator FixJ
+673381..674898	-	505	16263123	fixL	SMa1229	-	COG4191T	FixL oxygen regulated histidine kinase
+675132..675956	+	274	16263124	-	SMa1231	-	COG0589T	hypothetical protein
+676020..676721	-	233	16263125	napC	SMa1232	-	COG3005C	NapC membrane-bound tetraheme cytochrome c subunit
+676725..677228	-	167	16263126	napB	SMa1233	-	COG3043C	NapB periplasmic nitrate reductase cytochrome c- type subunit
+677198..679702	-	834	16263127	napA	SMa1236	-	COG0243C	nitrate reductase catalytic subunit
+679677..679964	-	95	16263128	napD	SMa1239	-	COG3062P	NapD component of periplasmic nitrate reductase
+679957..680457	-	166	16263129	napF	SMa1240	-	COG1245R	NapF ferredoxin component of periplasmic nitrate reductase
+680465..680650	-	61	16263130	napE	SMa1241	-	COG4459C	NapE component of periplasmic nitrate reductase
+680910..681353	-	147	16263131	azu1	SMa1243	-	COG3794C	Azu1 pseudoazurin
+681464..682111	-	215	16263132	nnrR	SMa1245	-	COG0664T	Crp/fnr-like transcriptional regulator
+682736..683650	-	304	16263133	nirV	SMa1247	-	COG1262S	NirV protein
+683749..684879	-	376	16263134	nirK	SMa1250	-	COG2132Q	NirK nitrite reductase
+685125..686336	+	403	16263135	nnrS	SMa1252	-	COG3213P	NnrS family protein
+686450..686719	+	89	16263137	-	SMa1253	-	COG1414K	hypothetical protein
+687399..687710	-	103	16263138	-	SMa1255	-	COG2151R	hypothetical protein
+687697..688227	-	176	16263139	-	SMa1256	-	COG0425O	hypothetical protein
+688231..689589	-	452	16263140	-	SMa1259	-	-	hypothetical protein
+689635..689952	-	105	193782649	-	SMa1261	-	COG4309S	hypothetical protein
+690309..691118	+	269	193782650	-	SMa1262	-	COG1741R	hypothetical protein
+691495..692028	-	177	193782651	-	SMa1264	-	COG1432S	hypothetical protein
+692476..693828	+	450	16263144	hemN	SMa1266	-	COG0635H	coproporphyrinogen III oxidase
+693908..695803	-	631	16263145	norD	SMa1269	-	COG4548P	NorD accessory protein for nitric oxide reductase
+695808..696626	-	272	16263146	norQ	SMa1272	-	COG0714R	NorQ accessory protein for nitric oxide reductase
+696686..698032	-	448	16263147	norB	SMa1273	-	COG3256P	NorB nitric oxide reductase, large subunit
+698057..698509	-	150	16263148	norC	SMa1276	-	-	NorC nitric oxide reductase, small subunit
+698968..699534	-	188	16263149	norE	SMa1279	-	COG1845C	NorE accessory protein for nitric oxide reductase
+700220..700906	+	228	16263150	nnrU	SMa1283	-	COG4094S	NnrU family protein
+701272..701874	-	200	16263151	-	SMa1285	-	COG0163H	3-octaprenyl-4-hydroxybenzoate carboxy-lyase
+701871..703322	-	483	193782652	-	SMa1288	-	COG0043H	Carboxylase
+703500..704006	+	168	16263153	-	SMa1289	-	COG3154I	hypothetical protein
+703997..704974	+	325	16263154	-	SMa1291	-	COG0826O	Protease
+704981..705916	+	311	16263155	-	SMa1292	-	COG0826O	Peptidase
+705913..706359	+	148	193782653	-	SMa1294	-	-	hypothetical protein
+706855..707877	-	340	16263157	adhA1	SMa1296	-	COG1064R	alcohol dehydrogenase
+708125..708802	-	225	193782654	-	SMa1297	-	COG3619S	hypothetical protein
+709054..709665	+	203	16263160	-	SMa1299	-	COG1309K	TetR family transcriptional regulator
+709700..710926	+	408	193782655	-	SMa1301	-	COG2814G	Permease
+711238..712227	-	329	16263162	virB11	SMa1302	-	COG0630NU	VirB11-like ATPase
+712238..713410	-	390	16263163	virB10	SMa1303	-	COG2948U	VirB10-like transmembrane secretion protein
+713420..714274	-	284	16263164	virB9	SMa1306	-	COG3504U	VirB9 type IV secretion protein
+714274..714945	-	223	16263165	virB8	SMa1308	-	COG3736U	VirB8 type IV secretion protein
+714950..715264	-	104	193782656	virB7	SMa1310	-	-	VirB7-like protein
+715261..716202	-	313	16263167	virB6	SMa1311	-	COG3704U	VirB6 type IV secretion protein
+716432..717133	-	233	193782657	virB5	SMa1313	-	-	VirB5 type IV secretion protein
+717133..719511	-	792	16263169	virB4	SMa1315	-	COG3451U	VirB4 type IV secretion protein
+719504..719845	-	113	193782658	virB3	SMa1318	-	COG3702U	VirB3 type IV secretion protein
+719850..720149	-	99	16263171	virB2	SMa1319	-	COG3838U	VirB2 type IV secretion protein
+720146..720817	-	223	16263172	virB1	SMa1321	-	-	VirB1 type IV secretion protein
+720821..721339	-	172	16263173	-	SMa1322	-	-	hypothetical protein
+721436..721804	+	122	16263174	rctA	SMa1323	-	-	Transcription regulator
+722065..722316	-	83	16263175	-	SMa1325	-	COG0625O	hypothetical protein
+722390..723037	-	215	16263176	-	SMa1326	-	COG0262H	hypothetical protein
+723087..723935	-	282	16263177	-	SMa1327	-	COG0596R	hydrolase
+724533..725855	-	440	16263178	-	SMa1328	-	COG2271G	MtbA protein
+726444..727706	-	420	193782659	-	SMa1329	-	COG0006E	Peptidase
+727741..728154	-	137	16263180	-	SMa1331	-	COG2140GR	hypothetical protein
+728184..729026	-	280	16263181	-	SMa1332	-	COG5564R	hypothetical protein
+729038..730234	-	398	16263182	-	SMa1334	-	COG5441S	hypothetical protein
+730316..730981	+	221	193782660	-	SMa5030	-	COG1309K	TetR family transcriptional regulator
+731337..732644	+	435	193782661	-	SMa1337	-	COG1653G	ABC transporter substrate-binding protein
+732787..733692	+	301	193782662	-	SMa1339	-	COG1175G	ABC transporter permease
+733694..734653	+	319	16263186	-	SMa1341	-	COG0395G	ABC transporter permease
+734850..735959	+	369	16263187	-	SMa1344	-	COG3839G	ABC transporter ATP-binding protein
+735959..737035	+	358	16263188	-	SMa1345	-	COG3839G	ABC transporter ATP-binding protein
+737144..738118	-	324	193782663	-	SMa1347	-	COG0111HE	dehydrogenase
+738144..738836	-	230	16263190	-	SMa1349	-	COG2186K	GntR family transcriptional regulator
+738839..740047	-	402	16263191	-	SMa1351	-	COG4948MR	enolase
+740057..740944	-	295	16263192	-	SMa1353	-	COG1082G	epimerase
+741258..742109	+	283	193782664	-	SMa1354	-	COG1082G	Isomerase
+742432..743280	-	282	16263194	-	SMa1355	-	-	hypothetical protein
+743344..744546	-	400	16263195	-	SMa1356	-	COG3328L	TRm3 transposase
+744913..745287	+	124	193782665	-	SMa1358	-	COG3607R	Lyase
+745608..745790	-	60	16263197	-	SMa1361	-	-	hypothetical protein
+746199..747599	-	466	16263198	-	SMa1362	-	COG0395G	inner-membrane permease
+747596..748684	-	362	16263199	-	SMa1363	-	COG1175G	ABC transporter permease
+748748..749968	-	406	16263200	-	SMa1364	-	COG1653G	ABC transporter substrate-binding protein
+750238..750459	-	73	193782666	-	SMa5008	-	-	hypothetical protein
+750652..751026	-	124	16263201	-	SMa1365	-	COG0444EP	ATP-binding protein
+751181..751939	-	252	193782667	-	SMa1367	-	COG1028IQR	short chain alcohol dehydrogenase-related dehydrogenase
+751947..752672	-	241	16263203	-	SMa1368	-	-	hypothetical protein
+752672..753655	-	327	16263204	-	SMa1370	-	COG4608E	ABC transporter ATP-binding protein
+753652..754632	-	326	16263205	-	SMa1371	-	COG0444EP	ABC transporter ATP-binding protein
+754635..755594	-	319	16263206	-	SMa1374	-	COG1173EP	ABC transporter permease
+755594..756514	-	306	193782668	-	SMa1373	-	COG0601EP	ABC transporter permease
+756593..758077	-	494	193782669	-	SMa1375	-	COG0747E	ABC transporter substrate-binding protein
+758107..759522	-	471	16263209	-	SMa1377	-	COG0154J	amidase
+759691..761166	-	491	16263210	-	SMa1379	-	COG0747E	ABC transporter substrate-binding protein
+761267..762625	-	452	16263211	-	SMa1381	-	COG0446R	oxidase
+762612..762869	-	85	193782670	-	SMa5031	-	COG1034C	hypothetical protein
+762866..763846	-	326	193782671	-	SMa1386	-	COG0665E	oxidoreductase
+764198..765112	+	304	16263213	-	SMa1387	-	COG0583K	LysR family transcriptional regulator
+765128..766057	-	309	16263214	etfA2	SMa1389	-	COG2025C	EtfA2 electron-transport flavoprotein, alpha-subunit
+766174..766923	-	249	16263215	etfB2	SMa1391	-	COG2086C	EtfB2 electron transport flavoprotein, beta subunit
+766940..767797	-	285	16263216	-	SMa1394	-	COG1082G	hypothetical protein
+767799..768947	-	382	16263217	-	SMa1397	-	-	hypothetical protein
+768956..769735	-	259	16263218	fabG	SMa1398	-	COG1028IQR	3-ketoacyl-ACP reductase
+769732..770874	-	380	193782672	-	SMa1400	-	COG1960I	acyl-CoA dehydrogenase
+771034..772050	+	338	16263220	-	SMa1403	-	COG0667C	oxidoreductase
+772165..773424	-	419	16263221	ttuD3	SMa1406	-	COG2379G	TtuD3 hydroxypyruvate reductase
+773437..774207	-	256	16263222	-	SMa1408	-	COG1024I	dehydratase
+774204..775775	-	523	16263223	-	SMa1409	-	COG4670I	acyl-CoA transferase
+775888..776721	+	277	16263224	-	SMa1410	-	COG0656R	oxidoreductase
+777118..777393	-	91	16263225	-	SMa1413	-	COG3609K	hypothetical protein
+777621..779216	-	531	16263226	-	SMa1414	-	COG2303E	Dehydrogenase, FAD-dependent
+779216..780712	-	498	16263227	-	SMa1415	-	COG1012C	aldehyde dehydrogenase
+780875..781900	-	341	16263228	-	SMa1417	-	COG1063ER	Dehydrogenase, Zn-dependent
+781919..782860	-	313	16263229	-	SMa1418	-	COG1172G	ABC transporter permease
+782868..784379	-	503	16263230	-	SMa1421	-	COG1129G	ABC transporter ATP-binding protein
+784390..785355	-	321	193782673	-	SMa1424	-	COG1172G	ABC transporter permease
+785430..786548	-	372	16263232	-	SMa1427	-	COG1879G	ABC transporter substrate-binding protein
+786798..787457	+	219	16263233	-	SMa1428	-	COG1309K	TetR/AcrR family transcriptional regulator
+787459..788475	-	338	193782674	-	SMa1430	-	COG1063ER	Dehydrogenase, Zn-dependent
+788523..789041	-	172	16263235	-	SMa1431	-	COG0346E	hypothetical protein
+789214..790866	-	550	16263236	-	SMa1434	-	COG1123R	ABC transporter ATP-binding protein
+790863..791780	-	305	16263237	-	SMa1435	-	COG1173EP	ABC transporter permease
+791793..792707	-	304	16263238	-	SMa1437	-	COG0601EP	ABC transporter permease
+792785..794293	-	502	16263239	-	SMa1438	-	COG0747E	ABC transporter substrate-binding protein
+794368..795273	-	301	16263240	-	SMa1440	-	COG0329EM	5-dehydro-4-deoxyglucarate dehydratase
+795334..796098	-	254	16263241	-	SMa1442	-	COG2186K	GntR family transcriptional regulator
+796350..797222	+	290	193782675	-	SMa1445	-	-	hypothetical protein
+797393..798706	-	437	193782676	-	SMa1447	-	COG2814G	Permease, MFS
+799195..800385	-	396	16263244	-	SMa1450	-	COG0183I	thiolase
+800410..801177	-	255	16263245	-	SMa1452	-	COG1028IQR	hypothetical protein
+801299..802342	+	347	193782677	-	SMa1454	-	COG2207K	AraC family transcriptional regulator
+802324..802842	-	172	16263247	-	SMa1455	-	COG5654S	hypothetical protein
+802839..803228	-	129	16263248	-	SMa1456	-	-	hypothetical protein
+803336..804340	-	334	16263249	-	SMa1459	-	COG2055C	Dehydrogenase, malate/L-lactate family
+804337..805461	-	374	16263250	-	SMa1461	-	COG4948MR	muconate cycloisomerase
+805588..806478	-	296	16263251	-	SMa1462	-	COG1732M	ABC transporter
+806502..807257	-	251	16263252	-	SMa1465	-	COG1174E	ABC transporter permease
+807254..808369	-	371	16263253	-	SMa1466	-	COG1125E	ABC transporter ATP-binding protein
+808366..809028	-	220	16263254	-	SMa1467	-	COG1174E	inner-membrane permease
+809179..809859	-	226	16263255	-	SMa1471	-	COG1335Q	hypothetical protein
+809859..811163	-	434	16263256	-	SMa1473	-	COG0006E	aminopeptidase
+811255..812211	-	318	193782678	-	SMa1476	-	COG4977K	AraC family transcriptional regulator
+812255..813790	-	511	16263258	-	SMa1478	-	COG5598H	methyltransferase
+814015..814902	+	295	193782679	-	SMa1480	-	COG0583K	LysR family transcriptional regulator
+815138..817558	+	806	16263260	-	SMa1483	-	COG0404E	dehydrogenase
+817619..817969	-	116	193782680	-	SMa5009	-	COG4925S	hypothetical protein
+817966..819255	-	429	193782681	-	SMa1485	-	COG2814G	Permease, MFS
+819484..819852	-	122	16263262	-	SMa1487	-	COG3474C	cytochrome C
+819849..822092	-	747	16263263	-	SMa1488	-	COG1529C	oxidoreductase
+822089..822553	-	154	193782682	-	SMa1491	-	COG2080C	Oxidoreductase
+822713..823636	+	307	16263265	-	SMa1493	-	COG0583K	LysR family transcriptional regulator
+823723..824163	+	146	16263266	-	SMa1494	-	-	hypothetical protein
+824592..825704	+	370	16263267	-	SMa1495	-	COG0075E	aminotransferase
+825906..826553	-	215	16263268	gst12	SMa1497	-	COG0625O	Gst12 glutathione-S-transferase
+826564..828330	-	588	16263269	-	SMa1500	-	COG1018C	oxidoreductase/oxygenase
+828355..829269	-	304	16263270	-	SMa1501	-	COG4638PR	hypothetical protein
+829300..830166	-	288	16263271	-	SMa1503	-	COG4638PR	hypothetical protein
+830383..831168	+	261	16263272	-	SMa1505	-	COG1802K	GntR family transcriptional regulator
+831222..832316	+	364	16263273	-	SMa1507	-	COG1744R	hypothetical protein
+832401..833936	+	511	16263274	-	SMa1509	-	COG3845R	ATP transporter ATP-binding protein
+833962..834984	+	340	16263275	-	SMa1513	-	COG4603R	ABC transporter permease
+834984..835904	+	306	16263276	-	SMa1514	-	COG1079R	ABC transporter permease
+835950..836141	-	63	193782683	-	SMa1515	-	-	hypothetical protein
+836495..837481	+	328	16263278	nuoH2	SMa1516	-	COG1005C	NuoH2 NADH:ubiquinone oxidoreductase subunit 1 (chain H)
+837551..838117	+	188	16263279	nuoI2	SMa1519	-	COG1143C	NADH:ubiquinone oxidoreductase subunit 6 (chain I)
+838161..838601	+	146	16263280	-	SMa1521	-	COG2905T	hypothetical protein
+838689..841250	-	853	16263281	nuoG2	SMa1523	-	COG3383R	NuoG2 NADH I chain G 2
+841280..842545	-	421	16263282	nuoF2	SMa1525	-	COG1894C	NuoF2 NADH I chain F
+842549..843055	-	168	16263283	nuoE2	SMa1526	-	COG1905C	NuoE2 NADH I chain E
+843074..844288	-	404	16263284	nuoD2	SMa1529	-	COG0649C	NuoD2 NADH I chain D
+844305..844853	-	182	16263285	nuoC2	SMa1531	-	COG0852C	NuoC2 NADH I chain C
+844850..845353	-	167	16263286	nuoB2	SMa1532	-	COG0377C	NADH dehydrogenase subunit B
+845341..845706	-	121	16263287	nuoA2	SMa1533	-	COG0838C	NuoA2 NADH I chain A
+845922..847361	-	479	16263288	nuoN2	SMa1535	-	COG1007C	NuoN2 NADH I chain N
+847358..848833	-	491	16263289	nuoM2	SMa1536	-	COG1008C	NuoM2 NADH-ubiquinone/plastoquinone (complex I) oxidoreductase
+848840..850600	-	586	193782684	-	SMa1538	-	COG0651CP	monovalent cation/H+ antiporter subunit D
+850566..850880	+	104	16263291	-	SMa1539	-	-	hypothetical protein
+850844..852307	-	487	16263292	-	SMa1541	-	COG0651CP	monovalent cation/H+ antiporter subunit D
+852312..852614	-	100	16263293	nuoK2	SMa1544	-	COG0713C	NuoK2 NADH:quinone oxidoreductase subunit 11 (chain K)
+852614..853114	-	166	193782685	nuoJ2	SMa1545	-	COG0839C	NuoJ2 NADH:quinone oxidoreductase subunit 6 (chain J)
+853409..854080	+	223	16263295	pcm	SMa1547	-	COG2518O	protein-L-isoaspartate(D-aspartate) O-methyltransferase (PCMT)
+854222..857437	+	1071	193782686	-	SMa1548	-	COG5001T	Diguanylate cyclase/phosphodiesterase
+857628..858311	+	227	16263297	-	SMa1550	-	COG2197TK	Response regulator
+858465..859826	+	453	16263298	-	SMa1552	-	COG1352NT	chemotaxis protein CheR
+859823..860491	+	222	16263299	-	SMa1554	-	COG0835NT	chemotaxis protein
+860424..862109	+	561	16263300	mcpS	SMa1556	-	COG0840NT	Methyl-accepting chemotaxis protein
+862096..864222	+	708	16263301	-	SMa1558	-	COG0643NT	Sensor histidine kinase
+864232..865296	+	354	16263302	cheB2	SMa1561	-	COG2201NT	chemotaxis protein CheB
+865351..866316	-	321	193782687	-	SMa1562	-	COG2064NU	Pilus assembly protein
+866326..867327	-	333	16263304	-	SMa1564	-	COG4965U	Pilus assembly protein
+867356..868849	-	497	16263305	cpaF2	SMa1568	-	COG4962U	CpaF2 pilus assembly protein
+868893..869063	-	56	16263306	pilA2	SMa1570	-	COG3847U	PilA2 pilus assembly protein
+869408..869833	-	141	16263307	-	SMa1572	-	COG4961U	hypothetical protein
+869830..871590	-	586	16263308	cpaE2	SMa1573	-	COG4963U	CpaE2 pilus assembly protein
+871597..872388	-	263	16263309	cpaB2	SMa1576	-	COG3745U	CpaB2 pilus assembly protein
+872431..872943	-	170	16263310	cpaA2	SMa1578	-	COG4960OU	CpaA2 pilus assembly protein
+873203..874498	+	431	193782688	-	SMa1579	-	COG4655S	hypothetical protein
+874611..875123	+	170	16263312	-	SMa1580	-	COG4964U	hypothetical protein
+875222..876520	-	432	16263313	-	SMa1582	-	COG3264M	hypothetical protein
+876769..878538	-	589	193782689	cyaF5	SMa1583	-	COG5616S	CyaF5 adenylate cyclase
+878659..878961	-	100	16263315	-	SMa1585	-	-	hypothetical protein
+879859..880314	-	151	16263316	syrB2	SMa1586	-	COG1792M	SyrB2 regulator
+880620..882017	+	465	16263317	eglC	SMa1587	-	COG2273G	EglC endo-1,3-1,4-BETA-glycanase
+883252..883638	-	128	193782690	-	SMa1589	-	COG5485R	hypothetical protein
+884133..887612	-	1159	16263319	cyaI3	SMa1591	-	COG3899R	CyaI3 adenylate/guanylate cyclase
+887558..888271	-	237	16263320	-	SMa1592	-	COG0723C	oxidoreductase, fragment
+887977..889107	-	376	16263321	-	SMa1593	-	COG0665E	oxidoreductase, fragment
+889137..889790	+	217	16263322	-	SMa1594	-	COG2226H	hypothetical protein
+890034..890477	+	147	16263323	-	SMa1595	-	-	hypothetical protein
+890927..891709	-	260	16263324	-	SMa1597	-	COG3121NU	Pilus assembly chaperone
+891838..893592	+	584	16263325	-	SMa1600	-	COG4651P	Potassium efflux protein
+893872..894747	-	291	193782691	-	SMa1602	-	COG0583K	LysR family transcriptional regulator
+894831..895922	+	363	16263327	-	SMa1604	-	COG1902C	NADH:flavin oxidoreductase / NADH oxidase
+895919..896896	+	325	16263328	-	SMa1606	-	COG0702MG	hypothetical protein
+897347..897643	-	98	16263329	-	SMa1608	-	-	hypothetical protein
+897643..897906	-	87	16263330	-	SMa1610	-	-	transposase
+898016..899281	-	421	16263331	-	SMa1612	-	COG3436L	transposase
+899330..899647	-	105	16263332	-	SMa1613	-	COG3436L	transposase, fragment
+899769..900599	-	276	16263333	-	SMa1614	-	COG2801L	TRm1b transposase
+900596..900988	-	130	16263334	-	SMa1615	-	COG2963L	TRm1a transposase
+901120..902349	+	409	16263335	-	SMa1617	-	COG4974L	integrase/recombinase
+902343..903257	+	304	16263336	-	SMa1619	-	COG4974L	integrase/recombinase
+903254..904243	+	329	16263337	-	SMa1620	-	COG4974L	integrase/recombinase
+904393..904767	-	124	16263338	-	SMa1623	-	COG2963L	transposase, fragment
+904985..905908	-	307	16263339	-	SMa1625	-	COG0583K	LysR family transcriptional regulator
+906013..906672	+	219	16263340	-	SMa1626	-	COG3803S	hypothetical protein
+906813..907592	-	259	16263341	-	SMa1629	-	COG1028IQR	short chain dehydrogenase
+907347..907643	+	98	193782692	-	SMa5038	-	-	hypothetical protein
+907592..907912	-	106	193782693	-	SMa1630	-	COG3631R	hypothetical protein
+907961..908914	+	317	16263343	-	SMa1632	-	COG0583K	LysR family transcriptional regulator
+910181..910639	-	152	16263344	-	SMa1635	-	-	hypothetical protein
+911789..912589	+	266	16263345	-	SMa1636	-	COG3039L	transposase TRm17a
+912620..913126	+	168	16263346	-	SMa1637	-	COG3039L	transposase TRm17b
+913725..914000	+	91	193782694	-	SMa1639	-	COG1937S	hypothetical protein
+914013..915335	+	440	16263349	-	SMa1641	-	COG2814G	NreB protein
+915332..915670	+	112	193782695	-	SMa1643	-	COG1238S	hypothetical protein
+915768..916487	+	239	16263351	-	SMa1644	-	COG2215R	ABC transporter permease
+916665..917003	+	112	193782696	-	SMa5010	-	-	hypothetical protein
+917367..918389	-	340	193782697	-	SMa1646	-	COG4608E	ABC transporter ATP-binding protein
+918386..919381	-	331	16263353	-	SMa1647	-	COG0444EP	ABC transporter ATP-binding protein
+919371..920282	-	303	16263354	-	SMa1649	-	COG1173EP	ABC transporter permease
+920273..921208	-	311	16263355	-	SMa1650	-	COG0601EP	ABC transporter permease
+921222..922799	-	525	16263356	-	SMa1651	-	COG0747E	ABC transporter substrate-binding protein
+923065..923850	+	261	16263357	-	SMa1652	-	COG4126E	hydantoin racemase
+923853..924578	+	241	16263358	-	SMa1653	-	COG1853R	hypothetical protein
+924741..925439	+	232	16263359	-	SMa1654	-	COG1802K	GntR family transcriptional regulator
+925848..926255	-	135	16263360	-	SMa1657	-	-	hypothetical protein
+926260..926625	-	121	16263361	-	SMa1658	-	-	hypothetical protein
+926871..927455	-	194	16263362	-	SMa1660	-	COG0456R	hypothetical protein
+927892..931026	-	1044	16263363	-	SMa1662	-	COG0841V	Cation/multidrug efflux pump
+931023..932189	-	388	16263364	-	SMa1664	-	COG0845M	HlyD-family protein
+932526..933005	-	159	16263365	-	SMa1666	-	-	hypothetical protein
+933295..934722	+	475	16263366	arcD1	SMa1667	-	COG0531E	ArcD1 arginine/ornithine antiporter
+935142..936563	+	473	16263367	arcD2	SMa1668	-	COG0531E	ArcD2 arginine/ornithine antiporter
+936579..937838	+	419	16263368	arcA2	SMa1670	-	COG2235E	arginine deiminase
+938402..938896	+	164	193782698	-	SMa1672	-	COG4803S	hypothetical protein
+938993..939304	-	103	16263370	-	SMa1674	-	-	hypothetical protein
+939303..939953	+	216	16263371	-	SMa1675	-	COG3247S	hypothetical protein
+940014..941072	-	352	193782699	-	SMa1676	-	COG0628R	hypothetical protein
+941157..942590	-	477	193782700	-	SMa1677	-	COG1228Q	Metallo-dependent hydrolase
+942871..943152	-	93	16263374	-	SMa1678	-	COG0668M	hypothetical protein
+943416..945809	-	797	16263375	-	SMa1680	-	COG0457R	hypothetical protein
+945870..946883	-	337	16263376	-	SMa1682	-	COG0560E	nonspecific acid phosphatase precursor
+946966..948633	-	555	16263377	-	SMa1683	-	COG3119P	arylsulfatase
+948970..950853	+	627	16263378	-	SMa1684	-	COG4191T	Sensory histidine kinase
+950846..951487	+	213	16263379	-	SMa1686	-	COG4566T	Two-component response regulator
+951569..951985	+	138	16263380	-	SMa1688	-	COG4566T	Two-component response regulator
+952528..953982	+	484	16263381	-	SMa1691	-	COG0168P	Cation transport ATPase
+954759..955475	-	238	193782701	-	SMa5033	-	COG0038P	hypothetical protein
+955590..956786	+	398	16263384	-	SMa1696	-	COG3920T	Sensor histidine kinase
+957068..957667	-	199	16263385	-	SMa1697	-	-	hypothetical protein
+957928..958383	-	151	16263386	syrB1	SMa1698	-	COG1792M	syrB1 regulator
+958960..959169	+	69	16263388	-	SMa1700	-	-	hypothetical protein
+959316..959909	-	197	16263389	-	SMa1702	-	-	hypothetical protein
+960493..961722	-	409	193782702	-	SMa1704	-	COG4292S	hypothetical protein
+961799..962215	+	138	16263391	-	SMa1705	-	COG4957	MUCR family transcriptional regulatory protein IN SYRB 5'region
+962812..963234	-	140	16263392	-	SMa1706	-	-	hypothetical protein
+963647..964540	+	297	16263394	argI2	SMa1711	-	COG0010E	arginase
+965405..967192	-	595	16263395	adeC3	SMa1715	-	COG1001F	AdeC3 adenine deaminase
+967265..968665	-	466	193782703	-	SMa1717	-	COG2252R	Permease
+968713..970515	-	600	16263397	adeC4	SMa1718	-	COG1001F	AdeC4 adenine deaminase
+970632..971576	+	314	16263398	-	SMa1720	-	COG0583K	LysR family transcriptional regulator
+972145..972690	-	181	193782704	-	SMa1724	-	COG1335Q	Isochorismatase
+972775..973770	+	331	193782705	-	SMa1725	-	COG4977K	Transcriptional regulator
+973914..974525	-	203	193782706	-	SMa1726	-	COG1309K	TetR family transcriptional regulator
+974626..975516	+	296	16263403	-	SMa1727	-	COG0596R	alpha/beta hydrolase
+975705..976706	-	333	16263404	proX	SMa1729	-	COG2113E	ABC transporter substrate-binding protein
+976900..978369	-	489	16263405	betB2	SMa1731	-	COG1012C	betaine aldehyde dehydrogenase
+978389..978742	-	117	16263406	-	SMa1732	-	COG2146PR	hypothetical protein
+978754..979836	-	360	193782707	-	SMa1734	-	COG2159R	hypothetical protein
+980276..981340	+	354	16263408	-	SMa1735	-	COG1018C	oxidoreductase
+981384..982265	-	293	16263409	-	SMa1736	-	COG0583K	LysR family transcriptional regulator
+982470..983528	+	352	16263410	-	SMa1737	-	COG2855S	hypothetical protein
+983996..985066	-	356	16263411	-	SMa1740	-	COG2375P	Siderophore-interacting protein
+985063..985905	-	280	16263412	-	SMa1741	-	COG1120PH	ABC transporter ATP-binding protein
+985905..986942	-	345	16263413	-	SMa1742	-	COG4779P	Fe3+-siderophore ABC transporter permease
+986939..988039	-	366	16263414	-	SMa1745	-	COG0609P	ABC transporter permease, Fe3+-siderophore transport system
+987982..988983	-	333	193782708	-	SMa1746	-	COG0614P	ABC transporter substrate-binding protein
+989276..991420	+	714	16263416	-	SMa1747	-	COG4774P	TonB-dependent siderophore receptor
+991460..992359	-	299	16263417	-	SMa1749	-	COG2207K	transcriptional regulator
+992912..994291	+	459	193782709	-	SMa1750	-	-	hypothetical protein
+994674..995456	-	260	16263419	-	SMa1751	-	COG1177E	ABC transporter permease
+995460..996638	-	392	193782710	-	SMa1753	-	COG1176E	ABC transporter permease
+996635..997714	-	359	16263421	-	SMa1754	-	COG3842E	ABC transporter ATP-binding protein
+997813..998865	-	350	16263422	-	SMa1755	-	COG0687E	ABC transporter substrate-binding protein
+999071..999841	-	256	16263423	-	SMa1757	-	COG1028IQR	Short chain
+999887..1000567	-	226	16263424	-	SMa1759	-	COG1802K	GntR family transcriptional regulator
+1000541..1001788	+	415	16263425	-	SMa1760	-	COG2334R	phosphotransferase
+1001791..1003107	+	438	16263426	-	SMa1761	-	COG0160E	aminotransferase
+1003486..1003971	-	161	16263427	-	SMa1765	-	COG3753S	hypothetical protein
+1003999..1004250	-	83	16263428	-	SMa1766	-	COG2261S	hypothetical protein
+1005037..1005204	+	55	16263429	-	SMa1767	-	-	hypothetical protein
+1005521..1005829	+	102	16263430	-	SMa1769	-	-	hypothetical protein
+1005927..1006100	-	57	16263431	-	SMa1770	-	COG3668R	hypothetical protein
+1006786..1008156	+	456	16263433	-	SMa1776	-	COG4782S	hypothetical protein
+1008864..1009310	-	148	16263434	-	SMa1779	-	COG1028IQR	hypothetical protein
+1009319..1009762	-	147	16263435	-	SMa1780	-	COG4125S	hypothetical protein
+1009854..1010747	+	297	16263436	-	SMa1782	-	COG0583K	LysR family transcriptional regulator
+1010873..1011049	-	58	16263437	-	SMa1783	-	-	hypothetical protein
+1011129..1011473	-	114	16263438	-	SMa1784	-	-	hypothetical protein
+1011513..1011938	-	141	193782711	-	SMa1787	-	COG3666L	transposase, fragment
+1012465..1015821	+	1118	16263440	cyaI4	SMa1789	-	COG3899R	CyaI4 adenylate/guanylate cyclase
+1016374..1016556	-	60	193782712	-	SMa5032	-	COG1793L	hypothetical protein
+1016940..1017362	+	140	16263442	-	SMa1793	-	-	hypothetical protein
+1018587..1018913	+	108	16263443	-	SMa1797	-	-	hypothetical protein
+1019529..1021430	+	633	16263444	kup2	SMa1798	-	COG3158P	Kup2 potassium uptake protein
+1022070..1022585	-	171	193782713	-	SMa1799	-	COG3335L	TRm2011-2b transposase
+1022639..1023898	-	419	16263446	-	SMa1801	-	COG3344L	Reverse transcriptase, maturase
+1024493..1024900	-	135	16263447	-	SMa1803	-	COG3415L	TRm2011-2a transposase
+1025646..1026050	-	134	16263449	-	SMa1808	-	-	hypothetical protein
+1026068..1026898	-	276	193782714	-	SMa1809	-	COG0596R	Non-heme haloperoxidase
+1026984..1027958	-	324	16263451	-	SMa1811	-	COG0491R	hypothetical protein
+1027980..1029572	-	530	16263452	-	SMa1814	-	COG2814G	dioxygenase
+1029569..1030027	-	152	16263453	-	SMa1817	-	COG2259S	hypothetical protein
+1030041..1032026	-	661	16263454	-	SMa1819	-	COG1574R	hypothetical protein
+1032026..1032334	-	102	16263455	-	SMa1820	-	COG4317S	hypothetical protein
+1032402..1033052	-	216	193782715	-	SMa1821	-	COG1335Q	hydrolase
+1033278..1034189	-	303	193782716	-	SMa1822	-	COG2207K	hypothetical protein
+1034405..1035313	-	302	16263458	-	SMa1823	-	COG2207K	Transcriptional regulator
+1035458..1036366	-	302	16263459	-	SMa1825	-	COG2207K	Transcriptional regulator
+1036363..1037514	-	383	16263460	-	SMa1828	-	COG0583K	transcriptional activator
+1038347..1038949	+	200	16263461	-	SMa1831	-	COG0400R	hypothetical protein
+1039013..1039465	-	150	16263462	-	SMa1832	-	-	hypothetical protein
+1039508..1040893	+	461	16263463	-	SMa1833	-	COG2133G	hypothetical protein
+1041083..1041991	-	302	193782717	-	SMa1835	-	-	hypothetical protein
+1042302..1043426	+	374	16263465	argE	SMa1836	-	COG0624E	acetylornithine deacetylase
+1043438..1044361	+	307	193782718	-	SMa1838	-	COG0111HE	dehydrogenase
+1044451..1044804	+	117	16263467	-	SMa1840	-	COG3450R	hypothetical protein
+1045137..1046600	+	487	16263468	-	SMa1844	-	COG1012C	aldehyde
+1046610..1047653	+	347	16263469	-	SMa1846	-	COG0473CE	3-isopropylmalate dehydrogenase
+1047688..1049142	+	484	16263470	gabD5	SMa1848	-	COG1012C	GabD5 succinate semialdehyde dehdyrogenase
+1049406..1050683	-	425	16263471	-	SMa1850	-	COG0665E	oxidoreductase
+1050700..1051368	-	222	16263472	-	SMa1851	-	COG1011R	dehalogenase
+1051670..1052521	+	283	16263473	-	SMa1853	-	COG2153R	hypothetical protein
+1052536..1053912	+	458	16263474	-	SMa1855	-	COG0161H	hypothetical protein
+1054005..1054865	+	286	16263475	-	SMa1857	-	COG1011R	hydrolase
+1054935..1056545	+	536	16263476	-	SMa1860	-	COG0747E	ABC transporter substrate-binding protein
+1056637..1057587	+	316	16263477	-	SMa1862	-	COG0601EP	ABC transporter permease
+1057584..1058447	+	287	16263478	-	SMa1863	-	COG1173EP	ABC transporter permease
+1058447..1060102	+	551	16263479	-	SMa1864	-	COG1123R	ABC transporter ATP-binding protein
+1060211..1060687	-	158	16263480	-	SMa1867	-	COG1522K	AsnC family transcriptional regulator
+1060923..1062248	+	441	16263481	-	SMa1869	-	COG0665E	deaminase
+1062483..1063475	+	330	193782719	-	SMa1871	-	COG2423E	cyclodeaminase
+1063481..1064452	+	323	16263483	-	SMa1872	-	COG1171E	threonine dehydratase
+1064742..1065083	+	113	16263484	-	SMa1874	-	COG4973L	hypothetical protein
+1065694..1067211	-	505	16263485	-	SMa1875	-	COG3344L	reverse transcriptase
+1067876..1068031	-	51	16263486	-	SMa1878	-	COG3328L	transposase
+1068558..1069151	+	197	16263487	-	SMa1881	-	-	hypothetical protein
+1069239..1069898	-	219	16263488	-	SMa1882	-	COG1309K	transcriptional activator
+1069938..1073048	-	1036	193782720	-	SMa1884	-	COG0841V	Cation/multidrug efflux protein
+1073045..1074193	-	382	16263490	-	SMa1885	-	COG0845M	membrane efflux protein
+1074259..1074861	+	200	16263491	-	SMa1887	-	COG1309K	transcriptional regulator
+1074958..1075602	+	214	16263492	-	SMa1890	-	COG0492O	oxidoreductase
+1075520..1075816	+	98	16263493	-	SMa1891	-	COG0492O	thioredoxin reductase
+1075895..1076770	+	291	16263494	-	SMa1893	-	COG0583K	LysR family transcriptional regulator
+1076880..1077323	+	147	16263495	-	SMa1894	-	COG0229O	methionine sulfoxide reductase B
+1077324..1077830	+	168	16263496	msrA3	SMa1896	-	COG0225O	methionine sulfoxide reductase A
+1078036..1079262	+	408	16263497	-	SMa1898	-	COG1765O	hypothetical protein
+1079608..1080165	+	185	16263498	-	SMa1900	-	COG2207K	hypothetical protein
+1080265..1080747	+	160	16263499	-	SMa1902	-	-	hypothetical protein
+1080814..1081800	+	328	16263500	-	SMa1903	-	COG1404O	protease
+1082806..1085151	+	781	16263501	mrcB	SMa1905	-	COG0744M	MrcB penicillin binding protein B
+1085810..1086190	-	126	16263502	-	SMa1907	-	-	hypothetical protein
+1087264..1087539	+	91	193782721	-	SMa1910	-	-	hypothetical protein
+1087882..1089270	+	462	193782722	-	SMa1913	-	COG3004P	Na+/H+ antiporter
+1089430..1091208	-	592	16263505	-	SMa1916	-	COG0471P	Permease
+1091549..1091971	-	140	16263506	-	SMa1917	-	-	hypothetical protein
+1092279..1092560	+	93	16263507	-	SMa1918	-	-	hypothetical protein
+1092557..1092790	+	77	16263508	-	SMa1919	-	-	hypothetical protein
+1093539..1093883	-	114	16263509	-	SMa1921	-	-	hypothetical protein
+1095016..1095690	-	224	16263510	-	SMa1924	-	-	hypothetical protein
+1096027..1097019	+	330	16263511	-	SMa1927	-	COG3181S	hypothetical protein
+1097612..1098121	-	169	16263512	-	SMa1929	-	COG1936F	hypothetical protein
+1098786..1099427	-	213	193782723	-	SMa1933	-	COG0583K	LysR family transcriptional regulator
+1099582..1100220	+	212	16263514	wrbA3	SMa1935	-	COG0655R	TrpR binding protein WrbA
+1100217..1101455	+	412	16263515	-	SMa1937	-	COG2814G	hypothetical protein
+1101631..1103166	-	511	16263516	-	SMa1939	-	COG0654HC	hypothetical protein
+1103712..1104167	-	151	16263517	-	SMa1943	-	COG0583K	transcriptional regulator
+1104180..1105040	+	286	16263518	-	SMa1945	-	COG0697GER	hypothetical protein
+1105815..1106531	+	238	16263519	-	SMa1948	-	COG0664T	Crp family transcriptional regulator
+1107299..1107562	-	87	16263520	-	SMa1951	-	COG1273S	hypothetical protein
+1107687..1108532	-	281	16263521	-	SMa1952	-	COG2367V	Beta lactamase
+1108753..1109757	-	334	16263522	-	SMa1953	-	COG2367V	beta-lactamase
+1109860..1110843	+	327	16263523	-	SMa1954	-	COG0583K	LysR family transcriptional regulator
+1111325..1112239	-	304	193782724	-	SMa1956	-	COG0583K	hypothetical protein
+1112318..1113208	+	296	16263525	-	SMa1957	-	COG0702MG	hypothetical protein
+1113513..1114751	-	412	193782725	-	SMa1959	-	COG2814G	hypothetical protein
+1114844..1115299	+	151	193782726	-	SMa1960	-	COG1733K	hypothetical protein
+1115365..1116459	-	364	193782727	-	SMa1961	-	COG3509Q	polyhydroxybutyrate depolymerase
+1116746..1117555	+	269	16263529	-	SMa1963	-	COG3315Q	polyketide synthase
+1117694..1118170	-	158	16263530	-	SMa1965	-	COG5607S	hypothetical protein
+1118218..1119327	-	369	16263531	-	SMa1966	-	COG0583K	LysR family transcriptional regulator
+1119543..1119881	+	112	16263532	-	SMa1967	-	COG1028IQR	short chain alcohol
+1120076..1120768	+	230	193782728	-	SMa1968	-	COG0693R	amidotransferase
+1120845..1121684	+	279	16263534	-	SMa1969	-	COG0693R	amidotransferase
+1121814..1122110	+	98	16263535	-	SMa1971	-	COG1359S	hypothetical protein
+1122124..1122483	+	119	16263536	-	SMa1973	-	COG0673R	hypothetical protein
+1122483..1123199	+	238	16263537	-	SMa1974	-	-	hypothetical protein
+1123380..1124171	-	263	193782729	-	SMa1976	-	COG0235G	hypothetical protein
+1124198..1124902	-	234	193782730	-	SMa1978	-	COG1011R	hydrolase
+1124993..1125865	+	290	16263540	-	SMa1979	-	COG0583K	LysR family transcriptional regulator
+1126439..1127479	-	346	16263541	-	SMa1985	-	COG0451MG	epimerase
+1127616..1128455	+	279	16263542	-	SMa1987	-	COG0583K	LysR family transcriptional regulator
+1129048..1129404	+	118	16263544	-	SMa1990	-	COG4226S	hypothetical protein
+1129777..1130433	-	218	193782731	-	SMa1993	-	COG2755E	hydrolase
+1130463..1131413	-	316	16263546	-	SMa1995	-	COG1172G	ABC transporter permease
+1131416..1132387	-	323	16263547	-	SMa1996	-	COG1172G	ABC transporter permease
+1132404..1133897	-	497	16263548	-	SMa1998	-	COG1129G	ABC transporter ATP-binding protein
+1133958..1135034	-	358	16263549	-	SMa2000	-	COG1879G	ABC transporter substrate-binding protein
+1135285..1135947	+	220	16263550	-	SMa2002	-	COG2755E	hydrolase
+1136007..1137080	+	357	16263551	-	SMa2004	-	COG1940KG	ROK family transcriptional regulator
+1137545..1138150	-	201	16263552	-	SMa2008	-	COG1309K	transcriptional regulator
+1138205..1138654	+	149	16263553	-	SMa2009	-	COG2764S	hypothetical protein
+1138651..1138977	+	108	16263554	-	SMa2011	-	-	hypothetical protein
+1139046..1140725	-	559	193782732	-	SMa2012	-	COG1502I	hypothetical protein
+1141504..1141941	-	145	16263556	-	SMa2014	-	COG0583K	transcriptional regulator
+1141886..1142407	-	173	16263557	-	SMa2015	-	COG0583K	transcriptional regulator
+1143193..1143603	+	136	16263558	-	SMa2019	-	COG1028IQR	oxidoreductase
+1143618..1144085	-	155	16263559	-	SMa2020	-	COG1846K	Transcriptional regulator
+1144230..1145021	+	263	193782733	-	SMa2023	-	COG0596R	hypothetical protein
+1145209..1146840	+	543	193782734	-	SMa2025	-	COG2303E	oxidoreductase
+1147165..1148058	-	297	16263562	-	SMa2027	-	COG0583K	LysR family transcriptional regulator
+1148213..1148863	+	216	193782735	-	SMa2029	-	COG1335Q	amidohydrolase
+1148874..1149245	+	123	16263564	-	SMa2031	-	-	non-heme chloroperoxidase
+1149083..1149382	+	99	16263565	-	SMa2032	-	COG0596R	non-heme chloroperoxidase
+1149915..1150712	+	265	16263566	-	SMa2033	-	COG2951M	Transglycosylase
+1151643..1151888	-	81	16263567	-	SMa2034	-	COG1977H	hypothetical protein
+1151898..1154150	-	750	193782736	-	SMa2037	-	COG1529C	Oxidoreductase
+1154153..1154629	-	158	193782737	-	SMa5011	-	COG2080C	oxidoreductase
+1154629..1155489	-	286	16263569	-	SMa2041	-	COG1319C	oxidoreductase
+1156137..1156547	+	136	16263570	-	SMa2043	-	COG3415L	TRm2011-2a transposase
+1156613..1157086	+	157	16263571	-	SMa2045	-	COG3335L	TRm2011-2b transposase
+1157277..1158278	+	333	16263572	-	SMa2047	-	COG2826L	TRm24 transposase
+1158529..1159611	+	360	16263573	-	SMa2049	-	COG1879G	LacI family transcriptional regulator
+1159791..1160825	+	344	16263574	-	SMa2051	-	COG3000I	desaturase
+1160822..1161133	+	103	16263575	-	SMa2053	-	COG2146PR	MocE-like protein
+1161208..1161459	+	83	16263576	-	SMa2055	-	COG1879G	hypothetical protein
+1161474..1161689	-	71	16263577	-	SMa2057	-	COG3158P	hypothetical protein
+1161899..1162480	-	193	16263578	-	SMa2059	-	-	hypothetical protein
+1162596..1164041	+	481	16263579	-	SMa2061	-	COG0467T	hypothetical protein
+1164048..1165091	+	347	16263580	-	SMa2063	-	COG3920T	sensor histidine kinase
+1165103..1165492	+	129	16263581	-	SMa2065	-	COG0784T	hypothetical protein
+1165852..1166895	-	347	16263582	cysA1	SMa2067	-	COG1118P	sulfate/thiosulfate binding protein
+1166977..1168002	-	341	16263583	cysP1	SMa2069	-	COG1613P	ABC transporter
+1168555..1168746	-	63	193782738	-	SMa2071	-	-	hypothetical protein
+1169453..1170676	-	407	16263585	-	SMa2073	-	COG1960I	hypothetical protein
+1170764..1172395	-	543	16263586	-	SMa2075	-	COG0747E	ABC transporter substrate-binding protein
+1173082..1174143	-	353	16263587	-	SMa2077	-	COG0667C	oxidoreductase
+1174158..1175102	-	314	16263588	-	SMa2079	-	COG0444EP	ABC transporter ATP-binding protein
+1175080..1176078	-	332	16263589	-	SMa2081	-	COG0444EP	ABC transporter ATP-binding protein
+1176081..1177079	-	332	16263590	-	SMa2083	-	COG1173EP	ABC transporter permease
+1177079..1178065	-	328	16263591	-	SMa2085	-	COG0601EP	ABC transporter permease
+1178362..1179402	+	346	16263592	-	SMa2087	-	COG0715P	desulfurization enzyme
+1179416..1179769	+	117	16263593	-	SMa2089	-	COG1960I	hypothetical protein
+1179760..1180647	+	295	16263594	-	SMa2091	-	COG1960I	hypothetical protein
+1180657..1181691	+	344	16263595	-	SMa2093	-	COG0715P	desulfurization enzyme
+1181688..1182566	+	292	16263596	-	SMa2095	-	COG0702MG	hypothetical protein
+1182563..1183813	+	416	193782739	-	SMa2097	-	COG0654HC	oxidoreductase
+1183832..1184482	+	216	193782740	-	SMa2099	-	COG2910R	NAD-dependent epimerase/dehydratase
+1184498..1185799	+	433	16263599	-	SMa2101	-	COG2141C	nitrilotriacetate monooxygenase component A
+1185925..1187247	-	440	193782741	-	SMa2103	-	COG2041R	oxidoreductase
+1187704..1188924	+	406	16263601	-	SMa2105	-	COG3177S	hypothetical protein
+1189053..1189958	-	301	16263602	-	SMa2107	-	COG0583K	GstR transcriptional regulator
+1190053..1190955	+	300	193782742	-	SMa2109	-	COG0702MG	hypothetical protein
+1191763..1193313	+	516	193782743	-	SMa2111	-	-	hypothetical protein
+1193878..1195005	-	375	16263605	adhC2	SMa2113	-	COG1062C	glutathione-dependent dehydrogenase
+1195054..1195701	-	215	16263606	gst13	SMa2115	-	COG0625O	Gst13 glutathione S-transferase
+1195713..1197479	-	588	16263607	-	SMa2117	-	COG1018C	oxidoreductase
+1197522..1198448	-	308	16263608	-	SMa2119	-	COG4638PR	hypothetical protein
+1198464..1199327	-	287	16263609	-	SMa2121	-	COG4638PR	hypothetical protein
+1199735..1200667	-	310	16263610	-	SMa2123	-	COG1079R	ABC transporter permease
+1200660..1201739	-	359	16263611	-	SMa2125	-	COG4603R	ABC transporter permease
+1201708..1203258	-	516	16263612	-	SMa2127	-	COG3845R	ABC transporter ATP-binding protein
+1203291..1204310	-	339	193782744	-	SMa2129	-	COG1744R	hypothetical protein
+1204556..1205452	-	298	193782745	-	SMa2131	-	COG4638PR	hypothetical protein
+1205622..1206413	-	263	16263615	-	SMa2133	-	COG2207K	hypothetical protein
+1206555..1207823	-	422	16263616	glyA2	SMa2135	-	COG0112E	GlyA2 serine hydroxymethyltransferase, SHMT
+1207895..1208869	-	324	16263617	-	SMa2137	-	COG1052CHR	dehydrogenase
+1208866..1210071	-	401	16263618	sgaA	SMa2139	-	COG0075E	SgaA serine-glyoxylate aminotransferase (SGAT)
+1210165..1211025	-	286	16263619	purU3	SMa2141	-	COG0788F	formyltetrahydrofolate deformylase
+1211022..1211975	-	317	16263620	metF	SMa2143	-	COG0685E	5,10-methylenetetrahydrofolate reductase
+1212031..1213287	-	418	16263621	-	SMa2145	-	COG0404E	glycine cleavage system protein T
+1213664..1214104	-	146	193782746	-	SMa5035	-	-	hypothetical protein
+1213698..1214588	-	296	16263622	-	SMa2147	-	COG1475K	hypothetical protein
+1215301..1215624	+	107	193782747	-	SMa2151	-	COG2944K	DNA-binding protein
+1216723..1217778	+	351	193782748	-	SMa2157	-	COG0656R	oxidoreductase
+1217748..1218461	+	237	16263626	-	SMa2159	-	COG1262S	hypothetical protein
+1218608..1219489	+	293	193782749	-	SMa2163	-	COG2207K	AraC family transcriptional regulator
+1219615..1220355	+	246	16263629	-	SMa2165	-	COG1028IQR	short chain
+1221480..1221947	+	155	16263630	-	SMa2167	-	COG4190K	hypothetical protein
+1222135..1222512	-	125	16263631	-	SMa2169	-	-	hypothetical protein
+1222966..1224603	-	545	16263632	-	SMa2171	-	COG3436L	Transposase
+1225061..1226050	-	329	16263633	-	SMa2175	-	COG4974L	Integrase/recombinase
+1226047..1226961	-	304	16263634	-	SMa2187	-	COG4974L	Integrase/recombinase
+1226955..1228184	-	409	16263635	-	SMa2189	-	COG4974L	Integrase/recombinase
+1228391..1228777	-	128	16263636	-	SMa2191	-	COG2963L	transposase, fragment
+1228832..1230145	-	437	16263637	-	SMa2193	-	COG0665E	Oxidoreductase
+1230146..1230910	-	254	16263638	-	SMa2195	-	COG1126E	ABC transporter ATP-binding protein
+1230912..1231826	-	304	16263639	-	SMa2197	-	COG0765E	ABC transporter permease
+1231890..1232780	-	296	16263640	-	SMa2199	-	COG0834ET	ABC transporter substrate-binding protein
+1232892..1233272	-	126	16263641	-	SMa2201	-	COG0251J	hypothetical protein
+1233363..1234157	-	264	16263642	-	SMa2203	-	COG1177E	ABC transporter permease
+1234154..1235014	-	286	193782750	-	SMa2205	-	COG1176E	ABC transporter permease
+1235016..1236101	-	361	16263644	-	SMa2207	-	COG3842E	ABC transporter ATP-binding protein
+1236212..1237234	-	340	16263645	-	SMa2209	-	COG0687E	ABC transporter substrate-binding protein
+1237356..1239056	-	566	16263646	ilvB2	SMa2211	-	COG0028EH	thiamine pyrophosphate protein
+1239073..1240557	-	494	16263647	-	SMa2213	-	COG1012C	aldehyde dehydrogenase
+1240820..1241587	+	255	16263648	-	SMa2215	-	COG2188K	GntR family transcriptional regulator
+1241610..1242935	+	441	193782751	-	SMa2217	-	COG0043H	decarboxylase
+1242938..1243531	+	197	16263650	-	SMa2219	-	COG0163H	decarboxylase
+1243528..1244241	+	237	16263651	-	SMa2221	-	-	hypothetical protein
+1244238..1245344	+	368	16263652	-	SMa2223	-	COG0665E	oxidoreductase
+1245645..1247021	+	458	16263653	-	SMa2225	-	COG0446R	oxidoreductase
+1247113..1247886	-	257	193782752	-	SMa2227	-	COG2188K	GntR family transcriptional regulator
+1248077..1248562	-	161	193782753	-	SMa2229	-	COG5589S	hypothetical protein
+1249316..1249699	+	127	16263656	-	SMa2231	-	COG1487R	hypothetical protein
+1250151..1250930	-	259	193782754	-	SMa2233	-	-	hypothetical protein
+1251186..1252820	+	544	16263658	-	SMa2235	-	-	hypothetical protein
+1253110..1254114	-	334	16263659	-	SMa2237	-	-	hypothetical protein
+1254259..1255038	+	259	16263660	-	SMa2239	-	COG4422S	hypothetical protein
+1255074..1256321	+	415	16263661	-	SMa2241	-	-	hypothetical protein
+1256339..1257265	-	308	16263662	-	SMa2243	-	-	hypothetical protein
+1257344..1259881	-	845	16263663	-	SMa2245	-	COG1204R	hypothetical protein
+1260671..1261777	+	368	16263665	-	SMa2249	-	-	hypothetical protein
+1261774..1262337	+	187	16263666	-	SMa2251	-	-	hypothetical protein
+1263295..1263672	+	125	16263667	-	SMa2253	-	COG3744S	hypothetical protein
+1263675..1264013	+	112	16263668	-	SMa2255	-	-	hypothetical protein
+1264010..1265167	+	385	16263669	-	SMa2257	-	COG4974L	integrase-like protein
+1265174..1265599	-	141	16263670	-	SMa2259	-	-	hypothetical protein
+1266525..1266860	+	111	16263672	-	SMa2263	-	-	hypothetical protein
+1266850..1267101	+	83	16263673	-	SMa2265	-	-	hypothetical protein
+1267177..1267614	-	145	193782755	-	SMa2267	-	COG0346E	hypothetical protein
+1267797..1268162	+	121	193782756	-	SMa2269	-	COG1061KL	hypothetical protein
+1268471..1268821	-	116	16263677	-	SMa2273	-	COG3668R	hypothetical protein
+1268802..1269077	-	91	16263678	-	SMa2275	-	COG3609K	hypothetical protein
+1269911..1270393	-	160	16263680	-	SMa2279	-	COG5654S	hypothetical protein
+1270390..1270722	-	110	16263681	-	SMa2281	-	COG5642S	hypothetical protein
+1271330..1271806	+	158	16263683	-	SMa2285	-	-	hypothetical protein
+1271938..1272870	-	310	193782757	-	SMa2287	-	COG0583K	LysR family transcriptional regulator
+1273011..1273403	+	130	16263685	-	SMa2289	-	COG0251J	hypothetical protein
+1273405..1274517	+	370	16263686	-	SMa2291	-	COG1902C	dehydrogenase
+1274593..1275477	-	294	16263687	-	SMa2293	-	COG0583K	beta lactamase transcriptional activator
+1275788..1277974	+	728	16263688	mrcA2	SMa2294	-	COG5009M	MrcA2 penicillin-binding protein
+1278152..1279483	+	443	16263689	-	SMa2295	-	COG0768M	penicillin-binding protein
+1279888..1280700	+	270	193782758	-	SMa2297	-	COG4991S	hypothetical protein
+1280762..1281688	-	308	16263691	-	SMa2299	-	-	hypothetical protein
+1281993..1283339	-	448	16263692	-	SMa2301	-	COG3706T	Diguanylate cyclase
+1283423..1284649	-	408	16263693	-	SMa2303	-	COG1940KG	ROK family transcriptional regulator
+1284827..1286095	+	422	193782759	-	SMa2305	-	COG1653G	ABC transporter substrate-binding protein
+1286173..1287096	+	307	16263695	-	SMa2307	-	COG1175G	ABC transporter permease
+1287072..1287893	+	273	16263696	-	SMa2309	-	COG0395G	ABC transporter permease
+1287890..1289116	+	408	16263697	-	SMa2311	-	COG3839G	ABC transporter ATP-binding protein
+1289113..1291146	+	677	16263698	-	SMa2313	-	COG0673R	Oxidoreductase
+1291278..1291817	+	179	16263699	-	SMa2315	-	COG1708R	hypothetical protein
+1291827..1292054	+	75	16263700	-	SMa2317	-	-	hypothetical protein
+1292162..1292809	+	215	193782760	gst14	SMa2319	-	COG0625O	gst14 glutatione S-transferase
+1293347..1295416	+	689	16263702	uvrD2	SMa2321	-	COG0210L	UvrD2 DNA helicase
+1295741..1296166	+	141	193782761	-	SMa2323	-	-	hypothetical protein
+1296390..1297082	-	230	16263704	-	SMa2325	-	COG0745TK	transcriptional regulator
+1297079..1299769	-	896	16263705	-	SMa2327	-	COG2205T	sensor protein
+1299788..1300357	-	189	16263706	kdpC	SMa2329	-	COG2156P	potassium-transporting ATPase subunit C
+1300360..1302402	-	680	16263707	kdpB	SMa2331	-	COG2216P	potassium-transporting ATPase subunit B
+1302414..1304123	-	569	16263708	kdpA	SMa2333	-	COG2060P	potassium-transporting ATPase subunit A
+1304349..1304552	-	67	16263709	-	SMa2335	-	-	hypothetical protein
+1304824..1306119	+	431	16263710	rhtX	SMa2337	-	COG2814G	RhtX rhizobactin transporter
+1306179..1307591	+	470	16263711	rhbA	SMa2400	-	COG0160E	diaminobutyrate--2-oxoglutarate aminotransferase
+1307588..1309075	+	495	16263712	rhbB	SMa2402	-	COG0076E	RhsB L-2,4-diaminobutyrate decarboxylase
+1309062..1310819	+	585	16263713	rhbC	SMa2404	-	COG4264Q	RhbC rhizobactin biosynthesis protein
+1310812..1311402	+	196	16263714	rhbD	SMa2406	-	COG1670J	RhbD rhizobactin siderophore biosynthesis protein
+1311399..1312769	+	456	16263715	rhbE	SMa2408	-	COG3486Q	RhbE rhizobactin siderophore biosynthesis protein
+1312753..1314558	+	601	16263716	rhbF	SMa2410	-	COG4264Q	RhbF rhizobactin siderophore biosynthesis protein RhsF
+1314632..1315576	-	314	16263717	rhrA	SMa2412	-	COG2207K	RhrA transcriptional activator
+1315745..1317985	+	746	16263718	rhtA	SMa2414	-	COG1629P	RhtA rhizobactin receptor precursor
+1317985..1319097	+	370	16263719	-	SMa2339	-	COG1670J	Siderophore biosynthesis protein
+1319298..1320185	-	295	193782762	-	SMa2341	-	COG0583K	LysR family transcriptional regulator
+1320285..1321007	+	240	16263721	-	SMa2343	-	COG4221R	oxidoreductase
+1321062..1321589	+	175	193782763	-	SMa5012	-	COG3631R	hypothetical protein
+1321586..1321999	+	137	193782764	-	SMa5013	-	-	hypothetical protein
+1322021..1322701	-	226	193782765	-	SMa2347	-	COG2226H	hypothetical protein
+1323061..1323708	+	215	16263724	-	SMa2349	-	COG2080C	xanthine dehydrogenase iron-sulfur-binding subunit
+1323705..1324655	+	316	16263725	-	SMa2351	-	COG1319C	oxidoreductase, molybdopterin-binding subunit
+1324660..1326858	+	732	193782766	-	SMa2353	-	COG1529C	oxidoreductase
+1327042..1328151	+	369	193782767	-	SMa2355	-	COG0389L	DNA polymerase IV
+1329978..1330670	+	230	193782768	cyaO	SMa2357	-	COG2114T	guanylate cyclase
+1330682..1331458	-	258	16263729	-	SMa2359	-	COG0730R	hypothetical protein
+1331764..1332750	+	328	16263730	-	SMa2361	-	COG1744R	hypothetical protein
+1332762..1334177	+	471	16263731	-	SMa2363	-	COG0154J	amidase
+1334174..1335700	+	508	16263732	-	SMa2365	-	COG3845R	ABC transporter ATP-binding protein
+1335690..1336739	+	349	16263733	-	SMa2367	-	COG4603R	ABC transporter permease
+1336736..1337680	+	314	16263734	-	SMa2369	-	COG1079R	ABC transporter permease
+1337702..1339000	+	432	16263735	codA	SMa2371	-	COG0402FR	cytosine deaminase
+1339095..1339781	+	228	193782769	-	SMa5034	-	COG3806T	hypothetical protein
+1339874..1340281	+	135	16263736	-	SMa2373	-	COG3415L	TRm2011-2a transposase
+1340347..1340820	+	157	16263737	-	SMa2375	-	COG3335L	TRm2011-2b transposase
+1341022..1342191	+	389	16263738	-	SMa2377	-	COG2814G	Permease, MFS
+1342282..1344465	-	727	16263739	katB	SMa2379	-	COG0376P	KatB catalase/peroxidase
+1344905..1345471	+	188	193782770	-	SMa2381	-	COG1309K	hypothetical protein
+1345525..1346493	+	322	16263741	-	SMa2383	-	COG0604CR	oxidoreductase
+1346715..1348304	-	529	16263742	-	SMa2385	-	COG0488R	ABC transporter ATP-binding protein
+1348373..1349071	+	232	193782771	-	SMa2387	-	COG1309K	TetR family transcriptional regulator
+1349280..1349696	-	138	193782772	-	SMa2389	-	COG1764O	OsmC-like protein
+1350001..1351206	-	401	16263745	repC2	SMa2391	-	-	replication initiation protein RepC
+1351362..1352363	-	333	193782773	repB2	SMa2393	-	COG1475K	RepB2 replication protein
+1352360..1353535	-	391	16263747	repA2	SMa2395	-	COG1192D	RepA2 replication protein

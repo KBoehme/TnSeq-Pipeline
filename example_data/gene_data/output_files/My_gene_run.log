@@ -1,0 +1,189 @@
+=========================================
+             Tn-Seq Pipeline
+The MIT License (MIT) Copyright (c) 2014 Kevin
+     Date: 2015-05-02 13:23:18.316541
+           Author: Kevin Boehme
+      Email: kevinlboehme@gmail.com
+=========================================
+
+
+=============== Config File Settings ===============
+
+[input]
+
+Reads           = ./example_data/gene_data/*.fasta                       ; Absolute or relative path (from TnSeq-Pipeline.py script) to TnSeq reads.
+BowtieReference = ./example_data/bowtie2_reference/smeliloti   ; Path to bowtie2 reference genome. Use prefix.
+Ptt             = ./example_data/gene_data/*.ptt                     ; Path to PTT files of reference genome.
+Out             = My_gene_run                               ; Name for the output. (For example: My_example_run-GENE.txt and My_example_run-HOPS.txt)
+
+
+
+################################
+
+[parameters]
+
+Transposon      =                         ; Transposon sequence;
+Mismatches      = 1                        ; Mismatches allowed when finding transposon
+GeneTrim        = 10                       ; Percent of gene length truncated on both sides of gene where hops wont be counted.
+ReadLength      = 25                       ; Length of reads (If read is shorter than this length after removing transposon it will be removed, otherwise it will be trimmed to this length and mapped).
+MinimumHopCount = 1                       ; Any hop site with less than this number of occurances (totaled across all conditions) will be removed from analysis and will not be outputed in results.
+
+################################
+
+[options]
+
+Debug                   = True            ; Shows detailed running parameters for debugging purposes.
+Normalize               = True            ; Normalize global hop counts based on intergenic hops counted.
+DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam files at the end of the run.
+
+--------------------------------------
+
+
+
+
+=============== Read pre-processing ===============
+
+Input fastq = ./example_data/gene_data/a17_example.fasta.
+Processing 144 reads  ran in 0.00 seconds.
+
+Removed 0 reads with no detected transposon sequence (0/144) = 0.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 144 reads written to ./example_data/gene_data/intermediate_files/a17_example-trimmed.fasta
+
+         ---------------
+
+Input fastq = ./example_data/gene_data/lb_example.fasta.
+Processing 4459 reads  ran in 0.02 seconds.
+
+Removed 0 reads with no detected transposon sequence (0/4459) = 0.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 4459 reads written to ./example_data/gene_data/intermediate_files/lb_example-trimmed.fasta
+
+         ---------------
+
+Input fastq = ./example_data/gene_data/rsm_example.fasta.
+Processing 8368 reads  ran in 0.04 seconds.
+
+Removed 0 reads with no detected transposon sequence (0/8368) = 0.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 8368 reads written to ./example_data/gene_data/intermediate_files/rsm_example-trimmed.fasta
+
+         ---------------
+
+--------------------------------------
+
+
+
+
+=============== Bowtie2 Mapping ===============
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f ./example_data/gene_data/intermediate_files/a17_example-trimmed.fasta -S ./example_data/gene_data/intermediate_files/a17_example.sam --no-hd
+
+
+Writing output to = ./example_data/gene_data/intermediate_files/a17_example.sam
+
+144 reads; of these:
+  144 (100.00%) were unpaired; of these:
+    0 (0.00%) aligned 0 times
+    144 (100.00%) aligned exactly 1 time
+    0 (0.00%) aligned >1 times
+100.00% overall alignment rate
+
+Bowtie2 ran in 0.09 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f ./example_data/gene_data/intermediate_files/lb_example-trimmed.fasta -S ./example_data/gene_data/intermediate_files/lb_example.sam --no-hd
+
+
+Writing output to = ./example_data/gene_data/intermediate_files/lb_example.sam
+
+4459 reads; of these:
+  4459 (100.00%) were unpaired; of these:
+    0 (0.00%) aligned 0 times
+    4459 (100.00%) aligned exactly 1 time
+    0 (0.00%) aligned >1 times
+100.00% overall alignment rate
+
+Bowtie2 ran in 0.28 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f ./example_data/gene_data/intermediate_files/rsm_example-trimmed.fasta -S ./example_data/gene_data/intermediate_files/rsm_example.sam --no-hd
+
+
+Writing output to = ./example_data/gene_data/intermediate_files/rsm_example.sam
+
+8368 reads; of these:
+  8368 (100.00%) were unpaired; of these:
+    0 (0.00%) aligned 0 times
+    8368 (100.00%) aligned exactly 1 time
+    0 (0.00%) aligned >1 times
+100.00% overall alignment rate
+
+Bowtie2 ran in 0.47 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
+--------------------------------------
+
+
+
+
+=============== Process SAM File ===============
+
+         ---------------
+
+Reading file = ./example_data/gene_data/intermediate_files/a17_example.sam.
+
+Reading file ran in 0.00 seconds.
+
+Deleting SAM file.
+Reading file = ./example_data/gene_data/intermediate_files/lb_example.sam.
+
+Reading file ran in 0.03 seconds.
+
+Deleting SAM file.
+Reading file = ./example_data/gene_data/intermediate_files/rsm_example.sam.
+
+Reading file ran in 0.06 seconds.
+
+Deleting SAM file.
+         ---------------
+
+Begin tabulating gene hits...
+
+Working on reference = NC_003047
+ Done tabulating gene hits, ran in 0.00 seconds.
+
+         ---------------
+
+
+Begin Normalization Steps.
+
+Total intergenic hops observed is: 949
+a17_example has 19 intergenic hops observed.
+lb_example has 352 intergenic hops observed.
+rsm_example has 578 intergenic hops observed.
+Normalization coefficients used:
+a17_example multiplied by 1.0
+lb_example multiplied by 0.0539772727273
+rsm_example multiplied by 0.0328719723183
+Begin calculating gene totals and writing to output...
+Done calculating totals and writing to output, ran in 0.00 seconds.
+
+         ---------------
+
+Done processing SAM files, ran in 0.10 seconds.
+
+--------------------------------------
+
+
+Total run time, ran in 1.03 seconds.
+
