@@ -79,86 +79,82 @@ class hops_pipeline(object):
 		self.ptt = glob.glob(cp.get('input', 'Ptt'))
 		self.out  = cp.get('input', 'Out')
 
+		if len(self.input_files) == 0:
+			sys.exit('Error with input Reads parameter.')
+		elif self.ref == None:
+			sys.exit('Error with BowtieReference parameter.')
+		elif len(self.ptt) == 0:
+			sys.exit('Error with Ptt parameter.')
+		elif self.out == None:
+			sys.exit("Error with Out parameter.")
+
+		#Parameters
 		try:
-			if len(self.input_files) == 0:
-				sys.exit('Error with input Reads parameter.')
-			elif self.ref == None:
-				sys.exit('Error with BowtieReference parameter.')
-			elif len(self.ptt) == 0:
-				sys.exit('Error with Ptt parameter.')
-			elif self.out == None:
-				sys.exit("Error with Out parameter.")
-
-			#Parameters
-			try:
-				self.transposon = cp.get('parameters', 'Transposon')
-			except:
-				sys.exit('Error with Transposon parameter.')
-
-			if self.transposon == "":
-				print "Transposon parameter was empty. This means no check will be made for a transposon sequence and all reads will move to the mapping stage."
-				self.check_transposon = False
-			elif not (re.match('^[ACGTacgt]+$',self.transposon)):
-				sys.exit('Error with Transposon parameter (Make sure it only contains [ATCG]).')
-		
-			try:
-				self.mismatches = int ( cp.get('parameters', 'Mismatches') )
-			except:
-				sys.exit('Error with Mismatches parameter (Not an integer).')
-
-			if self.mismatches < 0:
-				sys.exit('Mismatches parameter is negative.')
-			elif self.check_transposon and self.mismatches >= len(self.transposon):
-				sys.exit("Mismatches parameter is same length or greater than transposon sequence (Note if you dont want to check for a transposon sequence, leave it blank in the config file.")
-
-			try:
-				self.gene_trim = int ( cp.get('parameters', 'GeneTrim') )
-			except:
-				sys.exit('Error with GeneTrim parameter (Not an integer).')
-
-
-			if self.gene_trim < 0:
-				sys.exit('GeneTrim parameter is negative.')
-			elif self.gene_trim > 99:
-				sys.exit('Error with GeneTrim parameter (Must be 99 or smaller).')
-
-
-			try:
-				self.read_length = int ( cp.get('parameters', 'ReadLength') )
-			except:
-				sys.exit('Error with ReadLength parameter (Not an integer).')
-
-			if self.read_length < 0:
-				sys.exit('ReadLength parameter is negative.')
-
-
-			try:
-				self.minimum_hop_count = int ( cp.get('parameters', 'MinimumHopCount'))
-			except:
-				sys.exit('Error with MinimumHopCount parameter (Not an integer).')
-
-			if self.minimum_hop_count < 0:
-				sys.exit('MinimumHopCount parameter is negative.')
-
-
-			#Options
-			try:
-				self.debug = cp.getboolean('options', 'Debug')
-			except:
-				sys.exit('Error with Debug parameter (Not True/False).')
-
-			try:
-				self.normalize = cp.getboolean('options','Normalize')
-			except:
-				sys.exit('Error with Normalize parameter (Not True/False)')
-
-			try:
-				self.delete_intermediate_files = cp.getboolean('options','DeleteIntermediateFiles')
-			except:
-				sys.exit('Error with DeleteIntermediateFiles parameter (Not True/False)')
+			self.transposon = cp.get('parameters', 'Transposon')
 		except:
-			print "something is wrong"
-			raw_input('press enter')
+			sys.exit('Error with Transposon parameter.')
+
+		if self.transposon == "":
+			print "Transposon parameter was empty. This means no check will be made for a transposon sequence and all reads will move to the mapping stage."
+			self.check_transposon = False
+		elif not (re.match('^[ACGTacgt]+$',self.transposon)):
+			sys.exit('Error with Transposon parameter (Make sure it only contains [ATCG]).')
+	
+		try:
+			self.mismatches = int ( cp.get('parameters', 'Mismatches') )
+		except:
+			sys.exit('Error with Mismatches parameter (Not an integer).')
+
+		if self.mismatches < 0:
+			sys.exit('Mismatches parameter is negative.')
+		elif self.check_transposon and self.mismatches >= len(self.transposon):
+			sys.exit("Mismatches parameter is same length or greater than transposon sequence (Note if you dont want to check for a transposon sequence, leave it blank in the config file.")
+
+		try:
+			self.gene_trim = int ( cp.get('parameters', 'GeneTrim') )
+		except:
+			sys.exit('Error with GeneTrim parameter (Not an integer).')
+
+
+		if self.gene_trim < 0:
+			sys.exit('GeneTrim parameter is negative.')
+		elif self.gene_trim > 99:
+			sys.exit('Error with GeneTrim parameter (Must be 99 or smaller).')
+
+
+		try:
+			self.read_length = int ( cp.get('parameters', 'ReadLength') )
+		except:
+			sys.exit('Error with ReadLength parameter (Not an integer).')
+
+		if self.read_length < 0:
+			sys.exit('ReadLength parameter is negative.')
+
+
+		try:
+			self.minimum_hop_count = int ( cp.get('parameters', 'MinimumHopCount'))
+		except:
+			sys.exit('Error with MinimumHopCount parameter (Not an integer).')
+
+		if self.minimum_hop_count < 0:
+			sys.exit('MinimumHopCount parameter is negative.')
+
+
+		#Options
+		try:
+			self.debug = cp.getboolean('options', 'Debug')
+		except:
+			sys.exit('Error with Debug parameter (Not True/False).')
+
+		try:
+			self.normalize = cp.getboolean('options','Normalize')
+		except:
+			sys.exit('Error with Normalize parameter (Not True/False)')
+
+		try:
+			self.delete_intermediate_files = cp.getboolean('options','DeleteIntermediateFiles')
+		except:
+			sys.exit('Error with DeleteIntermediateFiles parameter (Not True/False)')
 		# Generate other variables
 		self.num_conditions = len(self.input_files)
 		self.output_directory = os.path.dirname(config_path)
@@ -597,8 +593,8 @@ class hops_pipeline(object):
 				num_genes = float(len(chrom.gene_list))
 				for i,gene in enumerate(chrom.gene_list,start=1):
 					self.update_progress(float(i)/num_genes)
-					beg = gene.start
-					end = gene.end
+					beg = gene.start_trunc
+					end = gene.end_trunc
 
 					curr_hop = self.update_current_hop(it, self.sam_file_contents[ref])
 					while curr_hop.position < beg:

@@ -66,12 +66,12 @@ class Gene(object):
 		self.code = ""
 		self.cog = ""
 		self.product = ""
-		self.is_intergenic = False
 
 		#Unique to script info.
 		self.start_trunc = -1
 		self.end_trunc = -1
 		self.order_code = ""
+		self.is_intergenic = False
 
 		self.num_conditions = -1
 		self.hop_list = [] #This will be a list of HopSite objects.
