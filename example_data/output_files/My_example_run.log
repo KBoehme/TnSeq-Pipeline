@@ -1,0 +1,194 @@
+=========================================
+             Tn-Seq Pipeline
+The MIT License (MIT) Copyright (c) 2014 Kevin
+     Date: 2015-05-04 14:16:02.887561
+           Author: Kevin Boehme
+      Email: kevinlboehme@gmail.com
+=========================================
+
+
+=============== Config File Settings ===============
+
+[input]
+
+Reads           = ./example_data/test_data/*.fastq                       ; Absolute or relative path (from TnSeq-Pipeline.py script) to TnSeq reads.
+BowtieReference = ./example_data/bowtie2_reference/smeliloti   ; Path to bowtie2 reference genome. Use prefix.
+Ptt             = ./example_data/bowtie2_reference/ptt/*.ptt                     ; Path to PTT files of reference genome.
+Out             = My_example_run                               ; Name for the output. (For example: My_example_run-GENE.txt and My_example_run-HOPS.txt)
+
+
+################################
+
+[parameters]
+
+Transposon      = TCGAGATGTGTATAAGAGACAG   ; Transposon sequence
+Mismatches      = 3                        ; Mismatches allowed when finding transposon
+GeneTrim        = 10                       ; Percent of gene length truncated on both sides of gene where hops wont be counted.
+ReadLength      = 25                       ; Length of reads (If read is shorter than this length after removing transposon it will be removed, otherwise it will be trimmed to this length and mapped).
+MinimumHopCount = 1                       ; Any hop site with less than this number of occurances (totaled across all conditions) will be removed from analysis and will not be outputed in results.
+
+################################
+
+[options]
+
+Debug                   = True            ; Shows detailed running parameters for debugging purposes.
+Normalize               = True            ; Normalize global hop counts based on intergenic hops counted.
+DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam files at the end of the run.
+
+--------------------------------------
+
+
+
+
+=============== Read pre-processing ===============
+
+Input fastq = ./example_data/test_data/condition2.fastq.
+Processing 100 reads  ran in 0.00 seconds.
+
+Removed 17 reads with no detected transposon sequence (17/100) = 17.00%.
+Removed 3 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 80 reads written to example_data/intermediate_files/condition2-trimmed.fasta
+
+         ---------------
+
+Input fastq = ./example_data/test_data/condition3.fastq.
+Processing 100 reads  ran in 0.00 seconds.
+
+Removed 22 reads with no detected transposon sequence (22/100) = 22.00%.
+Removed 2 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 76 reads written to example_data/intermediate_files/condition3-trimmed.fasta
+
+         ---------------
+
+Input fastq = ./example_data/test_data/condition1.fastq.
+Processing 100 reads  ran in 0.00 seconds.
+
+Removed 12 reads with no detected transposon sequence (12/100) = 12.00%.
+Removed 1 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 87 reads written to example_data/intermediate_files/condition1-trimmed.fasta
+
+         ---------------
+
+--------------------------------------
+
+
+
+
+=============== Bowtie2 Mapping ===============
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition2-trimmed.fasta -S example_data/intermediate_files/condition2.sam --no-hd
+
+
+Writing output to = example_data/intermediate_files/condition2.sam
+
+80 reads; of these:
+  80 (100.00%) were unpaired; of these:
+    30 (37.50%) aligned 0 times
+    49 (61.25%) aligned exactly 1 time
+    1 (1.25%) aligned >1 times
+62.50% overall alignment rate
+
+Bowtie2 ran in 0.08 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition3-trimmed.fasta -S example_data/intermediate_files/condition3.sam --no-hd
+
+
+Writing output to = example_data/intermediate_files/condition3.sam
+
+76 reads; of these:
+  76 (100.00%) were unpaired; of these:
+    32 (42.11%) aligned 0 times
+    41 (53.95%) aligned exactly 1 time
+    3 (3.95%) aligned >1 times
+57.89% overall alignment rate
+
+Bowtie2 ran in 0.08 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition1-trimmed.fasta -S example_data/intermediate_files/condition1.sam --no-hd
+
+
+Writing output to = example_data/intermediate_files/condition1.sam
+
+87 reads; of these:
+  87 (100.00%) were unpaired; of these:
+    28 (32.18%) aligned 0 times
+    58 (66.67%) aligned exactly 1 time
+    1 (1.15%) aligned >1 times
+67.82% overall alignment rate
+
+Bowtie2 ran in 0.08 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
+--------------------------------------
+
+
+
+
+=============== Process SAM File ===============
+
+         ---------------
+
+Reading file = example_data/intermediate_files/condition2.sam.
+
+Reading file ran in 0.00 seconds.
+
+Deleting SAM file.
+Reading file = example_data/intermediate_files/condition3.sam.
+
+Reading file ran in 0.00 seconds.
+
+Deleting SAM file.
+Reading file = example_data/intermediate_files/condition1.sam.
+
+Reading file ran in 0.00 seconds.
+
+Deleting SAM file.
+         ---------------
+
+Begin tabulating gene hits...
+
+Working on reference = NC_003078
+ Done tabulating gene hits, ran in 0.09 seconds.
+
+Working on reference = NC_003037
+ Done tabulating gene hits, ran in 0.07 seconds.
+
+Working on reference = NC_003047
+ Done tabulating gene hits, ran in 0.23 seconds.
+
+         ---------------
+
+
+Begin Normalization Steps.
+
+Total intergenic hops observed is: 23
+condition2 has 7 intergenic hops observed.
+condition3 has 8 intergenic hops observed.
+condition1 has 8 intergenic hops observed.
+Normalization coefficients used:
+condition2 multiplied by 1.0
+condition3 multiplied by 0.875
+condition1 multiplied by 0.875
+Begin calculating gene totals and writing to output...
+Done calculating totals and writing to output, ran in 0.19 seconds.
+
+         ---------------
+
+Done processing SAM files, ran in 0.80 seconds.
+
+--------------------------------------
+
+
+Total run time, ran in 1.08 seconds.
+
