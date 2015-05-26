@@ -108,13 +108,14 @@ class Gene(object):
 		self.start = int( location[0] )
 		self.end = int ( location[1] )
 		self.strand = ptt_entry[1]
-		self.length = int ( ptt_entry[2] )
+		self.length = self.end - self.start + 1
+		#self.length = int ( ptt_entry[2] ) # The ptt file lengths were a little wonky.
 		self.pid = ptt_entry[3]
 		self.gene = ptt_entry[4]
 		self.synonym = ptt_entry[5]
 		self.code = ptt_entry[6]
 		self.cog = ptt_entry[7]
-		self.function = ''.join(ptt_entry[8:])
+		self.function = ' '.join(ptt_entry[8:])
 		self.num_conditions = num_conditions
 
 		if trim != 0:

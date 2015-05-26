@@ -147,9 +147,12 @@ class hops_pipeline(object):
 			sys.exit('Error with Debug parameter (Not True/False).')
 
 		try:
-			self.normalize = cp.getboolean('options','Normalize')
+			self.normalize = cp.get('options','Normalize')
+			if self.normalize != "Intergenic" and self.normalize != "Total":
+				sys.exit('Normalize parameter not one of the following [Intergenic, Total].')
+
 		except:
-			sys.exit('Error with Normalize parameter (Not True/False)')
+			sys.exit('Error with Normalize parameter.')
 
 		try:
 			self.delete_intermediate_files = cp.getboolean('options','DeleteIntermediateFiles')
@@ -443,7 +446,7 @@ class hops_pipeline(object):
 		self.add_intergenic_regions_and_order_column()
 		self.read_sam_file()
 		self.tabulate_gene_hits()
-		self.get_normalized_coefficients(self.normalize)
+		self.get_normalized_coefficients()
 		self.write_output()
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 		self.print_time_output("Done processing SAM files,", start_time)
@@ -621,22 +624,34 @@ class hops_pipeline(object):
 				self.print_time_output(" Done tabulating gene hits,",start_time)
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
-	def get_normalized_coefficients(self, normalize):
-		if not normalize:
-			self.normalization_coefficients = [1.0] * self.num_conditions
-			return
+	def get_normalized_coefficients(self):
 		self.debugger("On function: get_normalized_coefficients")
 		logging.info("\nBegin Normalization Steps.\n")
-		intergenic_totals = [0] * self.num_conditions		
-		for ref_name,chrom in self.chromosomes.iteritems():
-			for gene in chrom.gene_list:
-				if gene.is_intergenic:
-					intergenic_totals = [x + y for x, y in zip(intergenic_totals, gene.hop_totals())]
-		logging.info("Total intergenic hops observed is: " + str(sum(intergenic_totals)))
-		for i,total in enumerate(intergenic_totals):
-			logging.info(self.int_prefix[i] + " has " + str(total) + " intergenic hops observed.")
 
-		minimum = min(intergenic_totals)
+		total_counted_hops = [0] * self.num_conditions	
+		if self.normalize == "Total":
+			for ref_name,chrom in self.chromosomes.iteritems():
+				for gene in chrom.gene_list:
+					total_counted_hops = [x + y for x, y in zip(total_counted_hops, gene.hop_totals())]
+			logging.info("Total hops observed is: " + str(sum(total_counted_hops)))
+			for i,total in enumerate(total_counted_hops):
+				logging.info(self.int_prefix[i] + " has " + str(total) + " [total] hops observed.")
+
+		elif self.normalize == "Intergenic":
+			for ref_name,chrom in self.chromosomes.iteritems():
+				for gene in chrom.gene_list:
+					if gene.is_intergenic:
+						total_counted_hops = [x + y for x, y in zip(total_counted_hops, gene.hop_totals())]
+			logging.info("Total [intergenic] hops observed is: " + str(sum(total_counted_hops)))
+			for i,total in enumerate(total_counted_hops):
+				logging.info(self.int_prefix[i] + " has " + str(total) + " [intergenic] hops observed.")
+		else:
+			logging.error("Error with normalization.")
+			sys.exit()
+
+
+
+		minimum = min(total_counted_hops)
 
 		self.debugger("min = ",minimum)
 		if minimum <= 0:
@@ -644,7 +659,7 @@ class hops_pipeline(object):
 			self.normalization_coefficients = [1] * self.num_conditions
 			return
 			#sys.exit('Exiting')
-		for i,totals in enumerate(intergenic_totals):
+		for i,totals in enumerate(total_counted_hops):
 			self.normalization_coefficients.append(float(minimum)/float(totals))
 		logging.info('Normalization coefficients used:')
 		for i,condition in enumerate(self.int_prefix):

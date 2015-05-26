@@ -1,4 +1,4 @@
-Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(Normalized)	condition1(Normalized)	Start	Stop	Order	Strand	Length	PID	Gene	Function
+Num	GeneID	condition1	condition2	condition3	condition1(Normalized)	condition2(Normalized)	condition3(Normalized)	Start	Stop	Order	Strand	Length	PID	Gene	Function
 2	int_SM_b21652-SM_b21653	0	0	0	0	0	0	1276	1368	na	na	93	na	na	na
 4	int_SM_b21654-SM_b21655	0	0	0	0	0	0	3081	3085	na	na	5	na	na	na
 6	int_SM_b20002-SM_b20003	0	0	0	0	0	0	6427	6484	na	na	58	na	na	na
@@ -147,9 +147,9 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 181	int_SM_b20179-SM_b20180	0	0	0	0	0	0	197739	197741	na	na	3	na	na	na
 182	int_SM_b20180-SM_b20181	0	0	0	0	0	0	198222	198275	na	na	54	na	na	na
 187	int_SM_b20185-SM_b20186	0	0	0	0	0	0	202135	202254	na	na	120	na	na	na
-188	int_SM_b20186-SM_b20194	2	0	0	2	0	0	202825	203135	na	na	311	na	na	na
-	int_SM_b20186-SM_b20194	1	0	0	1	0	0	203051			+
-	int_SM_b20186-SM_b20194	1	0	0	1	0	0	203124			+
+188	int_SM_b20186-SM_b20194	0	2	0	0	2	0	202825	203135	na	na	311	na	na	na
+	int_SM_b20186-SM_b20194	0	1	0	0	1	0	203051			+
+	int_SM_b20186-SM_b20194	0	1	0	0	1	0	203124			+
 189	int_SM_b20194-SM_b20195	0	0	0	0	0	0	203703	203705	na	na	3	na	na	na
 191	int_SM_b20196-SM_b20197	0	0	0	0	0	0	205325	205335	na	na	11	na	na	na
 192	int_SM_b20197-SM_b20198	0	0	0	0	0	0	205726	205766	na	na	41	na	na	na
@@ -211,8 +211,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 265	int_SM_b20272-SM_b20273	0	0	0	0	0	0	278587	278658	na	na	72	na	na	na
 266	int_SM_b20273-SM_b20274	0	0	0	0	0	0	278845	279099	na	na	255	na	na	na
 267	int_SM_b20274-SM_b20275	0	0	0	0	0	0	279286	279462	na	na	177	na	na	na
-268	int_SM_b20275-SM_b20276	1	0	0	1	0	0	280324	280414	na	na	91	na	na	na
-	int_SM_b20275-SM_b20276	1	0	0	1	0	0	280401			-
+268	int_SM_b20275-SM_b20276	0	1	0	0	1	0	280324	280414	na	na	91	na	na	na
+	int_SM_b20275-SM_b20276	0	1	0	0	1	0	280401			-
 270	int_SM_b20277-SM_b20278	0	0	0	0	0	0	282646	282953	na	na	308	na	na	na
 271	int_SM_b20278-SM_b20279	0	0	0	0	0	0	283533	283533	na	na	1	na	na	na
 272	int_SM_b20279-SM_b20280	0	0	0	0	0	0	284038	284068	na	na	31	na	na	na
@@ -403,8 +403,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 499	int_SM_b20513-SM_b20514	0	0	0	0	0	0	536021	536419	na	na	399	na	na	na
 500	int_SM_b20514-SM_b20515	0	0	0	0	0	0	537638	537726	na	na	89	na	na	na
 501	int_SM_b20515-SM_b20516	0	0	0	0	0	0	541213	541279	na	na	67	na	na	na
-502	int_SM_b20516-SM_b20517	0	0	1	0	0	1	541607	542356	na	na	750	na	na	na
-	int_SM_b20516-SM_b20517	0	0	1	0	0	1	542233			-
+502	int_SM_b20516-SM_b20517	1	0	0	1	0	0	541607	542356	na	na	750	na	na	na
+	int_SM_b20516-SM_b20517	1	0	0	1	0	0	542233			-
 503	int_SM_b20517-SM_b20518	0	0	0	0	0	0	542648	542828	na	na	181	na	na	na
 504	int_SM_b20518-SM_b20519	0	0	0	0	0	0	543549	543980	na	na	432	na	na	na
 505	int_SM_b20519-SM_b20520	0	0	0	0	0	0	544350	546126	na	na	1777	na	na	na
@@ -1369,8 +1369,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 1667	int_SMa0175-SMa0179	0	0	0	0	0	0	96872	98399	na	na	1528	na	na	na
 1668	int_SMa0179-SMa0180	0	0	0	0	0	0	99318	99434	na	na	117	na	na	na
 1669	int_SMa0180-SMa0181	0	0	0	0	0	0	100308	100504	na	na	197	na	na	na
-1670	int_SMa0181-SMa0185	0	0	1	0	0	1	100709	100963	na	na	255	na	na	na
-	int_SMa0181-SMa0185	0	0	1	0	0	1	100841			+
+1670	int_SMa0181-SMa0185	1	0	0	1	0	0	100709	100963	na	na	255	na	na	na
+	int_SMa0181-SMa0185	1	0	0	1	0	0	100841			+
 1671	int_SMa0185-SMa0187	0	0	0	0	0	0	102509	102648	na	na	140	na	na	na
 1672	int_SMa0187-SMa0189	0	0	0	0	0	0	103603	104027	na	na	425	na	na	na
 1673	int_SMa0189-SMa0190	0	0	0	0	0	0	104472	104559	na	na	88	na	na	na
@@ -1393,8 +1393,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 1696	int_SMa0228-SMa0229	0	0	0	0	0	0	127767	128084	na	na	318	na	na	na
 1697	int_SMa0229-SMa0232	0	0	0	0	0	0	128508	128726	na	na	219	na	na	na
 1698	int_SMa0232-SMa0233	0	0	0	0	0	0	129279	129299	na	na	21	na	na	na
-1699	int_SMa0233-SMa0235	0	0	1	0	0	1	130692	131105	na	na	414	na	na	na
-	int_SMa0233-SMa0235	0	0	1	0	0	1	130955			-
+1699	int_SMa0233-SMa0235	1	0	0	1	0	0	130692	131105	na	na	414	na	na	na
+	int_SMa0233-SMa0235	1	0	0	1	0	0	130955			-
 1700	int_SMa0235-SMa0237	0	0	0	0	0	0	132885	132892	na	na	8	na	na	na
 1702	int_SMa0241-SMa0244	0	0	0	0	0	0	134755	134948	na	na	194	na	na	na
 1703	int_SMa0244-SMa0246	0	0	0	0	0	0	136395	136408	na	na	14	na	na	na
@@ -1484,8 +1484,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 1809	int_SMa0447-SMa0448	0	0	0	0	0	0	239650	240024	na	na	375	na	na	na
 1810	int_SMa0448-SMa0450	0	0	0	0	0	0	240436	240984	na	na	549	na	na	na
 1811	int_SMa0450-SMa0453	0	0	0	0	0	0	241273	243154	na	na	1882	na	na	na
-1812	int_SMa0453-SMa0461	0	1	0	0	1	0	243563	245115	na	na	1553	na	na	na
-	int_SMa0453-SMa0461	0	1	0	0	1	0	243580			-
+1812	int_SMa0453-SMa0461	0	0	1	0	0	1	243563	245115	na	na	1553	na	na	na
+	int_SMa0453-SMa0461	0	0	1	0	0	1	243580			-
 1813	int_SMa0461-SMa0462	0	0	0	0	0	0	246319	246385	na	na	67	na	na	na
 1814	int_SMa0462-SMa0464	0	0	0	0	0	0	248228	248441	na	na	214	na	na	na
 1815	int_SMa0464-SMa0466	0	0	0	0	0	0	251619	252020	na	na	402	na	na	na
@@ -1520,8 +1520,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 1852	int_SMa5025-SMa0535	0	0	0	0	0	0	287351	287401	na	na	51	na	na	na
 1853	int_SMa0535-SMa0537	0	0	0	0	0	0	287642	287922	na	na	281	na	na	na
 1854	int_SMa0537-SMa0538	0	0	0	0	0	0	288337	288340	na	na	4	na	na	na
-1855	int_SMa0538-SMa0541	1	0	0	1	0	0	288704	289832	na	na	1129	na	na	na
-	int_SMa0538-SMa0541	1	0	0	1	0	0	289097			-
+1855	int_SMa0538-SMa0541	0	1	0	0	1	0	288704	289832	na	na	1129	na	na	na
+	int_SMa0538-SMa0541	0	1	0	0	1	0	289097			-
 1856	int_SMa0541-SMa0543	0	0	0	0	0	0	290229	290366	na	na	138	na	na	na
 1857	int_SMa0543-SMa0545	0	0	0	0	0	0	290958	291197	na	na	240	na	na	na
 1859	int_SMa0548-SMa0551	0	0	0	0	0	0	291878	292216	na	na	339	na	na	na
@@ -1683,8 +1683,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 2037	int_SMa0850-SMa0851	0	0	0	0	0	0	468066	468198	na	na	133	na	na	na
 2038	int_SMa0851-SMa0852	0	0	0	0	0	0	468943	469630	na	na	688	na	na	na
 2040	int_SMa0853-SMa0854	0	0	0	0	0	0	471122	471614	na	na	493	na	na	na
-2041	int_SMa0854-SMa0855	0	0	1	0	0	1	472353	472763	na	na	411	na	na	na
-	int_SMa0854-SMa0855	0	0	1	0	0	1	472634			+
+2041	int_SMa0854-SMa0855	1	0	0	1	0	0	472353	472763	na	na	411	na	na	na
+	int_SMa0854-SMa0855	1	0	0	1	0	0	472634			+
 2043	int_SMa0857-SMa0861	0	0	0	0	0	0	475589	475958	na	na	370	na	na	na
 2044	int_SMa0861-SMa0863	0	0	0	0	0	0	476841	477141	na	na	301	na	na	na
 2045	int_SMa0863-SMa0864	0	0	0	0	0	0	477931	477933	na	na	3	na	na	na
@@ -2099,8 +2099,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 2562	int_SMa1798-SMa1799	0	0	0	0	0	0	1021431	1022069	na	na	639	na	na	na
 2563	int_SMa1799-SMa1801	0	0	0	0	0	0	1022586	1022638	na	na	53	na	na	na
 2564	int_SMa1801-SMa1803	0	0	0	0	0	0	1023899	1024492	na	na	594	na	na	na
-2565	int_SMa1803-SMa1808	0	1	0	0	1	0	1024901	1025645	na	na	745	na	na	na
-	int_SMa1803-SMa1808	0	1	0	0	1	0	1024959			-
+2565	int_SMa1803-SMa1808	0	0	1	0	0	1	1024901	1025645	na	na	745	na	na	na
+	int_SMa1803-SMa1808	0	0	1	0	0	1	1024959			-
 2566	int_SMa1808-SMa1809	0	0	0	0	0	0	1026051	1026067	na	na	17	na	na	na
 2567	int_SMa1809-SMa1811	0	0	0	0	0	0	1026899	1026983	na	na	85	na	na	na
 2568	int_SMa1811-SMa1814	0	0	0	0	0	0	1027959	1027979	na	na	21	na	na	na
@@ -2235,8 +2235,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 2718	int_SMa2105-SMa2107	0	0	0	0	0	0	1188925	1189052	na	na	128	na	na	na
 2719	int_SMa2107-SMa2109	0	0	0	0	0	0	1189959	1190052	na	na	94	na	na	na
 2720	int_SMa2109-SMa2111	0	0	0	0	0	0	1190956	1191762	na	na	807	na	na	na
-2721	int_SMa2111-SMa2113	0	0	1	0	0	1	1193314	1193877	na	na	564	na	na	na
-	int_SMa2111-SMa2113	0	0	1	0	0	1	1193484			+
+2721	int_SMa2111-SMa2113	1	0	0	1	0	0	1193314	1193877	na	na	564	na	na	na
+	int_SMa2111-SMa2113	1	0	0	1	0	0	1193484			+
 2722	int_SMa2113-SMa2115	0	0	0	0	0	0	1195006	1195053	na	na	48	na	na	na
 2723	int_SMa2115-SMa2117	0	0	0	0	0	0	1195702	1195712	na	na	11	na	na	na
 2724	int_SMa2117-SMa2119	0	0	0	0	0	0	1197480	1197521	na	na	42	na	na	na
@@ -2324,8 +2324,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 2834	int_SMa5013-SMa2347	0	0	0	0	0	0	1322000	1322020	na	na	21	na	na	na
 2835	int_SMa2347-SMa2349	0	0	0	0	0	0	1322702	1323060	na	na	359	na	na	na
 2837	int_SMa2351-SMa2353	0	0	0	0	0	0	1324656	1324659	na	na	4	na	na	na
-2838	int_SMa2353-SMa2355	0	1	0	0	1	0	1326859	1327041	na	na	183	na	na	na
-	int_SMa2353-SMa2355	0	1	0	0	1	0	1326980			+
+2838	int_SMa2353-SMa2355	0	0	1	0	0	1	1326859	1327041	na	na	183	na	na	na
+	int_SMa2353-SMa2355	0	0	1	0	0	1	1326980			+
 2839	int_SMa2355-SMa2357	0	0	0	0	0	0	1328152	1329977	na	na	1826	na	na	na
 2840	int_SMa2357-SMa2359	0	0	0	0	0	0	1330671	1330681	na	na	11	na	na	na
 2841	int_SMa2359-SMa2361	0	0	0	0	0	0	1331459	1331763	na	na	305	na	na	na
@@ -2490,8 +2490,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 3032	int_SMc02847-SMc02848	0	0	0	0	0	0	196403	196568	na	na	166	na	na	na
 3033	int_SMc02848-SMc02849	0	0	0	0	0	0	197241	197324	na	na	84	na	na	na
 3034	int_SMc02849-SMc02850	0	0	0	0	0	0	198330	198468	na	na	139	na	na	na
-3035	int_SMc02850-SMc02851	0	1	0	0	1	0	201484	201955	na	na	472	na	na	na
-	int_SMc02850-SMc02851	0	1	0	0	1	0	201733			-
+3035	int_SMc02850-SMc02851	0	0	1	0	0	1	201484	201955	na	na	472	na	na	na
+	int_SMc02850-SMc02851	0	0	1	0	0	1	201733			-
 3036	int_SMc02851-SMc02852	0	0	0	0	0	0	202400	202497	na	na	98	na	na	na
 3037	int_SMc02852-SMc02853	0	0	0	0	0	0	203893	204255	na	na	363	na	na	na
 3038	int_SMc02853-SMc02854	0	0	0	0	0	0	205204	205269	na	na	66	na	na	na
@@ -2980,8 +2980,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 3605	int_SMc00798-SMc00799	0	0	0	0	0	0	819123	819146	na	na	24	na	na	na
 3606	int_SMc00799-SMc00800	0	0	0	0	0	0	819720	819829	na	na	110	na	na	na
 3607	int_SMc00800-SMc00801	0	0	0	0	0	0	820274	820588	na	na	315	na	na	na
-3608	int_SMc00801-SMc00802	0	0	1	0	0	1	821246	821446	na	na	201	na	na	na
-	int_SMc00801-SMc00802	0	0	1	0	0	1	821408			-
+3608	int_SMc00801-SMc00802	1	0	0	1	0	0	821246	821446	na	na	201	na	na	na
+	int_SMc00801-SMc00802	1	0	0	1	0	0	821408			-
 3609	int_SMc00802-SMc00803	0	0	0	0	0	0	821813	822072	na	na	260	na	na	na
 3610	int_SMc00803-SMc00804	0	0	0	0	0	0	822889	823006	na	na	118	na	na	na
 3611	int_SMc00804-SMc00805	0	0	0	0	0	0	824231	824263	na	na	33	na	na	na
@@ -3181,8 +3181,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 3831	int_SMc00103-SMc00104	0	0	0	0	0	0	1063365	1063544	na	na	180	na	na	na
 3832	int_SMc00104-SMc00105	0	0	0	0	0	0	1064097	1064164	na	na	68	na	na	na
 3833	int_SMc00105-SMc00042	0	0	0	0	0	0	1065206	1065360	na	na	155	na	na	na
-3834	int_SMc00042-SMc00106	1	0	0	1	0	0	1066243	1066389	na	na	147	na	na	na
-	int_SMc00042-SMc00106	1	0	0	1	0	0	1066316			+
+3834	int_SMc00042-SMc00106	0	1	0	0	1	0	1066243	1066389	na	na	147	na	na	na
+	int_SMc00042-SMc00106	0	1	0	0	1	0	1066316			+
 3835	int_SMc00106-SMc00043	0	0	0	0	0	0	1066801	1067032	na	na	232	na	na	na
 3836	int_SMc00043-SMc00107	0	0	0	0	0	0	1067636	1067700	na	na	65	na	na	na
 3837	int_SMc00107-SMc00044	0	0	0	0	0	0	1068415	1068541	na	na	127	na	na	na
@@ -3257,8 +3257,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 3921	int_SMc02401-SMc02403	0	0	0	0	0	0	1153659	1153837	na	na	179	na	na	na
 3922	int_SMc02403-SMc02404	0	0	0	0	0	0	1155884	1156179	na	na	296	na	na	na
 3924	int_SMc02405-SMc02406	0	0	0	0	0	0	1157544	1158130	na	na	587	na	na	na
-3926	int_SMc02422-SMc02407	1	0	0	1	0	0	1159586	1162857	na	na	3272	na	na	na
-	int_SMc02422-SMc02407	1	0	0	1	0	0	1160957			+
+3926	int_SMc02422-SMc02407	0	1	0	0	1	0	1159586	1162857	na	na	3272	na	na	na
+	int_SMc02422-SMc02407	0	1	0	0	1	0	1160957			+
 3927	int_SMc02407-SMc02408	0	0	0	0	0	0	1163437	1163908	na	na	472	na	na	na
 3928	int_SMc02408-SMc02659	0	0	0	0	0	0	1164317	1164418	na	na	102	na	na	na
 3929	int_SMc02659-SMc02658	0	0	0	0	0	0	1166645	1166693	na	na	49	na	na	na
@@ -3417,8 +3417,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 4114	int_SMc01810-SMc04433	0	0	0	0	0	0	1356067	1356573	na	na	507	na	na	na
 4116	int_SMc01811-SMc01812	0	0	0	0	0	0	1357719	1357852	na	na	134	na	na	na
 4117	int_SMc01812-SMc01813	0	0	0	0	0	0	1359101	1359271	na	na	171	na	na	na
-4118	int_SMc01813-SMc04448	0	1	0	0	1	0	1360130	1360237	na	na	108	na	na	na
-	int_SMc01813-SMc04448	0	1	0	0	1	0	1360232			+
+4118	int_SMc01813-SMc04448	0	0	1	0	0	1	1360130	1360237	na	na	108	na	na	na
+	int_SMc01813-SMc04448	0	0	1	0	0	1	1360232			+
 4119	int_SMc04448-SMc01903	0	0	0	0	0	0	1361804	1362079	na	na	276	na	na	na
 4120	int_SMc01903-SMc01904	0	0	0	0	0	0	1362707	1362999	na	na	293	na	na	na
 4121	int_SMc01904-SMc01905	0	0	0	0	0	0	1364278	1364750	na	na	473	na	na	na
@@ -3699,8 +3699,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 4438	int_SMc01218-SMc01217	0	0	0	0	0	0	1706663	1706954	na	na	292	na	na	na
 4439	int_SMc01217-SMc01216	0	0	0	0	0	0	1708425	1708427	na	na	3	na	na	na
 4440	int_SMc01216-SMc01215	0	0	0	0	0	0	1708731	1708858	na	na	128	na	na	na
-4441	int_SMc01215-SMc01214	0	1	0	0	1	0	1712351	1712552	na	na	202	na	na	na
-	int_SMc01215-SMc01214	0	1	0	0	1	0	1712374			-
+4441	int_SMc01215-SMc01214	0	0	1	0	0	1	1712351	1712552	na	na	202	na	na	na
+	int_SMc01215-SMc01214	0	0	1	0	0	1	1712374			-
 4442	int_SMc01214-SMc01213	0	0	0	0	0	0	1713597	1713809	na	na	213	na	na	na
 4443	int_SMc01213-SMc01212	0	0	0	0	0	0	1714746	1715097	na	na	352	na	na	na
 4444	int_SMc01212-SMc01211	0	0	0	0	0	0	1716346	1716792	na	na	447	na	na	na
@@ -3930,8 +3930,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 4704	int_SMc00170-SMc00168	0	0	0	0	0	0	1996707	1996862	na	na	156	na	na	na
 4705	int_SMc00168-SMc00167	0	0	0	0	0	0	1997508	1997674	na	na	167	na	na	na
 4706	int_SMc00167-SMc00166	0	0	0	0	0	0	1998803	1998825	na	na	23	na	na	na
-4707	int_SMc00166-SMc00165	0	0	1	0	0	1	1999510	1999806	na	na	297	na	na	na
-	int_SMc00166-SMc00165	0	0	1	0	0	1	1999789			-
+4707	int_SMc00166-SMc00165	1	0	0	1	0	0	1999510	1999806	na	na	297	na	na	na
+	int_SMc00166-SMc00165	1	0	0	1	0	0	1999789			-
 4708	int_SMc00165-SMc00164	0	0	0	0	0	0	2000629	2000999	na	na	371	na	na	na
 4709	int_SMc00164-SMc00163	0	0	0	0	0	0	2002194	2002290	na	na	97	na	na	na
 4710	int_SMc00163-SMc00162	0	0	0	0	0	0	2003314	2003323	na	na	10	na	na	na
@@ -3998,8 +3998,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 4781	int_SMc04245-SMc04246	0	0	0	0	0	0	2070448	2070840	na	na	393	na	na	na
 4782	int_SMc04246-SMc04247	0	0	0	0	0	0	2071222	2071349	na	na	128	na	na	na
 4783	int_SMc04247-SMc04248	0	0	0	0	0	0	2072976	2073325	na	na	350	na	na	na
-4785	int_SMc04249-SMc04250	0	1	0	0	1	0	2075692	2075843	na	na	152	na	na	na
-	int_SMc04249-SMc04250	0	1	0	0	1	0	2075747			+
+4785	int_SMc04249-SMc04250	0	0	1	0	0	1	2075692	2075843	na	na	152	na	na	na
+	int_SMc04249-SMc04250	0	0	1	0	0	1	2075747			+
 4786	int_SMc04250-SMc05007	0	0	0	0	0	0	2077017	2077023	na	na	7	na	na	na
 4787	int_SMc05007-SMc04251	0	0	0	0	0	0	2077231	2077365	na	na	135	na	na	na
 4788	int_SMc04251-SMc04252	0	0	0	0	0	0	2078473	2078763	na	na	291	na	na	na
@@ -4411,8 +4411,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 5260	int_SMc02729-SMc02730	0	0	0	0	0	0	2582556	2582558	na	na	3	na	na	na
 5261	int_SMc02730-SMc02731	0	0	0	0	0	0	2583849	2584031	na	na	183	na	na	na
 5262	int_SMc02731-SMc02732	0	0	0	0	0	0	2585196	2585372	na	na	177	na	na	na
-5263	int_SMc02732-SMc02733	0	0	1	0	0	1	2585778	2585889	na	na	112	na	na	na
-	int_SMc02732-SMc02733	0	0	1	0	0	1	2585853			+
+5263	int_SMc02732-SMc02733	1	0	0	1	0	0	2585778	2585889	na	na	112	na	na	na
+	int_SMc02732-SMc02733	1	0	0	1	0	0	2585853			+
 5264	int_SMc02733-SMc02734	0	0	0	0	0	0	2587807	2587809	na	na	3	na	na	na
 5265	int_SMc02734-SMc02735	0	0	0	0	0	0	2588959	2589019	na	na	61	na	na	na
 5266	int_SMc02735-SMc02736	0	0	0	0	0	0	2590109	2590268	na	na	160	na	na	na
@@ -4499,8 +4499,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 5363	int_SMc01959-SMc01960	0	0	0	0	0	0	2682242	2682595	na	na	354	na	na	na
 5364	int_SMc01960-SMc01961	0	0	0	0	0	0	2683163	2683288	na	na	126	na	na	na
 5365	int_SMc01961-SMc01962	0	0	0	0	0	0	2684243	2684401	na	na	159	na	na	na
-5369	int_SMc01965-SMc01966	0	1	0	0	1	0	2687864	2688037	na	na	174	na	na	na
-	int_SMc01965-SMc01966	0	1	0	0	1	0	2687940			-
+5369	int_SMc01965-SMc01966	0	0	1	0	0	1	2687864	2688037	na	na	174	na	na	na
+	int_SMc01965-SMc01966	0	0	1	0	0	1	2687940			-
 5370	int_SMc01966-SMc01967	0	0	0	0	0	0	2689118	2689287	na	na	170	na	na	na
 5371	int_SMc01967-SMc01968	0	0	0	0	0	0	2690347	2690562	na	na	216	na	na	na
 5372	int_SMc01968-SMc01969	0	0	0	0	0	0	2691607	2691651	na	na	45	na	na	na
@@ -4722,8 +4722,8 @@ Num	GeneID	condition2	condition3	condition1	condition2(Normalized)	condition3(No
 5623	int_SMc03970-SMc03971	0	0	0	0	0	0	2964332	2964503	na	na	172	na	na	na
 5625	int_SMc03972-SMc03973	0	0	0	0	0	0	2968835	2969185	na	na	351	na	na	na
 5626	int_SMc03973-SMc03974	0	0	0	0	0	0	2969984	2970119	na	na	136	na	na	na
-5627	int_SMc03974-SMc03975	1	0	0	1	0	0	2970702	2971177	na	na	476	na	na	na
-	int_SMc03974-SMc03975	1	0	0	1	0	0	2971078			+
+5627	int_SMc03974-SMc03975	0	1	0	0	1	0	2970702	2971177	na	na	476	na	na	na
+	int_SMc03974-SMc03975	0	1	0	0	1	0	2971078			+
 5628	int_SMc03975-SMc03976	0	0	0	0	0	0	2972120	2972335	na	na	216	na	na	na
 5629	int_SMc03976-SMc03977	0	0	0	0	0	0	2972714	2972725	na	na	12	na	na	na
 5630	int_SMc03977-SMc03978	0	0	0	0	0	0	2972996	2973394	na	na	399	na	na	na

@@ -1,7 +1,7 @@
 =========================================
              Tn-Seq Pipeline
 The MIT License (MIT) Copyright (c) 2014 Kevin
-     Date: 2015-05-04 14:16:02.887561
+     Date: 2015-05-25 21:44:41.533359
            Author: Kevin Boehme
       Email: kevinlboehme@gmail.com
 =========================================
@@ -32,7 +32,7 @@ MinimumHopCount = 1                       ; Any hop site with less than this num
 [options]
 
 Debug                   = True            ; Shows detailed running parameters for debugging purposes.
-Normalize               = True            ; Normalize global hop counts based on intergenic hops counted.
+Normalize               = Intergenic           ; [Intergenic, Total] Intergenic: Normalize based on intergenic hops only. Total: Normalize based on all hops.
 DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam files at the end of the run.
 
 --------------------------------------
@@ -41,6 +41,16 @@ DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam fi
 
 
 =============== Read pre-processing ===============
+
+Input fastq = ./example_data/test_data/condition1.fastq.
+Processing 100 reads  ran in 0.00 seconds.
+
+Removed 12 reads with no detected transposon sequence (12/100) = 12.00%.
+Removed 1 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 87 reads written to example_data/intermediate_files/condition1-trimmed.fasta
+
+         ---------------
 
 Input fastq = ./example_data/test_data/condition2.fastq.
 Processing 100 reads  ran in 0.00 seconds.
@@ -53,22 +63,12 @@ Kept 80 reads written to example_data/intermediate_files/condition2-trimmed.fast
          ---------------
 
 Input fastq = ./example_data/test_data/condition3.fastq.
-Processing 100 reads  ran in 0.00 seconds.
+Processing 100 reads  ran in 0.01 seconds.
 
 Removed 22 reads with no detected transposon sequence (22/100) = 22.00%.
 Removed 2 reads that were too short (Less than 25 bp after transposon trimming).
 
 Kept 76 reads written to example_data/intermediate_files/condition3-trimmed.fasta
-
-         ---------------
-
-Input fastq = ./example_data/test_data/condition1.fastq.
-Processing 100 reads  ran in 0.00 seconds.
-
-Removed 12 reads with no detected transposon sequence (12/100) = 12.00%.
-Removed 1 reads that were too short (Less than 25 bp after transposon trimming).
-
-Kept 87 reads written to example_data/intermediate_files/condition1-trimmed.fasta
 
          ---------------
 
@@ -78,6 +78,23 @@ Kept 87 reads written to example_data/intermediate_files/condition1-trimmed.fast
 
 
 =============== Bowtie2 Mapping ===============
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition1-trimmed.fasta -S example_data/intermediate_files/condition1.sam --no-hd
+
+
+Writing output to = example_data/intermediate_files/condition1.sam
+
+87 reads; of these:
+  87 (100.00%) were unpaired; of these:
+    28 (32.18%) aligned 0 times
+    58 (66.67%) aligned exactly 1 time
+    1 (1.15%) aligned >1 times
+67.82% overall alignment rate
+
+Bowtie2 ran in 0.24 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
 
 Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition2-trimmed.fasta -S example_data/intermediate_files/condition2.sam --no-hd
 
@@ -91,7 +108,7 @@ Writing output to = example_data/intermediate_files/condition2.sam
     1 (1.25%) aligned >1 times
 62.50% overall alignment rate
 
-Bowtie2 ran in 0.08 seconds.
+Bowtie2 ran in 0.22 seconds.
 
 Deleted trimmed Fasta file.
          ---------------
@@ -108,24 +125,7 @@ Writing output to = example_data/intermediate_files/condition3.sam
     3 (3.95%) aligned >1 times
 57.89% overall alignment rate
 
-Bowtie2 ran in 0.08 seconds.
-
-Deleted trimmed Fasta file.
-         ---------------
-
-Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition1-trimmed.fasta -S example_data/intermediate_files/condition1.sam --no-hd
-
-
-Writing output to = example_data/intermediate_files/condition1.sam
-
-87 reads; of these:
-  87 (100.00%) were unpaired; of these:
-    28 (32.18%) aligned 0 times
-    58 (66.67%) aligned exactly 1 time
-    1 (1.15%) aligned >1 times
-67.82% overall alignment rate
-
-Bowtie2 ran in 0.08 seconds.
+Bowtie2 ran in 0.22 seconds.
 
 Deleted trimmed Fasta file.
          ---------------
@@ -139,6 +139,11 @@ Deleted trimmed Fasta file.
 
          ---------------
 
+Reading file = example_data/intermediate_files/condition1.sam.
+
+Reading file ran in 0.00 seconds.
+
+Deleting SAM file.
 Reading file = example_data/intermediate_files/condition2.sam.
 
 Reading file ran in 0.00 seconds.
@@ -149,46 +154,41 @@ Reading file = example_data/intermediate_files/condition3.sam.
 Reading file ran in 0.00 seconds.
 
 Deleting SAM file.
-Reading file = example_data/intermediate_files/condition1.sam.
-
-Reading file ran in 0.00 seconds.
-
-Deleting SAM file.
          ---------------
 
 Begin tabulating gene hits...
 
 Working on reference = NC_003078
- Done tabulating gene hits, ran in 0.09 seconds.
+ Done tabulating gene hits, ran in 0.10 seconds.
 
 Working on reference = NC_003037
  Done tabulating gene hits, ran in 0.07 seconds.
 
 Working on reference = NC_003047
- Done tabulating gene hits, ran in 0.23 seconds.
+ Done tabulating gene hits, ran in 0.24 seconds.
 
          ---------------
 
 
 Begin Normalization Steps.
 
-Total intergenic hops observed is: 23
-condition2 has 7 intergenic hops observed.
-condition3 has 8 intergenic hops observed.
-condition1 has 8 intergenic hops observed.
+Total [intergenic] hops observed is: 23
+condition1 has 8 [intergenic] hops observed.
+condition2 has 7 [intergenic] hops observed.
+condition3 has 8 [intergenic] hops observed.
 Normalization coefficients used:
+condition1 multiplied by 0.875
 condition2 multiplied by 1.0
 condition3 multiplied by 0.875
-condition1 multiplied by 0.875
 Begin calculating gene totals and writing to output...
-Done calculating totals and writing to output, ran in 0.19 seconds.
+Done calculating totals and writing to output, ran in 0.24 seconds.
 
          ---------------
 
-Done processing SAM files, ran in 0.80 seconds.
+Done processing SAM files, ran in 0.97 seconds.
 
 --------------------------------------
 
 
-Total run time, ran in 1.08 seconds.
+Total run time, ran in 1.78 seconds.
 
