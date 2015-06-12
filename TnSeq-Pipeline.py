@@ -42,6 +42,7 @@ class hops_pipeline(object):
 		self.normalize = True
 		self.delete_intermediate_files = True
 		self.check_transposon = True
+		self.reverse_complement_reads = False
 
 		#Intermediate files for output
 		self.int_prefix = []
@@ -158,6 +159,13 @@ class hops_pipeline(object):
 			self.delete_intermediate_files = cp.getboolean('options','DeleteIntermediateFiles')
 		except:
 			sys.exit('Error with DeleteIntermediateFiles parameter (Not True/False)')
+
+
+		try:
+			self.reverse_complement_reads = cp.getboolean('options','ReverseComplementReads')
+		except:
+			sys.exit('Error with ReverseComplementReads parameter')
+
 		# Generate other variables
 		self.num_conditions = len(self.input_files)
 		self.output_directory = os.path.dirname(config_path)
@@ -251,6 +259,19 @@ class hops_pipeline(object):
 					return False
 		return True
 
+	def reverse_complement(self, sequence):
+		reverse_complement = []
+		for index in range(len(sequence) - 1, -1 , -1):
+				if(sequence[index] == "A"):
+						reverse_complement.append("T")
+				if(sequence[index] == "T"):
+						reverse_complement.append("A")
+				if(sequence[index] == "C"):
+						reverse_complement.append("G")
+				if(sequence[index] == "G"):
+						reverse_complement.append("C")
+
+		return ''.join(reverse_complement)
 
 ############ Process Reads ###############################
 	def print_summary_stats(self, start_process_reads_time, out_file_num):
@@ -287,7 +308,7 @@ class hops_pipeline(object):
 			elif filepath.find("fastq") != -1:
 				isfastq = True
 			else:
-				logging.error("Didn't find the string fasta or fastq in input files. Please make sure your data has a fasta or fastq file extension (Could also be gzipped).")
+				logging.error("Didn't find the string fasta or fastq in input files. Please make sure your data has a fasta or fastq file extension (Could also be 2ped).")
 				sys.exit('')
 
 			logging.info( "Input fastq = " + filepath + "." )
@@ -355,6 +376,8 @@ class hops_pipeline(object):
 			self.original_read_count += 1
 
 	def process_read(self, name, seq, out_file_num):
+		if self.reverse_complement_reads:
+			seq = self.reverse_complement(seq)
 		tn_trimmed_seq = ""
 		if self.check_transposon:
 			tn_trimmed_seq  = self.remove_transposon(name, seq)

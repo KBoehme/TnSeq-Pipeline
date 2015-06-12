@@ -1,7 +1,7 @@
 =========================================
              Tn-Seq Pipeline
 The MIT License (MIT) Copyright (c) 2014 Kevin
-     Date: 2015-05-25 21:44:41.533359
+     Date: 2015-06-11 19:52:15.225327
            Author: Kevin Boehme
       Email: kevinlboehme@gmail.com
 =========================================
@@ -32,8 +32,9 @@ MinimumHopCount = 1                       ; Any hop site with less than this num
 [options]
 
 Debug                   = True            ; Shows detailed running parameters for debugging purposes.
-Normalize               = Intergenic           ; [Intergenic, Total] Intergenic: Normalize based on intergenic hops only. Total: Normalize based on all hops.
+Normalize               = Intergenic      ; [Intergenic, Total] Intergenic: Normalize based on intergenic hops only. Total: Normalize based on all hops.
 DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam files at the end of the run.
+ReverseComplementReads  = True            ; If True this will take the reverse complement of all reads in the input fasta/fastq file.
 
 --------------------------------------
 
@@ -42,33 +43,63 @@ DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam fi
 
 =============== Read pre-processing ===============
 
+Input fastq = ./example_data/test_data/condition1-reversecomp.fastq.
+Processing 100 reads  ran in 0.02 seconds.
+
+Removed 60 reads with no detected transposon sequence (60/100) = 60.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 40 reads written to example_data/intermediate_files/condition1-reversecomp-trimmed.fasta
+
+         ---------------
+
 Input fastq = ./example_data/test_data/condition1.fastq.
 Processing 100 reads  ran in 0.00 seconds.
 
-Removed 12 reads with no detected transposon sequence (12/100) = 12.00%.
-Removed 1 reads that were too short (Less than 25 bp after transposon trimming).
+Removed 100 reads with no detected transposon sequence (100/100) = 100.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
 
-Kept 87 reads written to example_data/intermediate_files/condition1-trimmed.fasta
+Kept 0 reads written to example_data/intermediate_files/condition1-trimmed.fasta
+
+         ---------------
+
+Input fastq = ./example_data/test_data/condition2-reversecomp.fastq.
+Processing 100 reads  ran in 0.02 seconds.
+
+Removed 75 reads with no detected transposon sequence (75/100) = 75.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 25 reads written to example_data/intermediate_files/condition2-reversecomp-trimmed.fasta
 
          ---------------
 
 Input fastq = ./example_data/test_data/condition2.fastq.
 Processing 100 reads  ran in 0.00 seconds.
 
-Removed 17 reads with no detected transposon sequence (17/100) = 17.00%.
-Removed 3 reads that were too short (Less than 25 bp after transposon trimming).
+Removed 100 reads with no detected transposon sequence (100/100) = 100.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
 
-Kept 80 reads written to example_data/intermediate_files/condition2-trimmed.fasta
+Kept 0 reads written to example_data/intermediate_files/condition2-trimmed.fasta
+
+         ---------------
+
+Input fastq = ./example_data/test_data/condition3-reversecomp.fastq.
+Processing 100 reads  ran in 0.00 seconds.
+
+Removed 57 reads with no detected transposon sequence (57/100) = 57.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
+
+Kept 43 reads written to example_data/intermediate_files/condition3-reversecomp-trimmed.fasta
 
          ---------------
 
 Input fastq = ./example_data/test_data/condition3.fastq.
-Processing 100 reads  ran in 0.01 seconds.
+Processing 100 reads  ran in 0.02 seconds.
 
-Removed 22 reads with no detected transposon sequence (22/100) = 22.00%.
-Removed 2 reads that were too short (Less than 25 bp after transposon trimming).
+Removed 100 reads with no detected transposon sequence (100/100) = 100.00%.
+Removed 0 reads that were too short (Less than 25 bp after transposon trimming).
 
-Kept 76 reads written to example_data/intermediate_files/condition3-trimmed.fasta
+Kept 0 reads written to example_data/intermediate_files/condition3-trimmed.fasta
 
          ---------------
 
@@ -79,19 +110,49 @@ Kept 76 reads written to example_data/intermediate_files/condition3-trimmed.fast
 
 =============== Bowtie2 Mapping ===============
 
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition1-reversecomp-trimmed.fasta -S example_data/intermediate_files/condition1-reversecomp.sam --no-hd
+
+
+Writing output to = example_data/intermediate_files/condition1-reversecomp.sam
+
+40 reads; of these:
+  40 (100.00%) were unpaired; of these:
+    16 (40.00%) aligned 0 times
+    24 (60.00%) aligned exactly 1 time
+    0 (0.00%) aligned >1 times
+60.00% overall alignment rate
+
+Bowtie2 ran in 0.16 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
 Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition1-trimmed.fasta -S example_data/intermediate_files/condition1.sam --no-hd
 
 
 Writing output to = example_data/intermediate_files/condition1.sam
 
-87 reads; of these:
-  87 (100.00%) were unpaired; of these:
-    28 (32.18%) aligned 0 times
-    58 (66.67%) aligned exactly 1 time
-    1 (1.15%) aligned >1 times
-67.82% overall alignment rate
+0 reads
+0.00% overall alignment rate
 
-Bowtie2 ran in 0.24 seconds.
+Bowtie2 ran in 0.16 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition2-reversecomp-trimmed.fasta -S example_data/intermediate_files/condition2-reversecomp.sam --no-hd
+
+
+Writing output to = example_data/intermediate_files/condition2-reversecomp.sam
+
+25 reads; of these:
+  25 (100.00%) were unpaired; of these:
+    12 (48.00%) aligned 0 times
+    13 (52.00%) aligned exactly 1 time
+    0 (0.00%) aligned >1 times
+52.00% overall alignment rate
+
+Bowtie2 ran in 0.16 seconds.
 
 Deleted trimmed Fasta file.
          ---------------
@@ -101,14 +162,27 @@ Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phr
 
 Writing output to = example_data/intermediate_files/condition2.sam
 
-80 reads; of these:
-  80 (100.00%) were unpaired; of these:
-    30 (37.50%) aligned 0 times
-    49 (61.25%) aligned exactly 1 time
-    1 (1.25%) aligned >1 times
-62.50% overall alignment rate
+0 reads
+0.00% overall alignment rate
 
-Bowtie2 ran in 0.22 seconds.
+Bowtie2 ran in 0.16 seconds.
+
+Deleted trimmed Fasta file.
+         ---------------
+
+Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phred33 -f example_data/intermediate_files/condition3-reversecomp-trimmed.fasta -S example_data/intermediate_files/condition3-reversecomp.sam --no-hd
+
+
+Writing output to = example_data/intermediate_files/condition3-reversecomp.sam
+
+43 reads; of these:
+  43 (100.00%) were unpaired; of these:
+    17 (39.53%) aligned 0 times
+    25 (58.14%) aligned exactly 1 time
+    1 (2.33%) aligned >1 times
+60.47% overall alignment rate
+
+Bowtie2 ran in 0.17 seconds.
 
 Deleted trimmed Fasta file.
          ---------------
@@ -118,14 +192,10 @@ Bowtie Command Used: bowtie2 -x ./example_data/bowtie2_reference/smeliloti --phr
 
 Writing output to = example_data/intermediate_files/condition3.sam
 
-76 reads; of these:
-  76 (100.00%) were unpaired; of these:
-    32 (42.11%) aligned 0 times
-    41 (53.95%) aligned exactly 1 time
-    3 (3.95%) aligned >1 times
-57.89% overall alignment rate
+0 reads
+0.00% overall alignment rate
 
-Bowtie2 ran in 0.22 seconds.
+Bowtie2 ran in 0.16 seconds.
 
 Deleted trimmed Fasta file.
          ---------------
@@ -139,12 +209,27 @@ Deleted trimmed Fasta file.
 
          ---------------
 
+Reading file = example_data/intermediate_files/condition1-reversecomp.sam.
+
+Reading file ran in 0.00 seconds.
+
+Deleting SAM file.
 Reading file = example_data/intermediate_files/condition1.sam.
 
 Reading file ran in 0.00 seconds.
 
 Deleting SAM file.
+Reading file = example_data/intermediate_files/condition2-reversecomp.sam.
+
+Reading file ran in 0.00 seconds.
+
+Deleting SAM file.
 Reading file = example_data/intermediate_files/condition2.sam.
+
+Reading file ran in 0.00 seconds.
+
+Deleting SAM file.
+Reading file = example_data/intermediate_files/condition3-reversecomp.sam.
 
 Reading file ran in 0.00 seconds.
 
@@ -159,36 +244,36 @@ Deleting SAM file.
 Begin tabulating gene hits...
 
 Working on reference = NC_003078
- Done tabulating gene hits, ran in 0.10 seconds.
+ Done tabulating gene hits, ran in 0.16 seconds.
 
 Working on reference = NC_003037
- Done tabulating gene hits, ran in 0.07 seconds.
+ Done tabulating gene hits, ran in 0.11 seconds.
 
 Working on reference = NC_003047
- Done tabulating gene hits, ran in 0.24 seconds.
+ Done tabulating gene hits, ran in 0.39 seconds.
 
          ---------------
 
 
 Begin Normalization Steps.
 
-Total [intergenic] hops observed is: 23
-condition1 has 8 [intergenic] hops observed.
-condition2 has 7 [intergenic] hops observed.
-condition3 has 8 [intergenic] hops observed.
-Normalization coefficients used:
-condition1 multiplied by 0.875
-condition2 multiplied by 1.0
-condition3 multiplied by 0.875
+Total [intergenic] hops observed is: 8
+condition1-reversecomp has 4 [intergenic] hops observed.
+condition1 has 0 [intergenic] hops observed.
+condition2-reversecomp has 0 [intergenic] hops observed.
+condition2 has 0 [intergenic] hops observed.
+condition3-reversecomp has 4 [intergenic] hops observed.
+condition3 has 0 [intergenic] hops observed.
+Normalization couldn't be completed. It appears a condition has no hop hits.
 Begin calculating gene totals and writing to output...
-Done calculating totals and writing to output, ran in 0.24 seconds.
+Done calculating totals and writing to output, ran in 0.66 seconds.
 
          ---------------
 
-Done processing SAM files, ran in 0.97 seconds.
+Done processing SAM files, ran in 1.83 seconds.
 
 --------------------------------------
 
 
-Total run time, ran in 1.78 seconds.
+Total run time, ran in 3.09 seconds.
 
