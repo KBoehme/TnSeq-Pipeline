@@ -91,9 +91,9 @@ The user must create a configuration file which tells the script where to find i
 ```
 [input]
 
-Reads           = ./example_data/test_data/*.fastq                       ; Absolute or relative path (from TnSeq-Pipeline.py script) to TnSeq reads.
+Reads           = ./example_data/test_data/*.fastq             ; Absolute or relative path (from TnSeq-Pipeline.py script) to TnSeq reads.
 BowtieReference = ./example_data/bowtie2_reference/smeliloti   ; Path to bowtie2 reference genome. Use prefix.
-Ptt             = ./example_data/bowtie2_reference/ptt/*.ptt                     ; Path to PTT files of reference genome.
+Ptt             = ./example_data/bowtie2_reference/ptt/*.ptt   ; Path to PTT files of reference genome.
 Out             = My_example_run                               ; Name for the output. (For example: My_example_run-GENE.txt and My_example_run-HOPS.txt)
 
 
@@ -105,7 +105,7 @@ Transposon      = TCGAGATGTGTATAAGAGACAG   ; Transposon sequence
 Mismatches      = 3                        ; Mismatches allowed when finding transposon
 GeneTrim        = 10                       ; Percent of gene length truncated on both sides of gene where hops wont be counted.
 ReadLength      = 25                       ; Length of reads (If read is shorter than this length after removing transposon it will be removed, otherwise it will be trimmed to this length and mapped).
-MinimumHopCount = 1                       ; Any hop site with less than this number of occurances (totaled across all conditions) will be removed from analysis and will not be outputed in results.
+MinimumHopCount = 1                        ; Any hop site with less than this number of occurances (totaled across all conditions) will be removed from analysis and will not be outputed in results.
 
 ################################
 
@@ -115,6 +115,7 @@ Debug                   = True            ; Shows detailed running parameters fo
 Normalize               = Intergenic      ; [Intergenic, Total] Intergenic: Normalize based on intergenic hops only. Total: Normalize based on all hops.
 DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam files at the end of the run.
 ReverseComplementReads  = True            ; If True this will take the reverse complement of all reads in the input fasta/fastq file.
+
 ```
 
 
