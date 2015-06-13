@@ -104,18 +104,17 @@ Out             = My_example_run                               ; Name for the ou
 Transposon      = TCGAGATGTGTATAAGAGACAG   ; Transposon sequence
 Mismatches      = 3                        ; Mismatches allowed when finding transposon
 GeneTrim        = 10                       ; Percent of gene length truncated on both sides of gene where hops wont be counted.
-ReadLength      = 25                       ; Length of reads (If read is shorter than this length after removing transposon it will be removed, otherwise it will be trimmed to this length and mapped).
-MinimumHopCount = 1                        ; Any hop site with less than this number of occurances (totaled across all conditions) will be removed from analysis and will not be outputed in results.
+ReadLength      = 25                       ; If read is shorter than this length after removing transposon it will be removed, otherwise it will be trimmed to this length and mapped.
+MinimumHopCount = 1                        ; Any hop site with less than this number of occurrences (totaled across all conditions) will be removed from analysis and will not be outputed in results.
 
 ################################
 
 [options]
 
-Debug                   = True            ; Shows detailed running parameters for debugging purposes.
-Normalize               = Intergenic      ; [Intergenic, Total] Intergenic: Normalize based on intergenic hops only. Total: Normalize based on all hops.
+Debug                   = False           ; Shows detailed running parameters for debugging purposes.
+Normalize               = Intergenic      ; Options: [Intergenic, Total] Intergenic: Normalize based on intergenic hops only. Total: Normalize based on all hops.
 DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam files at the end of the run.
-ReverseComplementReads  = True            ; If True this will take the reverse complement of all reads in the input fasta/fastq file.
-
+ReverseComplementReads  = True            ; If True this will take the reverse complement of all reads in the input fasta/fastq file before searching for the transposon sequence.
 ```
 
 
