@@ -1,5 +1,0 @@
-Num	GeneID	a17_example	lb_example	rsm_example	a17_example(Normalized)	lb_example(Normalized)	rsm_example(Normalized)	Start	Stop	Order	Strand	Length	PID	Gene	Function
-1	SMc00065	0	18	0	0	1	0	1104685	1104936	SMc1	+	83	15964766	-	signalpeptideprotein
-2	SMc00458	0	694	2172	0	38	71	1104977	1105648	SMc2	+	223	15964767	feuP	transcriptionalregulator
-3	SMc00129	49	3045	4951	49	165	160	1105638	1107023	SMc3	+	461	15964768	feuQ	sensorhistidinekinase
-4	SMc00067	76	407	958	76	22	31	1107235	1107645	SMc4	+	136	15964769	lppA	outer-membrannelipoprotein
