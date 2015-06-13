@@ -4,7 +4,7 @@
 
 ##Overview
 
-This script is designed to take Tn-Seq data and map (using Bowtie2) and tally hop sites on a user-provided reference genome.
+This script is designed to take Tn-Seq fasta/fastq data and map (using Bowtie2) and tally hop sites on a user-provided reference genome.
 
 ###Input
 1. Fasta/Fastq read files.
