@@ -49,6 +49,9 @@ class hops_pipeline(object):
 		self.int_trimmed = [] # list of files for the intermediate trimmed read files.
 		self.int_sam = [] # list of sam output files.
 		self.tabulated_filename = ""
+		self.gene_tabulated_filename = ""
+		self.intergenic_filename = "" 
+		self.igv_filenames = {} # key: ref_name | value: file
 
 		self.num_conditions = 0
 
@@ -175,15 +178,11 @@ class hops_pipeline(object):
 			self.output_directory += "/"
 		self.tabulated_filename = self.output_directory + "output_files/" + self.out + "-HOPS.txt"
 		self.gene_tabulated_filename = self.output_directory + "output_files/" + self.out + "-GENE.txt"
-	
+		self.intergenic_filename = self.output_directory + "output_files/" + self.out + "-INTERGENIC.txt"
 
 		if not os.path.exists( self.output_directory + "output_files/"):
 			subprocess.check_output(["mkdir", self.output_directory + "output_files"])
-		
-		if not os.path.exists( self.output_directory + "output_files/"):
-			subprocess.check_output(["mkdir", self.output_directory + "output_files"])
-		
-		print self.output_directory + "output_files/" + self.out + ".log"
+
 		self.set_up_logger(self.output_directory + "output_files/" + self.out + ".log")
 
 		with open(config_path,'r') as f:
@@ -243,7 +242,7 @@ class hops_pipeline(object):
 			logging.info(command + " ran in " + "%.2f" % (time_to_run) +" seconds." + "\n")
 	
 	def fuzzy_match_beginning(self, pattern, genome, mismatches):
-		for i in range(3):
+		for i in range(5):
 			chunk = genome[i : i + len(pattern)]
 			# now compare chunk with pattern to see if they match with at least mismatches.
 			if(self.compareChunks(pattern, chunk, mismatches)):
@@ -433,7 +432,7 @@ class hops_pipeline(object):
 
 			bowtie_command = ["bowtie2", "-x", self.ref,"--phred33",
 								"-f",self.int_trimmed[out_file_num].name,
-								"-S",self.int_sam[out_file_num],"--no-hd"]
+								"-S",self.int_sam[out_file_num]]
 								
 
 			logging.info("Bowtie Command Used: " + ' '.join(bowtie_command)+"\n\n")
@@ -470,6 +469,7 @@ class hops_pipeline(object):
 		self.read_sam_file()
 		self.tabulate_gene_hits()
 		self.get_normalized_coefficients()
+		self.prepare_igv_files()
 		self.write_output()
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 		self.print_time_output("Done processing SAM files,", start_time)
@@ -514,8 +514,7 @@ class hops_pipeline(object):
 			zfill_digits = len(str(num_genes))
 			self.debugger("Digits to use in zfill = " + str(zfill_digits))
 
-
-			intergenic_genes = []
+			intergenic_genes = set()
 			for i,cur_gene in enumerate(chrom.gene_list,start=1):
 				ordered_name = prefix + str(i).zfill(zfill_digits)
 				cur_gene.order_code = ordered_name
@@ -525,24 +524,24 @@ class hops_pipeline(object):
 				if i == 1: # On the first gene.
 					if cur_gene.start > 1: # We have some room to capture.
 						new_gene.create_intergenic_region(1, cur_gene.start - 1, "int_BEG-"+cur_gene.synonym, self.num_conditions)
-						intergenic_genes.append(new_gene)
+						intergenic_genes.add(new_gene)
 					if cur_gene.end + 1 < chrom.gene_list[i].start: # We have some room to capture.
 						new_gene.create_intergenic_region(cur_gene.end + 1, 
 							chrom.gene_list[i].start - 1, 
 							"int_" + cur_gene.synonym + "-" + chrom.gene_list[i].synonym, self.num_conditions)
-						intergenic_genes.append(new_gene)
+						intergenic_genes.add(new_gene)
 				elif i == chrom.num_proteins: # On the last gene.
 					if cur_gene.end < chrom.end: # We have some room to capture.
 						new_gene.create_intergenic_region(cur_gene.end + 1, chrom.end, "int_"+cur_gene.synonym+"-END", self.num_conditions)
-						intergenic_genes.append(new_gene)
+						intergenic_genes.add(new_gene)
 				else: # Make sure the end of the current gene and the beginning of the next gene have a space.
 					if cur_gene.end + 1 < chrom.gene_list[i].start: # We have some room to capture.
 						new_gene.create_intergenic_region(cur_gene.end + 1, 
 							chrom.gene_list[i].start - 1, 
 							"int_" + cur_gene.synonym + "-" + chrom.gene_list[i].synonym, self.num_conditions )
-						intergenic_genes.append(new_gene)
+						intergenic_genes.add(new_gene)
 			#Now lets smash those intergenic regions with the current genes.
-			self.chromosomes[ref_name].gene_list = sorted(self.chromosomes[ref_name].gene_list + intergenic_genes)
+			self.chromosomes[ref_name].gene_list = sorted(self.chromosomes[ref_name].gene_list + list(intergenic_genes))
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
 	def read_sam_file(self):
@@ -559,7 +558,7 @@ class hops_pipeline(object):
 				#f.seek(0)
 				for j,line in enumerate(f):
 					#self.update_progress(float(j)/num_lines)
-					if line[0] == "@":
+					if line[0] == "@": #Pass the headers
 						pass
 					else:
 						sam_entry = line.split()
@@ -590,7 +589,7 @@ class hops_pipeline(object):
 				logging.info("Zipping up SAM file.")
 				subprocess.check_output(["gzip", "-f", sam_file])
 
-		self.check_min_hops()
+		self.filter_on_min_hops()
 
 		for ref, value in self.sam_file_contents.iteritems():
 			temp_dict = {}
@@ -599,7 +598,7 @@ class hops_pipeline(object):
 			self.sam_file_contents[ref] = temp_dict	
 		logging.info(bcolors.WARNING + "         ---------------\n" + bcolors.ENDC)
 
-	def check_min_hops(self):
+	def filter_on_min_hops(self):
 		for ref, positions in self.sam_file_contents.iteritems():
 			for index,hop in positions.items():
 				if hop.total_hops() < self.minimum_hop_count:
@@ -692,8 +691,8 @@ class hops_pipeline(object):
 		self.debugger("On function: write_output")
 		logging.info("Begin calculating gene totals and writing to output...")
 		start_time = time()
-		
-		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf, open(os.path.splitext(self.tabulated_filename)[0]+"-intergenic.txt", 'w') as intf:
+
+		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf, open(self.intergenic_filename, 'w') as intf:
 			hops_header = ["Num","GeneID"]
 			hops_header.extend(self.int_prefix)
 			hops_header.extend([s + "(Normalized)" for s in self.int_prefix])
@@ -705,6 +704,11 @@ class hops_pipeline(object):
 
 			for ref_name, chrom in self.chromosomes.iteritems():
 				for gene in chrom.gene_list:
+					if len(gene.hop_list) > 0:
+						self.igv_filenames[ref_name].write(gene.write_igv(ref_name) + "\n")
+					else:
+						pass
+
 					if not gene.is_intergenic:
 						hf.write(gene.write_hops(count,self.normalization_coefficients)+"\n")
 						gf.write(gene.write_gene()+"\n")
@@ -727,6 +731,22 @@ class hops_pipeline(object):
 		hop = sam_file_contents[it]
 		return hop
 
+	def prepare_igv_files(self):
+		igv_path = self.output_directory + "output_files/IGV/"
+		if not os.path.exists( self.output_directory + "output_files/IGV/"):
+			subprocess.check_output(["mkdir", igv_path])
+		for ref_name in self.chromosomes.keys():
+			filename = igv_path + ref_name + ".igv"
+			self.igv_filenames[ref_name] = open(filename, 'w+')
+
+			#Now lets give them a header.
+			self.igv_filenames[ref_name].write("#Transpon"+ "\n")
+			header = ["Chromosome",	"Start", "End", "Feature"]
+			for i in self.int_prefix:
+				header.append(i)
+			self.igv_filenames[ref_name].write('\t'.join(header) + "\n")
+
+
 ################################
 ############# Main #############
 ################################
@@ -739,7 +759,7 @@ def main():
 	try:
 		config = sys.argv[1]
 	except:
-		sys.exit("\nUSAGE: python TnSeq-Pipeline.py example.config\n")
+		sys.exit("\nUSAGE: python TnSeq-Pipeline.py pathtoconfig.config\n")
 
 	hp.read_config(config)
 

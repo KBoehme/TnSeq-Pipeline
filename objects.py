@@ -189,12 +189,20 @@ class Gene(object):
 	def write_gene(self):
 		return '\t'.join(map(str,self.gene_total_line))
 
+	def write_igv(self, ref_name):
+		#Chromosome      Start   End     Feature condition1      condition2      condition3
+		igv_lines = []
+		for hop in self.hop_list:
+			igv_lines.append(hop.get_hops_for_igv(self.synonym, ref_name))
+		return '\n'.join(igv_lines)
+
+
 # This HopSite object represents a specific hop site
 class HopSite(object):
 	"""docstring for HopSite"""
 	def __init__(self, position, strand, num_conditions):
 		self.position = position
-		self.hops = {}
+		#self.hops = {}
 		self.strand = strand
 		self.hops = [0] * num_conditions
 
@@ -238,3 +246,13 @@ class HopSite(object):
 		new_line.append("")
 		new_line.append(self.strand)
 		return new_line, normalized_hops
+
+	def get_hops_for_igv(self, feature, ref_name):
+		igv_line = []
+		igv_line.append(ref_name)
+		igv_line.append(str(self.position))
+		igv_line.append(str( self.position + 1))
+		igv_line.append(feature)
+		igv_line.extend(list(str(i) for i in self.hops))
+		return '\t'.join(igv_line)
+
