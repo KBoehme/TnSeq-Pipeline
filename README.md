@@ -4,7 +4,7 @@
 
 ##Overview
 
-This script is designed to take Tn-Seq data and map (using Bowtie2) and tally hop sites on a user-provided reference genome.
+This script is designed to take Tn-Seq fasta/fastq data and map (using Bowtie2) and tally hop sites on a user-provided reference genome.
 
 ###Input
 1. Fasta/Fastq read files.
@@ -50,6 +50,9 @@ Num	GeneID	Condition1	Condition2	Condition3	Start	Stop	Strand	Length	PID	Gene	Fu
 ...
 ```
 
+3. Slick looking IGV output with a track for each condition.
+
+![alt tag](http://psoda4.cs.byu.edu/~griffitts/igv_tnseq.png)
 
 ##Getting Started
 
@@ -87,7 +90,6 @@ Download GFF version of the genome [here](http://www.ncbi.nlm.nih.gov/guide/howt
 ### 4. Create config file
 
 The user must create a configuration file which tells the script where to find input files as well as specifying to the program other essential paramenters. Below is the example.config file that can be found in the example_data directory within this repository.
-
 ```
 [input]
 
@@ -117,6 +119,11 @@ DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam fi
 ReverseComplementReads  = True            ; If True this will take the reverse complement of all reads in the input fasta/fastq file before searching for the transposon sequence.
 ```
 
+If all the previous steps were completed successfully you should be able to immediately run this example script by typing the following command in the TnSeq-Pipeline/ folder.
+
+```
+python TnSeq-Pipeline.py example_data/example.config 
+```
 
 
 
