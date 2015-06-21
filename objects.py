@@ -1,5 +1,8 @@
 
-'''
+
+#This bcolors stuff will make the output nice looking. For now I comment out the fun stuff because not all terminals are compatible with it. 
+#If your feeling adventurus you might try to comment out the bottom one and uncomment out the top one...
+
 class bcolors:
 	HEADER = '\033[95m'
 	OKBLUE = '\033[94m'
@@ -19,7 +22,7 @@ class bcolors:
 	ENDC = ''
 	BOLD = ''
 	UNDERLINE = ''
-
+'''
 # This chromosome object represents each ptt file read in.
 class Chromsome(object):
 	"""docstring for Chromsome"""
@@ -189,11 +192,11 @@ class Gene(object):
 	def write_gene(self):
 		return '\t'.join(map(str,self.gene_total_line))
 
-	def write_igv(self, ref_name):
+	def write_igv(self, ref_name, igv_normalize, norm_coef):
 		#Chromosome      Start   End     Feature condition1      condition2      condition3
 		igv_lines = []
 		for hop in self.hop_list:
-			igv_lines.append(hop.get_hops_for_igv(self.synonym, ref_name))
+			igv_lines.append(hop.get_hops_for_igv(self.synonym, ref_name, igv_normalize, norm_coef))
 		return '\n'.join(igv_lines)
 
 
@@ -247,12 +250,15 @@ class HopSite(object):
 		new_line.append(self.strand)
 		return new_line, normalized_hops
 
-	def get_hops_for_igv(self, feature, ref_name):
+	def get_hops_for_igv(self, feature, ref_name, igv_normalize, norm_coef):
 		igv_line = []
 		igv_line.append(ref_name)
 		igv_line.append(str(self.position))
 		igv_line.append(str( self.position + 1))
 		igv_line.append(feature)
-		igv_line.extend(list(str(i) for i in self.hops))
+		if igv_normalize:
+			igv_line.extend(str(int(round(a*b))) for a,b in zip(self.hops,norm_coef))
+		else:
+			igv_line.extend(list(str(i) for i in self.hops))
 		return '\t'.join(igv_line)
 

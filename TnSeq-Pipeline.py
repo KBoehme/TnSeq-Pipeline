@@ -1,6 +1,6 @@
 #Author: Kevin Boehme
 #Date: 12-20-2014
-#This program is part of a TnSeq analysis pipeline, designed to take raw fastq reads, and produce tabulated data on hop count occurance.
+#This program is part of a TnSeq analysis pipeline, designed to take raw fastq or fasta reads, and produce tabulated data on hop count occurrence.
 
 import sys
 sys.dont_write_bytecode = True
@@ -24,6 +24,7 @@ class hops_pipeline(object):
 	"""docstring for hops_pipeline"""
 	def __init__(self):
 
+		########### From config ###########
 		#Inputs
 		self.input_files = []
 		self.ref   = ""
@@ -43,6 +44,9 @@ class hops_pipeline(object):
 		self.delete_intermediate_files = True
 		self.check_transposon = True
 		self.reverse_complement_reads = False
+		self.igv_normalize = False
+		########### End From Config ###########
+
 
 		#Intermediate files for output
 		self.int_prefix = []
@@ -169,6 +173,15 @@ class hops_pipeline(object):
 		except:
 			sys.exit('Error with ReverseComplementReads parameter')
 
+		try:
+			self.igv_normalize = cp.getboolean('options','IGVNormalize')
+		except:
+			sys.exit('Error with IGVNormalize parameter')
+
+
+
+
+
 		# Generate other variables
 		self.num_conditions = len(self.input_files)
 		self.output_directory = os.path.dirname(config_path)
@@ -211,6 +224,7 @@ class hops_pipeline(object):
 		self.call_bowtie2()
 		self.process_sam()
 		self.print_time_output("Total run time,", self.starttime)
+
 
 
 ############ Useful Functions ###############################
@@ -271,6 +285,8 @@ class hops_pipeline(object):
 						reverse_complement.append("C")
 
 		return ''.join(reverse_complement)
+
+
 
 ############ Process Reads ###############################
 	def print_summary_stats(self, start_process_reads_time, out_file_num):
@@ -692,6 +708,10 @@ class hops_pipeline(object):
 		logging.info("Begin calculating gene totals and writing to output...")
 		start_time = time()
 
+		if self.delete_intermediate_files:
+			logging.info("Deleting Intermediate Folder.")
+			subprocess.check_output(["rmdir",self.output_directory + "intermediate_files/"])
+
 		with open(self.tabulated_filename, 'w') as hf, open(self.gene_tabulated_filename, 'w') as gf, open(self.intergenic_filename, 'w') as intf:
 			hops_header = ["Num","GeneID"]
 			hops_header.extend(self.int_prefix)
@@ -704,8 +724,8 @@ class hops_pipeline(object):
 
 			for ref_name, chrom in self.chromosomes.iteritems():
 				for gene in chrom.gene_list:
-					if len(gene.hop_list) > 0:
-						self.igv_filenames[ref_name].write(gene.write_igv(ref_name) + "\n")
+					if len(gene.hop_list) > 0: # If the gene even has hops in it to write.
+						self.igv_filenames[ref_name].write(gene.write_igv(ref_name, self.igv_normalize, self.normalization_coefficients) + "\n")
 					else:
 						pass
 
