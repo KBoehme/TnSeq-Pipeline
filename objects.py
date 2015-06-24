@@ -2,7 +2,7 @@
 
 #This bcolors stuff will make the output nice looking. For now I comment out the fun stuff because not all terminals are compatible with it. 
 #If your feeling adventurus you might try to comment out the bottom one and uncomment out the top one...
-
+'''
 class bcolors:
 	HEADER = '\033[95m'
 	OKBLUE = '\033[94m'
@@ -22,7 +22,7 @@ class bcolors:
 	ENDC = ''
 	BOLD = ''
 	UNDERLINE = ''
-'''
+
 # This chromosome object represents each ptt file read in.
 class Chromsome(object):
 	"""docstring for Chromsome"""
@@ -120,13 +120,18 @@ class Gene(object):
 		self.cog = ptt_entry[7]
 		self.function = ' '.join(ptt_entry[8:])
 		self.num_conditions = num_conditions
+		self.start_trunc = self.start
+		self.end_trunc = self.end
 
-		if trim != 0:
-			user_percentage = int ( ( self.end - self.start )/trim )
-			if user_percentage > 0:
-				self.start_trunc = self.start + user_percentage
-				self.end_trunc = self.end - user_percentage
-
+		try:
+			if trim != 0:
+				user_percentage = int ( ( self.end - self.start )/trim )
+				if user_percentage > 0:
+					self.start_trunc = self.start + user_percentage
+					self.end_trunc = self.end - user_percentage
+		except:
+			logging.error("Seems like the trim length is giving me some problems. Setting it to 0 and continuing.")
+			
 	def create_intergenic_region(self, start, end, synonym, num_conditions):
 		#print "Creating intergenic region"
 		#print "start:",start
