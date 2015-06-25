@@ -125,12 +125,14 @@ class Gene(object):
 
 		try:
 			if trim != 0:
-				user_percentage = int ( ( self.end - self.start )/trim )
+				trim_percent = float(trim)/100.0
+				gene_length = self.end - self.start
+				user_percentage = int ( gene_length * trim_percent )
 				if user_percentage > 0:
 					self.start_trunc = self.start + user_percentage
 					self.end_trunc = self.end - user_percentage
 		except:
-			logging.error("Seems like the trim length is giving me some problems. Setting it to 0 and continuing.")
+			print "Seems like the trim length is giving me some problems. Setting it to 0 and continuing."
 			
 	def create_intergenic_region(self, start, end, synonym, num_conditions):
 		#print "Creating intergenic region"

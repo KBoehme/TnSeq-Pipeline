@@ -126,8 +126,8 @@ class hops_pipeline(object):
 
 		if self.gene_trim < 0:
 			sys.exit('GeneTrim parameter is negative.')
-		elif self.gene_trim > 99:
-			sys.exit('Error with GeneTrim parameter (Must be 99 or smaller).')
+		elif self.gene_trim > 49:
+			sys.exit('Error with GeneTrim parameter (Must be 49 or smaller).')
 
 
 		try:
