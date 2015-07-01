@@ -263,9 +263,12 @@ class HopSite(object):
 		igv_line.append(str(self.position))
 		igv_line.append(str( self.position + 1))
 		igv_line.append(feature)
+		negate = 1
+		if self.strand == '-':
+			negate = -1
 		if igv_normalize:
-			igv_line.extend(str(int(round(a*b))) for a,b in zip(self.hops,norm_coef))
+			igv_line.extend(str( negate * int(round(a*b))) for a,b in zip(self.hops,norm_coef))
 		else:
-			igv_line.extend(list(str(i) for i in self.hops))
+			igv_line.extend(list(str(negate * i) for i in self.hops))
 		return '\t'.join(igv_line)
 
