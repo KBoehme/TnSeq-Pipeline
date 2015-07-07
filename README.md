@@ -50,7 +50,7 @@ Num	GeneID	Condition1	Condition2	Condition3	Start	Stop	Strand	Length	PID	Gene	Fu
 ...
 ```
 
-3. Slick looking IGV output with a track for each condition.
+3. Slick looking IGV output with a seperate track for each observed condition.
 
 ![alt tag](http://psoda4.cs.byu.edu/~griffitts/igv_tnseq.png)
 
@@ -58,7 +58,7 @@ Num	GeneID	Condition1	Condition2	Condition3	Start	Stop	Strand	Length	PID	Gene	Fu
 
 ### 1. Download Repo
 
-Option 1 - Run the following command in your terminal
+Option 1 - If you have git installed on your system. Run the following command in your terminal
 
 ```
 git clone https://github.com/KBoehme/TnSeq-Pipeline.git
@@ -119,7 +119,7 @@ DeleteIntermediateFiles = True            ; Delete intermediate fasta and sam fi
 ReverseComplementReads  = True            ; If True this will take the reverse complement of all reads in the input fasta/fastq file before searching for the transposon sequence.
 ```
 
-If all the previous steps were completed successfully you should be able to immediately run this example script by typing the following command in the TnSeq-Pipeline/ folder.
+If all the previous steps were completed successfully you should be able to immediately run the example script included in the folder by typing the following command in the TnSeq-Pipeline/ folder.
 
 ```
 python TnSeq-Pipeline.py example_data/example.config 
