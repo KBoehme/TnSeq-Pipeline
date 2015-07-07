@@ -210,9 +210,11 @@ class Gene(object):
 # This HopSite object represents a specific hop site
 class HopSite(object):
 	"""docstring for HopSite"""
-	def __init__(self, position, strand, num_conditions):
+	def __init__(self, position, negateIGV, strand, num_conditions):
+		print strand
 		self.position = position
 		#self.hops = {}
+		self.negateIGV = negateIGV
 		self.strand = strand
 		self.hops = [0] * num_conditions
 
@@ -264,8 +266,9 @@ class HopSite(object):
 		igv_line.append(str( self.position + 1))
 		igv_line.append(feature)
 		negate = 1
-		if self.strand == '-':
-			negate = -1
+		if self.negateIGV:
+			if self.strand == '-':
+				negate = -1
 		if igv_normalize:
 			igv_line.extend(str( negate * int(round(a*b))) for a,b in zip(self.hops,norm_coef))
 		else:

@@ -45,6 +45,7 @@ class hops_pipeline(object):
 		self.check_transposon = True
 		self.reverse_complement_reads = False
 		self.igv_normalize = False
+		self.negateIGV = False
 		########### End From Config ###########
 
 
@@ -178,8 +179,10 @@ class hops_pipeline(object):
 		except:
 			sys.exit('Error with IGVNormalize parameter')
 
-
-
+		try:
+			self.negateIGV = cp.getboolean('options','IGVNegateNegStrand')
+		except:
+			sys.exit('Error with IGVNormalize parameter')
 
 
 		# Generate other variables
@@ -592,7 +595,7 @@ class hops_pipeline(object):
 							if pos in self.sam_file_contents[ref_name]:
 								self.sam_file_contents[ref_name][pos].increment_hop_count(i)
 							else:
-								new_hop = HopSite(pos, strand, self.num_conditions)
+								new_hop = HopSite(pos, self.negateIGV, strand, self.num_conditions)
 								new_hop.increment_hop_count(i)
 								self.sam_file_contents[ref_name][pos] = new_hop
 				logging.info("")
