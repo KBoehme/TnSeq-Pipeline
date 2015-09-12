@@ -211,7 +211,6 @@ class Gene(object):
 class HopSite(object):
 	"""docstring for HopSite"""
 	def __init__(self, position, negateIGV, strand, num_conditions):
-		print strand
 		self.position = position
 		#self.hops = {}
 		self.negateIGV = negateIGV
