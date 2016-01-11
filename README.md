@@ -52,7 +52,7 @@ Num	GeneID	Condition1	Condition2	Condition3	Start	Stop	Strand	Length	PID	Gene	Fu
 
 3. Slick looking IGV output with a seperate track for each observed condition.
 
-![alt tag](http://psoda4.cs.byu.edu/~griffitts/tnseq.png)
+![alt tag](https://github.com/KBoehme/TnSeq-Pipeline/wiki/tnseq.png)
 
 ##Getting Started
 
