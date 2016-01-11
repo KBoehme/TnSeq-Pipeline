@@ -52,7 +52,7 @@ Num	GeneID	Condition1	Condition2	Condition3	Start	Stop	Strand	Length	PID	Gene	Fu
 
 3. Slick looking IGV output with a seperate track for each observed condition.
 
-![alt tag](http://psoda4.cs.byu.edu/~griffitts/igv_tnseq.png)
+![alt tag](http://psoda4.cs.byu.edu/~griffitts/public_html/igv_tnseq.png)
 
 ##Getting Started
 
@@ -69,7 +69,7 @@ Option 2 - Download this repo as a zip file (Find button above and on the right 
 
 ### 2. Get Bowtie2
 
-See the Bowtie2 [homepage](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) and [download link](http://sourceforge.net/projects/bowtie-bio/files/bowtie2/2.2.4/) for information and instructions on how to install Bowtie2.
+See the Bowtie2 [homepage](http://bowtie-bio.sourceforge.net/bowtie2/index.shtml) and [download link](http://sourceforge.net/projects/bowtie-bio/files/bowtie2/) for information and instructions on how to install the latest version of Bowtie2.
 
 This script relies on Bowtie2 in order to map reads. Make sure it is installed and the executable is in the PATH. You should be able to run it simply by typing:
 ```
