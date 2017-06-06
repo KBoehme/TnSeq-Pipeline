@@ -34,6 +34,8 @@ class hops_pipeline(object):
 		#Parameters
 		self.transposon = ""
 		self.mismatches = 0
+		self.minbaseoffset = 0
+		self.maxbaseoffset = 5
 		self.gene_trim = 0
 		self.read_length = 0
 		self.minimum_hop_count = 0
@@ -98,6 +100,16 @@ class hops_pipeline(object):
 			sys.exit("Error with Out parameter.")
 
 		#Parameters
+		try:
+			self.minbaseoffset = cp.get('parameters', 'MinBaseOffset')
+		except:
+			sys.exit('Error with MinBaseOffset parameter')
+		try:
+			self.maxbaseoffset = cp.get('parameters', 'MaxBaseOffset')
+		except:
+			sys.exit('Error with MaxBaseOffset parameter')
+
+
 		try:
 			self.transposon = cp.get('parameters', 'Transposon')
 		except:
@@ -259,7 +271,7 @@ class hops_pipeline(object):
 			logging.info(command + " ran in " + "%.2f" % (time_to_run) +" seconds." + "\n")
 	
 	def fuzzy_match_beginning(self, pattern, genome, mismatches):
-		for i in range(5):
+		for i in range(self.minbaseoffset, self.minbaseoffset+self.maxbaseoffset):
 			chunk = genome[i : i + len(pattern)]
 			# now compare chunk with pattern to see if they match with at least mismatches.
 			if(self.compareChunks(pattern, chunk, mismatches)):
