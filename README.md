@@ -1,17 +1,17 @@
 
-#TnSeq Pipeline
+# TnSeq Pipeline
 
 
-##Overview
+## Overview
 
 This script is designed to take Tn-Seq fasta/fastq data and map (using Bowtie2) and tally hop sites on a user-provided reference genome.
 
-###Input
+### Input
 1. Fasta/Fastq read files.
 2. Bowtie2 reference genome.
 3. Genbank Ptt files for reference genome.
 
-###Output
+### Output
 
 1. Gene-by-gene (-GENE). Hop counts are tallied within genes.
 ```
@@ -54,7 +54,7 @@ Num	GeneID	Condition1	Condition2	Condition3	Start	Stop	Strand	Length	PID	Gene	Fu
 
 ![alt tag](https://github.com/KBoehme/TnSeq-Pipeline/wiki/tnseq.png)
 
-##Getting Started
+## Getting Started
 
 ### 1. Download Repo
 
