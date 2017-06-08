@@ -14,8 +14,6 @@ import glob
 import subprocess
 import re
 from objects import *
-from pprint import pprint
-from collections import OrderedDict
 
 from time import time
 from datetime import datetime
@@ -101,11 +99,11 @@ class hops_pipeline(object):
 
 		#Parameters
 		try:
-			self.minbaseoffset = cp.get('parameters', 'MinBaseOffset')
+			self.minbaseoffset = int(cp.get('parameters', 'MinBaseOffset'))
 		except:
 			sys.exit('Error with MinBaseOffset parameter')
 		try:
-			self.maxbaseoffset = cp.get('parameters', 'MaxBaseOffset')
+			self.maxbaseoffset = int(cp.get('parameters', 'MaxBaseOffset'))
 		except:
 			sys.exit('Error with MaxBaseOffset parameter')
 
@@ -271,7 +269,7 @@ class hops_pipeline(object):
 			logging.info(command + " ran in " + "%.2f" % (time_to_run) +" seconds." + "\n")
 	
 	def fuzzy_match_beginning(self, pattern, genome, mismatches):
-		for i in range(self.minbaseoffset, self.minbaseoffset+self.maxbaseoffset):
+		for i in range(self.minbaseoffset, self.maxbaseoffset+1):
 			chunk = genome[i : i + len(pattern)]
 			# now compare chunk with pattern to see if they match with at least mismatches.
 			if(self.compareChunks(pattern, chunk, mismatches)):
