@@ -132,7 +132,7 @@ class Gene(object):
 					self.start_trunc = self.start + user_percentage
 					self.end_trunc = self.end - user_percentage
 		except:
-			print "Seems like the trim length is giving me some problems. Setting it to 0 and continuing."
+			print("Seems like the trim length is giving me some problems. Setting it to 0 and continuing.")
 			
 	def create_intergenic_region(self, start, end, synonym, num_conditions):
 		#print "Creating intergenic region"
