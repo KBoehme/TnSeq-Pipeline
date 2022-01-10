@@ -5,7 +5,7 @@
 import sys
 sys.dont_write_bytecode = True
 
-import ConfigParser
+from configparser import RawConfigParser
 
 import logging
 import gzip
@@ -77,7 +77,7 @@ class hops_pipeline(object):
 
 ############ Read Config File and Run Pipeline ###############################
 	def read_config(self, config_path):
-		cp = ConfigParser.RawConfigParser()
+		cp = RawConfigParser()
 		try:
 			cp.read(config_path)
 		except:
@@ -114,7 +114,7 @@ class hops_pipeline(object):
 			sys.exit('Error with Transposon parameter.')
 
 		if self.transposon == "":
-			print "Transposon parameter was empty. This means no check will be made for a transposon sequence and all reads will move to the mapping stage."
+			print("Transposon parameter was empty. This means no check will be made for a transposon sequence and all reads will move to the mapping stage.")
 			self.check_transposon = False
 		elif not (re.match('^[ACGTacgt]+$',self.transposon)):
 			sys.exit('Error with Transposon parameter (Make sure it only contains [ATCG]).')
