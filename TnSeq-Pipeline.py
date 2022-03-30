@@ -146,9 +146,8 @@ class hops_pipeline(object):
 		except:
 			sys.exit('Error with ReadLength parameter (Not an integer).')
 
-		if self.read_length < 0:
-			sys.exit('ReadLength parameter is negative.')
-
+		if self.read_length < -1:
+			sys.exit('ReadLength parameter is negative. If you intend to not trim, use -1.')
 
 		try:
 			self.minimum_hop_count = int ( cp.get('parameters', 'MinimumHopCount'))
@@ -441,6 +440,8 @@ class hops_pipeline(object):
 			return None
 
 	def qc_genomic_region(self, seq):
+		if self.read_length == -1:
+			return seq
 		if len(seq) < self.read_length:
 			return None
 		else:
